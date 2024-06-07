@@ -95,6 +95,7 @@
 		2E04BE3E2C0F978D004A775C /* Board Solver */ = {
 			isa = PBXGroup;
 			children = (
+				2E04BE6B2C138BB1004A775C /* Preview Content */,
 				2E04BE3F2C0F978D004A775C /* Board_SolverApp.swift */,
 				2E04BE412C0F978D004A775C /* ContentView.swift */,
 				2E04BE432C0F978F004A775C /* Assets.xcassets */,
@@ -117,6 +118,13 @@
 				2E04BE5C2C0F978F004A775C /* Board_SolverUITestsLaunchTests.swift */,
 			);
 			path = "Board SolverUITests";
+			sourceTree = "<group>";
+		};
+		2E04BE6B2C138BB1004A775C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
