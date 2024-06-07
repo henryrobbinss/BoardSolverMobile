@@ -98,7 +98,6 @@
 				2E04BE6B2C138BB1004A775C /* Preview Content */,
 				2E04BE3F2C0F978D004A775C /* Board_SolverApp.swift */,
 				2E04BE412C0F978D004A775C /* ContentView.swift */,
-				2E04BE432C0F978F004A775C /* Assets.xcassets */,
 			);
 			path = "Board Solver";
 			sourceTree = "<group>";
@@ -123,6 +122,7 @@
 		2E04BE6B2C138BB1004A775C /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				2E04BE432C0F978F004A775C /* Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
