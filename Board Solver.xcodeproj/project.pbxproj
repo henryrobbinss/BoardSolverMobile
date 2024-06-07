@@ -14,6 +14,10 @@
 		2E04BE5B2C0F978F004A775C /* Board_SolverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E04BE5A2C0F978F004A775C /* Board_SolverUITests.swift */; };
 		2E04BE5D2C0F978F004A775C /* Board_SolverUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E04BE5C2C0F978F004A775C /* Board_SolverUITestsLaunchTests.swift */; };
 		FA10923D2C1377F7005AD2FE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FA10923C2C1377F7005AD2FE /* .gitignore */; };
+		FA960B152C1390B600D5099C /* CIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA960B112C1390B600D5099C /* CIImageExtension.swift */; };
+		FA960B162C1390B600D5099C /* SampleBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA960B122C1390B600D5099C /* SampleBuffer.swift */; };
+		FA960B172C1390B600D5099C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA960B132C1390B600D5099C /* CameraView.swift */; };
+		FA960B182C1390B600D5099C /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA960B142C1390B600D5099C /* CameraManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		2E04BE5A2C0F978F004A775C /* Board_SolverUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board_SolverUITests.swift; sourceTree = "<group>"; };
 		2E04BE5C2C0F978F004A775C /* Board_SolverUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board_SolverUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FA10923C2C1377F7005AD2FE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		FA960B112C1390B600D5099C /* CIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIImageExtension.swift; sourceTree = "<group>"; };
+		FA960B122C1390B600D5099C /* SampleBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleBuffer.swift; sourceTree = "<group>"; };
+		FA960B132C1390B600D5099C /* CameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		FA960B142C1390B600D5099C /* CameraManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,9 +103,10 @@
 		2E04BE3E2C0F978D004A775C /* Board Solver */ = {
 			isa = PBXGroup;
 			children = (
+				FA960B1A2C1390D700D5099C /* Camera */,
+				FA960B192C1390C500D5099C /* Views */,
 				2E04BE6B2C138BB1004A775C /* Preview Content */,
 				2E04BE3F2C0F978D004A775C /* Board_SolverApp.swift */,
-				2E04BE412C0F978D004A775C /* ContentView.swift */,
 			);
 			path = "Board Solver";
 			sourceTree = "<group>";
@@ -125,6 +134,25 @@
 				2E04BE432C0F978F004A775C /* Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FA960B192C1390C500D5099C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FA960B132C1390B600D5099C /* CameraView.swift */,
+				2E04BE412C0F978D004A775C /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FA960B1A2C1390D700D5099C /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				FA960B142C1390B600D5099C /* CameraManager.swift */,
+				FA960B112C1390B600D5099C /* CIImageExtension.swift */,
+				FA960B122C1390B600D5099C /* SampleBuffer.swift */,
+			);
+			path = Camera;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +286,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E04BE422C0F978D004A775C /* ContentView.swift in Sources */,
+				FA960B182C1390B600D5099C /* CameraManager.swift in Sources */,
+				FA960B152C1390B600D5099C /* CIImageExtension.swift in Sources */,
+				FA960B162C1390B600D5099C /* SampleBuffer.swift in Sources */,
+				FA960B172C1390B600D5099C /* CameraView.swift in Sources */,
 				2E04BE402C0F978D004A775C /* Board_SolverApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
