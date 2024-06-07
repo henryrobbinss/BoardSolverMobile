@@ -14,6 +14,7 @@
 		2E04BE512C0F978F004A775C /* Board_SolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E04BE502C0F978F004A775C /* Board_SolverTests.swift */; };
 		2E04BE5B2C0F978F004A775C /* Board_SolverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E04BE5A2C0F978F004A775C /* Board_SolverUITests.swift */; };
 		2E04BE5D2C0F978F004A775C /* Board_SolverUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E04BE5C2C0F978F004A775C /* Board_SolverUITestsLaunchTests.swift */; };
+		FA10923D2C1377F7005AD2FE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FA10923C2C1377F7005AD2FE /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		2E04BE562C0F978F004A775C /* Board SolverUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Board SolverUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E04BE5A2C0F978F004A775C /* Board_SolverUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board_SolverUITests.swift; sourceTree = "<group>"; };
 		2E04BE5C2C0F978F004A775C /* Board_SolverUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board_SolverUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FA10923C2C1377F7005AD2FE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		2E04BE332C0F978D004A775C = {
 			isa = PBXGroup;
 			children = (
+				FA10923C2C1377F7005AD2FE /* .gitignore */,
 				2E04BE3E2C0F978D004A775C /* Board Solver */,
 				2E04BE4F2C0F978F004A775C /* Board SolverTests */,
 				2E04BE592C0F978F004A775C /* Board SolverUITests */,
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E04BE472C0F978F004A775C /* Preview Assets.xcassets in Resources */,
+				FA10923D2C1377F7005AD2FE /* .gitignore in Resources */,
 				2E04BE442C0F978F004A775C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
