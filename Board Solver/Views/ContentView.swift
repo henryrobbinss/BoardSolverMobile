@@ -7,9 +7,15 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    var body: some View {
-        VStack {
+struct ContentView: View 
+{
+    @State private var viewModel = ViewModel()
+    
+    var body: some View
+    {
+        VStack 
+        {
+            CameraView(image: $viewModel.currentFrame)
             Text("Board Solver App")
         }
         .padding()

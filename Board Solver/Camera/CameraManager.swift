@@ -45,4 +45,60 @@ class CameraManager: NSObject
             }
         }
     }()
+    
+    // Init
+    override init() 
+    {
+        super.init()
+        
+        Task{
+            await configureSession()
+            await startSession()
+        }
+    }
+    
+    private func configureSession() async 
+    {
+        guard await isAuthorized,
+                  let systemPreferredCamera,
+                  let deviceInput = try? AVCaptureDeviceInput(device: systemPreferredCamera)
+            else { return }
+            
+            captureSession.beginConfiguration()
+            
+            defer {
+                self.captureSession.commitConfiguration()
+            }
+            
+            let videoOutput = AVCaptureVideoDataOutput()
+            videoOutput.setSampleBufferDelegate(self, queue: sessionQueue)
+            
+            guard captureSession.canAddInput(deviceInput) else {
+                print("Unable to add device input to capture session.")
+                return
+            }
+            guard captureSession.canAddOutput(videoOutput) else {
+                print("Unable to add video output to capture session.")
+                return
+            }
+        
+            captureSession.addInput(deviceInput)
+            captureSession.addOutput(videoOutput)
+    }
+    
+    private func startSession() async
+    {
+        // Check authorizaton
+        guard await isAuthorized else { return }
+        captureSession.startRunning()
+    }
+}
+
+extension CameraManager: AVCaptureVideoDataOutputSampleBufferDelegate
+{
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection)
+    {
+        guard let currentFrame = sampleBuffer.cgImage else {return}
+        addToPreviewStream?(currentFrame)
+    }
 }
