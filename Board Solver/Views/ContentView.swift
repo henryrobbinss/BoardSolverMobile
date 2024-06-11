@@ -16,7 +16,23 @@ struct ContentView: View
         VStack 
         {
             CameraView(image: $viewModel.currentFrame)
-            Text("Board Solver App")
+                .scaledToFill()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            HStack{
+                Button {
+                    print("scanning")
+                } label: {
+                    Label("", image: "scan_prompt")
+                }
+                .frame(maxWidth: .infinity)
+                Button {
+                    print("locking")
+                } label: {
+                    Label("", image: "lock_prompt")
+                }
+                .frame(maxWidth: .infinity)
+            }
+            .padding()
         }
         .padding()
     }
