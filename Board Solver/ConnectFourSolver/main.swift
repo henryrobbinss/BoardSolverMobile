@@ -1,22 +1,27 @@
-func CallToSolve() {
-    var solver : Solver
-    var weak : Bool = false
-    // Need to implement the .book
-    var opening_book : String = "solver/7x6.book"
-    solver.loadBook(opening_book);
-    var line : String = "172737"
-    var P : Position
-    if (P.play(line) != line.count) {
-        print("ERROR: Invalid Move: " + P.nbMoves()+1 + " \"" + line + "\"" + "\n")
-    } else {
-        print(line)
-        var scores : [Int] = solver.analyze(P, weak);
-        for i in 0...Position.Width-1 {print(" " + scores[i])}
-        var score : Int = solver.solve(P, weak);
-        print(" " + score + "\n");
-    }
+import Foundation;
+func getTimeMicrosec() -> CUnsignedLongLong {
+    let NOW = Date().timeIntervalSince1970;
+    return CUnsignedLongLong(NOW * 1_000_000)   
 }
 
 func main() {
-    CallToSolve();
+    var solver : Solver;
+    var line : String;
+    var l : Int = 1;
+    while(true) {
+        line = readLine() ?? "";
+        if (line == "quit") {
+            break;
+        }
+        var P : Position;
+        if (P.play(line) != line.count) {
+            print("Line << " + l + ": Invalid move " + (P.nbMoves() + 1) + " \"" + line);
+        } else {
+            var start_time : CUnsignedLongLong = getTimeMicrosec();
+            var score : Int = solver.solve(P);
+            var end_time : CUnsignedLongLong = getTimeMicrosec();
+            print(line + " " + score + " " + solver.getNodeCount() + " " + (end_time - start_time));
+        }
+        l += 1;
+    }
 }
