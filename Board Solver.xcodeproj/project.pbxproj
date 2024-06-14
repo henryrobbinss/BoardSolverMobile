@@ -14,6 +14,7 @@
 		2E04BE5B2C0F978F004A775C /* Board_SolverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E04BE5A2C0F978F004A775C /* Board_SolverUITests.swift */; };
 		2E04BE5D2C0F978F004A775C /* Board_SolverUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E04BE5C2C0F978F004A775C /* Board_SolverUITestsLaunchTests.swift */; };
 		2E082B402C1BE0FB0050C0F4 /* connect4.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 2E082B3F2C1BE0FB0050C0F4 /* connect4.mlpackage */; };
+		2E082B492C1CBE3E0050C0F4 /* viewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E082B482C1CBE3E0050C0F4 /* viewController.swift */; };
 		FA10923D2C1377F7005AD2FE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FA10923C2C1377F7005AD2FE /* .gitignore */; };
 		FA960B162C1390B600D5099C /* SampleBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA960B122C1390B600D5099C /* SampleBuffer.swift */; };
 		FA960B172C1390B600D5099C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA960B132C1390B600D5099C /* CameraView.swift */; };
@@ -51,6 +52,7 @@
 		2E04BE5A2C0F978F004A775C /* Board_SolverUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board_SolverUITests.swift; sourceTree = "<group>"; };
 		2E04BE5C2C0F978F004A775C /* Board_SolverUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board_SolverUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2E082B3F2C1BE0FB0050C0F4 /* connect4.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = connect4.mlpackage; sourceTree = "<group>"; };
+		2E082B482C1CBE3E0050C0F4 /* viewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewController.swift; sourceTree = "<group>"; };
 		FA10923C2C1377F7005AD2FE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FA960B122C1390B600D5099C /* SampleBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleBuffer.swift; sourceTree = "<group>"; };
 		FA960B132C1390B600D5099C /* CameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				FA960B192C1390C500D5099C /* Views */,
 				2E04BE6B2C138BB1004A775C /* Preview Content */,
 				2E04BE3F2C0F978D004A775C /* Board_SolverApp.swift */,
+				2E082B482C1CBE3E0050C0F4 /* viewController.swift */,
 			);
 			path = "Board Solver";
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				FA960B172C1390B600D5099C /* CameraView.swift in Sources */,
 				FA960B222C13940B00D5099C /* ViewModel.swift in Sources */,
 				2E082B402C1BE0FB0050C0F4 /* connect4.mlpackage in Sources */,
+				2E082B492C1CBE3E0050C0F4 /* viewController.swift in Sources */,
 				2E04BE402C0F978D004A775C /* Board_SolverApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

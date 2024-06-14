@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import CoreML
+import Vision
+
 
 struct ContentView: View 
 {
     @State private var viewModel = ViewModel()
+    
+    let model = try? connect4(configuration: MLModelConfiguration())
     
     var body: some View
     {
@@ -18,6 +23,10 @@ struct ContentView: View
             CameraView(image: $viewModel.currentFrame, isLocked: $viewModel.isLocked)
                 .scaledToFill()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
+            let image = UIImage(named: "input_image")
+            predict(image: image)
+            
             HStack{
                 Button {
                     print("scanning")
