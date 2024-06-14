@@ -11,6 +11,7 @@ import SwiftUI
 struct CameraView : View
 {
     @Binding var image: CGImage?
+    @Binding var isLocked: Bool
     
     var body: some View
     {

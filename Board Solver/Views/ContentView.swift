@@ -15,7 +15,7 @@ struct ContentView: View
     {
         VStack 
         {
-            CameraView(image: $viewModel.currentFrame)
+            CameraView(image: $viewModel.currentFrame, isLocked: $viewModel.isLocked)
                 .scaledToFill()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             HStack{
@@ -27,6 +27,7 @@ struct ContentView: View
                 .frame(maxWidth: .infinity)
                 Button {
                     print("locking")
+                    viewModel.toggleLock()
                 } label: {
                     Label("", image: "lock_prompt")
                 }

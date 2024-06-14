@@ -466,7 +466,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Board Solver/Preview Content\"";
-				DEVELOPMENT_TEAM = 97VF596VP5;
+				DEVELOPMENT_TEAM = DNR6Y7TPQM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "To scan game board";
@@ -496,7 +496,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Board Solver/Preview Content\"";
-				DEVELOPMENT_TEAM = 97VF596VP5;
+				DEVELOPMENT_TEAM = DNR6Y7TPQM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "To scan game board";

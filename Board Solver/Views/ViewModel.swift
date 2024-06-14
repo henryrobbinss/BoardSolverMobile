@@ -13,21 +13,35 @@ import Observation
 class ViewModel
 {
     var currentFrame: CGImage?
+    var isLocked = false
     private let cameraManager = CameraManager()
-    init() { 
-        Task {
+    
+    init()
+    {
+        Task 
+        {
             await handleCameraPreviews()
         }
     }
     
+    // If not locked, set the current frame to be the image coming from the preview stream
     func handleCameraPreviews() async
     {
         for await image in cameraManager.previewStream
         {
             Task
             {
-                @MainActor in currentFrame = image
+                @MainActor in
+                if !isLocked
+                {
+                    currentFrame = image
+                }
             }
         }
+    }
+    
+    // Toggles the camera lock
+    func toggleLock() {
+        isLocked.toggle()
     }
 }
