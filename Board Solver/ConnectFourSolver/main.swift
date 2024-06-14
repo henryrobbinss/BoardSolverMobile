@@ -1,11 +1,13 @@
 import Foundation;
+main();
+
 func getTimeMicrosec() -> CUnsignedLongLong {
     let NOW = Date().timeIntervalSince1970;
-    return CUnsignedLongLong(NOW * 1_000_000)   
+    return CUnsignedLongLong(NOW * 1_000_000)
 }
-
 func main() {
-    var solver : Solver;
+    print("Running Code...");
+    let solver : Solver = Solver();
     var line : String;
     var l : Int = 1;
     while(true) {
@@ -13,14 +15,14 @@ func main() {
         if (line == "quit") {
             break;
         }
-        var P : Position;
-        if (P.play(line) != line.count) {
-            print("Line << " + l + ": Invalid move " + (P.nbMoves() + 1) + " \"" + line);
+        let P : Position = Position();
+        if (P.play(seq: line) != line.count) {
+            print("Line << " + String(l) + ": Invalid move " + String((P.nbMoves() + 1)) + " \"" + String(line) + "\"");
         } else {
-            var start_time : CUnsignedLongLong = getTimeMicrosec();
-            var score : Int = solver.solve(P);
-            var end_time : CUnsignedLongLong = getTimeMicrosec();
-            print(line + " " + score + " " + solver.getNodeCount() + " " + (end_time - start_time));
+            let start_time : CUnsignedLongLong = getTimeMicrosec();
+            let score : Int = solver.solve(P:P);
+            let end_time : CUnsignedLongLong = getTimeMicrosec();
+            print(line + " " + String(score) + " " + String(solver.getNodeCount()) + " " + String((end_time - start_time)));
         }
         l += 1;
     }
