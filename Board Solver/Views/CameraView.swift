@@ -20,7 +20,7 @@ struct CameraView : View
             {
                 Image(decorative: image, scale: 1)
                     .resizable()
-                    .scaledToFit()
+                    .scaledToFill()
                     .rotationEffect(.degrees(90)) // Rotate if landscape
                     .frame(width: geometry.size.width, height: geometry.size.height*1.2)
                     
