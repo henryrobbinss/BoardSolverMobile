@@ -11,7 +11,7 @@ import SwiftUI
 struct Board_SolverApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            splashScreen()
         }
     }
 }

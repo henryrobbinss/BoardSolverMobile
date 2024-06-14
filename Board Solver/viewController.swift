@@ -10,7 +10,7 @@ import UIKit
 import CoreML
 import Vision
 
-class ViewController: UIViewController {
+class viewController: UIViewController {
     var model: connect4?
 
     override func viewDidLoad() {

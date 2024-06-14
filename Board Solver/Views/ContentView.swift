@@ -13,9 +13,7 @@ import Vision
 struct ContentView: View 
 {
     @State private var viewModel = ViewModel()
-    
-    let model = try? connect4(configuration: MLModelConfiguration())
-    
+
     var body: some View
     {
         VStack 
@@ -24,25 +22,23 @@ struct ContentView: View
                 .scaledToFill()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             
-            let image = UIImage(named: "input_image")
-            predict(image: image)
-            
             HStack{
                 Button {
                     print("scanning")
                 } label: {
                     Label("", image: "scan_prompt")
                 }
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: 175)
                 Button {
                     print("locking")
                     viewModel.toggleLock()
                 } label: {
                     Label("", image: "lock_prompt")
                 }
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: 175)
             }
             .padding()
+            
         }
         .padding()
     }
