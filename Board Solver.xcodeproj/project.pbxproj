@@ -17,6 +17,8 @@
 		2E082B492C1CBE3E0050C0F4 /* viewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E082B482C1CBE3E0050C0F4 /* viewController.swift */; };
 		2E082B4B2C1CC64A0050C0F4 /* splashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E082B4A2C1CC64A0050C0F4 /* splashScreen.swift */; };
 		2E082B4D2C1CC6E70050C0F4 /* menuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E082B4C2C1CC6E70050C0F4 /* menuView.swift */; };
+		2E8B6C532C2206DE00FBAF69 /* modelOutputParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6C522C2206DE00FBAF69 /* modelOutputParser.swift */; };
+		2E8B6C572C2208F600FBAF69 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6C562C2208F600FBAF69 /* BoardView.swift */; };
 		FA10923D2C1377F7005AD2FE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FA10923C2C1377F7005AD2FE /* .gitignore */; };
 		FA960B162C1390B600D5099C /* SampleBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA960B122C1390B600D5099C /* SampleBuffer.swift */; };
 		FA960B172C1390B600D5099C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA960B132C1390B600D5099C /* CameraView.swift */; };
@@ -57,6 +59,8 @@
 		2E082B482C1CBE3E0050C0F4 /* viewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewController.swift; sourceTree = "<group>"; };
 		2E082B4A2C1CC64A0050C0F4 /* splashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splashScreen.swift; sourceTree = "<group>"; };
 		2E082B4C2C1CC6E70050C0F4 /* menuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuView.swift; sourceTree = "<group>"; };
+		2E8B6C522C2206DE00FBAF69 /* modelOutputParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modelOutputParser.swift; sourceTree = "<group>"; };
+		2E8B6C562C2208F600FBAF69 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		FA10923C2C1377F7005AD2FE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FA960B122C1390B600D5099C /* SampleBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleBuffer.swift; sourceTree = "<group>"; };
 		FA960B132C1390B600D5099C /* CameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 		2E04BE3E2C0F978D004A775C /* Board Solver */ = {
 			isa = PBXGroup;
 			children = (
+				2E8B6C512C22067400FBAF69 /* Model */,
 				2E082B3F2C1BE0FB0050C0F4 /* connect4.mlpackage */,
 				FA960B1A2C1390D700D5099C /* Camera */,
 				FA960B192C1390C500D5099C /* Views */,
@@ -150,6 +155,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		2E8B6C512C22067400FBAF69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2E8B6C522C2206DE00FBAF69 /* modelOutputParser.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		FA960B192C1390C500D5099C /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +171,7 @@
 				FA960B212C13940B00D5099C /* ViewModel.swift */,
 				2E082B4A2C1CC64A0050C0F4 /* splashScreen.swift */,
 				2E082B4C2C1CC6E70050C0F4 /* menuView.swift */,
+				2E8B6C562C2208F600FBAF69 /* BoardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -189,6 +203,8 @@
 			dependencies = (
 			);
 			name = "Board Solver";
+			packageProductDependencies = (
+			);
 			productName = "Board Solver";
 			productReference = 2E04BE3C2C0F978D004A775C /* Board Solver.app */;
 			productType = "com.apple.product-type.application";
@@ -261,6 +277,8 @@
 				Base,
 			);
 			mainGroup = 2E04BE332C0F978D004A775C;
+			packageReferences = (
+			);
 			productRefGroup = 2E04BE3D2C0F978D004A775C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -310,8 +328,10 @@
 				FA960B1E2C13921800D5099C /* CMSampleBuffer+Extension.swift in Sources */,
 				FA960B172C1390B600D5099C /* CameraView.swift in Sources */,
 				FA960B222C13940B00D5099C /* ViewModel.swift in Sources */,
+				2E8B6C572C2208F600FBAF69 /* BoardView.swift in Sources */,
 				2E082B4B2C1CC64A0050C0F4 /* splashScreen.swift in Sources */,
 				2E082B402C1BE0FB0050C0F4 /* connect4.mlpackage in Sources */,
+				2E8B6C532C2206DE00FBAF69 /* modelOutputParser.swift in Sources */,
 				2E082B4D2C1CC6E70050C0F4 /* menuView.swift in Sources */,
 				2E082B492C1CBE3E0050C0F4 /* viewController.swift in Sources */,
 				2E04BE402C0F978D004A775C /* Board_SolverApp.swift in Sources */,
