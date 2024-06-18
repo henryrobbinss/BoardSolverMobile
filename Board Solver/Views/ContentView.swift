@@ -12,44 +12,39 @@ import Vision
 struct ContentView: View
 {
     @State private var viewModel = ViewModel()
+    @ObservedObject var classifier: ImageClassifier
 
     var body: some View
     {
         ZStack
         {
-            CameraView(image: $viewModel.currentFrame, isLocked: $viewModel.isLocked)
+            CameraView(image: $viewModel.currentFrame,  isLocked: $viewModel.isLocked)
                 .scaledToFill()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             
-            VStack {
-                Spacer()
-                
-                BoardView()
-                    .padding(.bottom, 35)
-                
-                HStack{
-                    Button {
-                        print("scanning")
-                    } label: {
-                        Label("", image: "scan_prompt")
+            HStack{
+                Button 
+                {
+                    print("scanning")
+                    if let image = $viewModel.currentFrame.wrappedValue
+                    {
+                        let uiImage = UIImage.init(cgImage: image)
+                        classifier.detect(uiImage: uiImage)
                     }
-                    .frame(maxWidth: 175)
-                    Button {
-                        print("locking")
-                        viewModel.toggleLock()
-                    } label: {
-                        Label("", image: "lock_prompt")
-                    }
-                    .frame(maxWidth: 175)
+                } label: {
+                    Label("", image: "scan_prompt")
                 }
-                .padding()
+                .frame(maxWidth: 175)
+                Button {
+                    print("locking")
+                    viewModel.toggleLock()
+                } label: {
+                    Label("", image: "lock_prompt")
+                }
+                .frame(maxWidth: 175)
             }
             .padding()
         }
         .padding()
     }
-}
-
-#Preview {
-    ContentView()
 }

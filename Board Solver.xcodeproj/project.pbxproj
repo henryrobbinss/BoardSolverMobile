@@ -14,12 +14,13 @@
 		2E04BE5B2C0F978F004A775C /* Board_SolverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E04BE5A2C0F978F004A775C /* Board_SolverUITests.swift */; };
 		2E04BE5D2C0F978F004A775C /* Board_SolverUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E04BE5C2C0F978F004A775C /* Board_SolverUITestsLaunchTests.swift */; };
 		2E082B402C1BE0FB0050C0F4 /* connect4.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 2E082B3F2C1BE0FB0050C0F4 /* connect4.mlpackage */; };
-		2E082B492C1CBE3E0050C0F4 /* viewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E082B482C1CBE3E0050C0F4 /* viewController.swift */; };
 		2E082B4B2C1CC64A0050C0F4 /* splashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E082B4A2C1CC64A0050C0F4 /* splashScreen.swift */; };
 		2E082B4D2C1CC6E70050C0F4 /* menuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E082B4C2C1CC6E70050C0F4 /* menuView.swift */; };
 		2E8B6C532C2206DE00FBAF69 /* modelOutputParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6C522C2206DE00FBAF69 /* modelOutputParser.swift */; };
 		2E8B6C572C2208F600FBAF69 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6C562C2208F600FBAF69 /* BoardView.swift */; };
 		FA10923D2C1377F7005AD2FE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FA10923C2C1377F7005AD2FE /* .gitignore */; };
+		FA15B5592C22006D007DE6B6 /* ImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B5582C22006D007DE6B6 /* ImageClassifier.swift */; };
+		FA15B56E2C220FDC007DE6B6 /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B56D2C220FDC007DE6B6 /* Classifier.swift */; };
 		FA960B162C1390B600D5099C /* SampleBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA960B122C1390B600D5099C /* SampleBuffer.swift */; };
 		FA960B172C1390B600D5099C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA960B132C1390B600D5099C /* CameraView.swift */; };
 		FA960B182C1390B600D5099C /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA960B142C1390B600D5099C /* CameraManager.swift */; };
@@ -56,12 +57,13 @@
 		2E04BE5A2C0F978F004A775C /* Board_SolverUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board_SolverUITests.swift; sourceTree = "<group>"; };
 		2E04BE5C2C0F978F004A775C /* Board_SolverUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board_SolverUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2E082B3F2C1BE0FB0050C0F4 /* connect4.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = connect4.mlpackage; sourceTree = "<group>"; };
-		2E082B482C1CBE3E0050C0F4 /* viewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewController.swift; sourceTree = "<group>"; };
 		2E082B4A2C1CC64A0050C0F4 /* splashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splashScreen.swift; sourceTree = "<group>"; };
 		2E082B4C2C1CC6E70050C0F4 /* menuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuView.swift; sourceTree = "<group>"; };
 		2E8B6C522C2206DE00FBAF69 /* modelOutputParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modelOutputParser.swift; sourceTree = "<group>"; };
 		2E8B6C562C2208F600FBAF69 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		FA10923C2C1377F7005AD2FE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		FA15B5582C22006D007DE6B6 /* ImageClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassifier.swift; sourceTree = "<group>"; };
+		FA15B56D2C220FDC007DE6B6 /* Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
 		FA960B122C1390B600D5099C /* SampleBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleBuffer.swift; sourceTree = "<group>"; };
 		FA960B132C1390B600D5099C /* CameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		FA960B142C1390B600D5099C /* CameraManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
@@ -119,13 +121,12 @@
 		2E04BE3E2C0F978D004A775C /* Board Solver */ = {
 			isa = PBXGroup;
 			children = (
-				2E8B6C512C22067400FBAF69 /* Model */,
+				FA15B56C2C220FA5007DE6B6 /* Classifiers */,
 				2E082B3F2C1BE0FB0050C0F4 /* connect4.mlpackage */,
 				FA960B1A2C1390D700D5099C /* Camera */,
 				FA960B192C1390C500D5099C /* Views */,
 				2E04BE6B2C138BB1004A775C /* Preview Content */,
 				2E04BE3F2C0F978D004A775C /* Board_SolverApp.swift */,
-				2E082B482C1CBE3E0050C0F4 /* viewController.swift */,
 			);
 			path = "Board Solver";
 			sourceTree = "<group>";
@@ -155,12 +156,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		2E8B6C512C22067400FBAF69 /* Model */ = {
+		FA15B56C2C220FA5007DE6B6 /* Classifiers */ = {
 			isa = PBXGroup;
 			children = (
-				2E8B6C522C2206DE00FBAF69 /* modelOutputParser.swift */,
+				FA15B5582C22006D007DE6B6 /* ImageClassifier.swift */,
+				FA15B56D2C220FDC007DE6B6 /* Classifier.swift */,
 			);
-			path = Model;
+			path = Classifiers;
 			sourceTree = "<group>";
 		};
 		FA960B192C1390C500D5099C /* Views */ = {
@@ -324,16 +326,17 @@
 				FA960B202C13924700D5099C /* CIImage+Extension.swift in Sources */,
 				2E04BE422C0F978D004A775C /* ContentView.swift in Sources */,
 				FA960B182C1390B600D5099C /* CameraManager.swift in Sources */,
+				FA15B56E2C220FDC007DE6B6 /* Classifier.swift in Sources */,
 				FA960B162C1390B600D5099C /* SampleBuffer.swift in Sources */,
 				FA960B1E2C13921800D5099C /* CMSampleBuffer+Extension.swift in Sources */,
 				FA960B172C1390B600D5099C /* CameraView.swift in Sources */,
+				FA15B5592C22006D007DE6B6 /* ImageClassifier.swift in Sources */,
 				FA960B222C13940B00D5099C /* ViewModel.swift in Sources */,
 				2E8B6C572C2208F600FBAF69 /* BoardView.swift in Sources */,
 				2E082B4B2C1CC64A0050C0F4 /* splashScreen.swift in Sources */,
 				2E082B402C1BE0FB0050C0F4 /* connect4.mlpackage in Sources */,
 				2E8B6C532C2206DE00FBAF69 /* modelOutputParser.swift in Sources */,
 				2E082B4D2C1CC6E70050C0F4 /* menuView.swift in Sources */,
-				2E082B492C1CBE3E0050C0F4 /* viewController.swift in Sources */,
 				2E04BE402C0F978D004A775C /* Board_SolverApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,7 +501,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Board Solver/Preview Content\"";
-				DEVELOPMENT_TEAM = 97VF596VP5;
+				DEVELOPMENT_TEAM = DNR6Y7TPQM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "To scan game board";
@@ -512,7 +515,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "BoardSolver.Board-Solver";
+				PRODUCT_BUNDLE_IDENTIFIER = "BoardSolver.Board-Solver1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -528,7 +531,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Board Solver/Preview Content\"";
-				DEVELOPMENT_TEAM = 97VF596VP5;
+				DEVELOPMENT_TEAM = DNR6Y7TPQM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "To scan game board";
@@ -542,7 +545,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "BoardSolver.Board-Solver";
+				PRODUCT_BUNDLE_IDENTIFIER = "BoardSolver.Board-Solver1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

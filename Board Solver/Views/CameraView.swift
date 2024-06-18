@@ -12,6 +12,7 @@ struct CameraView : View
 {
     @Binding var image: CGImage?
     @Binding var isLocked: Bool
+    var predictionText: String = "No label found."
     
     var body: some View
     {
@@ -19,11 +20,19 @@ struct CameraView : View
         {
             geometry in if let image = image
             {
-                Image(decorative: image, scale: 1)
-                    .resizable()
-                    .scaledToFill()
-                    .rotationEffect(.degrees(90)) // Rotate if landscape
-                    .frame(width: geometry.size.width, height: geometry.size.height*1.2)
+                ZStack
+                {
+                    Image(decorative: image, scale: 1)
+                        .resizable()
+                        .scaledToFill()
+                        .rotationEffect(.degrees(90)) // Rotate if landscape
+                        .frame(width: geometry.size.width, height: geometry.size.height*1.2)
+                    
+                    Text(predictionText)
+                        .background(Color.black.opacity(0.7))
+                        .foregroundColor(.white)
+                        .padding()
+                }
                     
             }
             else
