@@ -17,6 +17,7 @@
 		2E082B4B2C1CC64A0050C0F4 /* splashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E082B4A2C1CC64A0050C0F4 /* splashScreen.swift */; };
 		2E082B4D2C1CC6E70050C0F4 /* menuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E082B4C2C1CC6E70050C0F4 /* menuView.swift */; };
 		2E8B6C572C2208F600FBAF69 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6C562C2208F600FBAF69 /* BoardView.swift */; };
+		2E8B6C982C26004800FBAF69 /* Connect4 1 Iteration 500.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6C972C26004800FBAF69 /* Connect4 1 Iteration 500.mlmodel */; };
 		FA10923D2C1377F7005AD2FE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FA10923C2C1377F7005AD2FE /* .gitignore */; };
 		FA15B5592C22006D007DE6B6 /* ImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B5582C22006D007DE6B6 /* ImageClassifier.swift */; };
 		FA15B56E2C220FDC007DE6B6 /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B56D2C220FDC007DE6B6 /* Classifier.swift */; };
@@ -59,6 +60,7 @@
 		2E082B4A2C1CC64A0050C0F4 /* splashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splashScreen.swift; sourceTree = "<group>"; };
 		2E082B4C2C1CC6E70050C0F4 /* menuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuView.swift; sourceTree = "<group>"; };
 		2E8B6C562C2208F600FBAF69 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		2E8B6C972C26004800FBAF69 /* Connect4 1 Iteration 500.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "Connect4 1 Iteration 500.mlmodel"; sourceTree = "<group>"; };
 		FA10923C2C1377F7005AD2FE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FA15B5582C22006D007DE6B6 /* ImageClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassifier.swift; sourceTree = "<group>"; };
 		FA15B56D2C220FDC007DE6B6 /* Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 		2E04BE3E2C0F978D004A775C /* Board Solver */ = {
 			isa = PBXGroup;
 			children = (
+				2E8B6C972C26004800FBAF69 /* Connect4 1 Iteration 500.mlmodel */,
 				FA15B56C2C220FA5007DE6B6 /* Classifiers */,
 				2E082B3F2C1BE0FB0050C0F4 /* connect4.mlpackage */,
 				FA960B1A2C1390D700D5099C /* Camera */,
@@ -329,6 +332,7 @@
 				FA960B1E2C13921800D5099C /* CMSampleBuffer+Extension.swift in Sources */,
 				FA960B172C1390B600D5099C /* CameraView.swift in Sources */,
 				FA15B5592C22006D007DE6B6 /* ImageClassifier.swift in Sources */,
+				2E8B6C982C26004800FBAF69 /* Connect4 1 Iteration 500.mlmodel in Sources */,
 				FA960B222C13940B00D5099C /* ViewModel.swift in Sources */,
 				2E8B6C572C2208F600FBAF69 /* BoardView.swift in Sources */,
 				2E082B4B2C1CC64A0050C0F4 /* splashScreen.swift in Sources */,
