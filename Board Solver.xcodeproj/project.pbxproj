@@ -16,7 +16,6 @@
 		2E082B402C1BE0FB0050C0F4 /* connect4.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 2E082B3F2C1BE0FB0050C0F4 /* connect4.mlpackage */; };
 		2E082B4B2C1CC64A0050C0F4 /* splashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E082B4A2C1CC64A0050C0F4 /* splashScreen.swift */; };
 		2E082B4D2C1CC6E70050C0F4 /* menuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E082B4C2C1CC6E70050C0F4 /* menuView.swift */; };
-		2E8B6C532C2206DE00FBAF69 /* modelOutputParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6C522C2206DE00FBAF69 /* modelOutputParser.swift */; };
 		2E8B6C572C2208F600FBAF69 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6C562C2208F600FBAF69 /* BoardView.swift */; };
 		FA10923D2C1377F7005AD2FE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FA10923C2C1377F7005AD2FE /* .gitignore */; };
 		FA15B5592C22006D007DE6B6 /* ImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B5582C22006D007DE6B6 /* ImageClassifier.swift */; };
@@ -59,7 +58,6 @@
 		2E082B3F2C1BE0FB0050C0F4 /* connect4.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = connect4.mlpackage; sourceTree = "<group>"; };
 		2E082B4A2C1CC64A0050C0F4 /* splashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splashScreen.swift; sourceTree = "<group>"; };
 		2E082B4C2C1CC6E70050C0F4 /* menuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuView.swift; sourceTree = "<group>"; };
-		2E8B6C522C2206DE00FBAF69 /* modelOutputParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modelOutputParser.swift; sourceTree = "<group>"; };
 		2E8B6C562C2208F600FBAF69 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		FA10923C2C1377F7005AD2FE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FA15B5582C22006D007DE6B6 /* ImageClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassifier.swift; sourceTree = "<group>"; };
@@ -335,7 +333,6 @@
 				2E8B6C572C2208F600FBAF69 /* BoardView.swift in Sources */,
 				2E082B4B2C1CC64A0050C0F4 /* splashScreen.swift in Sources */,
 				2E082B402C1BE0FB0050C0F4 /* connect4.mlpackage in Sources */,
-				2E8B6C532C2206DE00FBAF69 /* modelOutputParser.swift in Sources */,
 				2E082B4D2C1CC6E70050C0F4 /* menuView.swift in Sources */,
 				2E04BE402C0F978D004A775C /* Board_SolverApp.swift in Sources */,
 			);
@@ -501,7 +498,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Board Solver/Preview Content\"";
-				DEVELOPMENT_TEAM = DNR6Y7TPQM;
+				DEVELOPMENT_TEAM = 97VF596VP5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "To scan game board";
@@ -515,7 +512,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "BoardSolver.Board-Solver1";
+				PRODUCT_BUNDLE_IDENTIFIER = "BoardSolver.Board-Solver";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -531,7 +528,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Board Solver/Preview Content\"";
-				DEVELOPMENT_TEAM = DNR6Y7TPQM;
+				DEVELOPMENT_TEAM = 97VF596VP5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "To scan game board";
@@ -545,7 +542,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "BoardSolver.Board-Solver1";
+				PRODUCT_BUNDLE_IDENTIFIER = "BoardSolver.Board-Solver";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
