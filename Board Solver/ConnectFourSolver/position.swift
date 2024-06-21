@@ -88,7 +88,6 @@ public class Position {
     // Plays a series of moves at once
     // Stops processing at invalid move
     func play(seq : String) -> CUnsignedInt {
-    func play(seq : String) -> CUnsignedInt {
         for i : Int in 0...seq.count-1 {
             let curChar: Character = seq[seq.index(seq.startIndex, offsetBy: i)];
             let col : Int = Int(curChar.asciiValue!) - Int(Character("1").asciiValue!);
@@ -177,6 +176,7 @@ public class Position {
     }
     func nbMoves() -> CUnsignedInt {
         return moves;
+    }
     func copy() -> Position {
         return Position(board: self.board, mask: self.mask, moves: self.moves);
     }
@@ -191,11 +191,6 @@ public class Position {
         }
         return newBoard;
     }
-    init() {
-        self.board = Array(repeating: Array(repeating: 0, count: Position.HEIGHT), count: Position.WIDTH);
-        self.height = Array(repeating:0, count: Position.WIDTH);
-        self.moves = 0;
-    init() {} // Doesnt do anything since default values are set above
     init(board: UInt64, mask: UInt64, moves: CUnsignedInt) {
         self.board = board;
         self.mask = mask;
