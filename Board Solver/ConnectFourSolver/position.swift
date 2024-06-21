@@ -88,12 +88,14 @@ public class Position {
     // Plays a series of moves at once
     // Stops processing at invalid move
     func play(seq : String) -> CUnsignedInt {
+    func play(seq : String) -> CUnsignedInt {
         for i : Int in 0...seq.count-1 {
             let curChar: Character = seq[seq.index(seq.startIndex, offsetBy: i)];
             let col : Int = Int(curChar.asciiValue!) - Int(Character("1").asciiValue!);
             if(col < 0 || col >= Position.WIDTH || !canPlay(col: col) || isWinningMove(col: col)) {
                           return CUnsignedInt(i);
             }
+            play(col: col);
             play(col: col);
         }
         return CUnsignedInt(seq.count);
@@ -173,9 +175,26 @@ public class Position {
         }
         return c;
     }
+    func nbMoves() -> CUnsignedInt {
+        return moves;
     func copy() -> Position {
         return Position(board: self.board, mask: self.mask, moves: self.moves);
     }
+    func copy() -> Position {
+        return Position(board: self.board, height: self.height, moves: self.moves);
+    }
+    func deepCopyBoard(board: [[Int]]) -> [[Int]] {
+        // Initialize new board
+        var newBoard : [[Int]] = Array(repeating: Array(repeating: 0, count: Position.HEIGHT), count: Position.WIDTH);
+        for i in 0...Position.WIDTH-1 {
+            newBoard[i] = Array(board[i]);
+        }
+        return newBoard;
+    }
+    init() {
+        self.board = Array(repeating: Array(repeating: 0, count: Position.HEIGHT), count: Position.WIDTH);
+        self.height = Array(repeating:0, count: Position.WIDTH);
+        self.moves = 0;
     init() {} // Doesnt do anything since default values are set above
     init(board: UInt64, mask: UInt64, moves: CUnsignedInt) {
         self.board = board;
