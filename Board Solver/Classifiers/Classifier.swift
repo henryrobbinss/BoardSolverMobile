@@ -9,7 +9,8 @@ import CoreML
 import Vision
 import CoreImage
 
-struct Classifier {
+struct Classifier 
+{
     
     static func createImageClassifier() -> VNCoreMLModel
     {
@@ -17,7 +18,7 @@ struct Classifier {
         let defaultConfig = MLModelConfiguration()
 
         // Create an instance of the image classifier's wrapper class.
-        let imageClassifierWrapper = try? connect4(configuration: defaultConfig)
+        let imageClassifierWrapper = try? Connect4_1_Iteration_500(configuration: defaultConfig)
 
         guard let imageClassifier = imageClassifierWrapper else {
             fatalError("App failed to create an image classifier model instance.")
@@ -36,7 +37,7 @@ struct Classifier {
     
     private static let imageClassifier = createImageClassifier()
     
-    private(set) var results: String?
+    private(set) var results: [VNRecognizedObjectObservation]?
     
     mutating func detect(ciImage: CIImage)
     {
@@ -51,17 +52,13 @@ struct Classifier {
         try? handler.perform([request])
         
         print("Getting results")
-        guard let results = request.results as? [VNClassificationObservation] else
+        guard let results = request.results as? [VNRecognizedObjectObservation] else
         {
             print("Error getting results")
             return
         }
         
         print("Results should be here by now")
-        if let firstResult = results.first
-        {
-            self.results = firstResult.identifier
-        }
         
     }
     
