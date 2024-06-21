@@ -11,17 +11,38 @@ import CoreImage
 
 struct Classifier {
     
+    static func createImageClassifier() -> VNCoreMLModel
+    {
+        // Use a default model configuration.
+        let defaultConfig = MLModelConfiguration()
+
+        // Create an instance of the image classifier's wrapper class.
+        let imageClassifierWrapper = try? connect4(configuration: defaultConfig)
+
+        guard let imageClassifier = imageClassifierWrapper else {
+            fatalError("App failed to create an image classifier model instance.")
+        }
+
+        // Get the underlying model instance.
+        let imageClassifierModel = imageClassifier.model
+
+        // Create a Vision instance using the image classifier's model instance.
+        guard let imageClassifierVisionModel = try? VNCoreMLModel(for: imageClassifierModel) else {
+            fatalError("App failed to create a `VNCoreMLModel` instance.")
+        }
+
+        return imageClassifierVisionModel
+    }
+    
+    private static let imageClassifier = createImageClassifier()
+    
     private(set) var results: String?
     
-    mutating func detect(ciImage: CIImage) {
-        print("Trying to load model")
-        guard let model = try? VNCoreMLModel(for: connect4(configuration: MLModelConfiguration()).model)
-        else {
-            return
-        }
+    mutating func detect(ciImage: CIImage)
+    {
         
         print("Creating request")
-        let request = VNCoreMLRequest(model: model)
+        let request = VNCoreMLRequest(model: Classifier.imageClassifier.self)
         
         print("Creating handler")
         let handler = VNImageRequestHandler(ciImage: ciImage, options: [:])
