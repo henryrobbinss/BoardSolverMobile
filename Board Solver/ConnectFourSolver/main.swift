@@ -1,16 +1,17 @@
-import Foundation;
-main();
+// This code is merely a translation and remake of the solver by Pascal Pons
+// The code way originaly written in C++, and through the use of his GitHub and site, it has been rewritten for
+// Swift for BoardSolver. It is a fair bit slower than his model, but by utilizing a maximum depth check, it can
+// Output a response in a fast time.
 
+//
+import Foundation;
 main();
 
 func getTimeMicrosec() -> CUnsignedLongLong {
     let NOW = Date().timeIntervalSince1970;
     return CUnsignedLongLong(NOW * 1_000_000)
-    return CUnsignedLongLong(NOW * 1_000_000)
 }
 func main() {
-    print("Running Code...");
-    let solver : Solver = Solver();
     print("Running Code...");
     let solver : Solver = Solver();
     var line : String;
@@ -21,10 +22,9 @@ func main() {
             break;
         }
         if (line == "readfile") {
-            let filename : String = "endeasy.txt";
-            let numTests : Int = 1000;
+            let filename : String = "test.txt";
+            let numTests : Int = 27;
             var curPercent : Int = 0;
-            var numPositions: UInt64 = 0;
             let relativePath = "/Users/chris/Documents/simplesolver/connect4solver"
             let url = URL( fileURLWithPath: relativePath+"/TestOutputs/"+filename);
             do {
@@ -58,7 +58,6 @@ func main() {
                     } else {
                         solver.resetTable();
                         let score : Int = solver.solve(P:P);
-                        numPositions += UInt64(solver.getNodeCount());
                         if (score != Int(output)) {
                             let outputString = "ERROR: Invalid Score: " + String(score) + " | " + output + "\n"
                             print(outputString);
@@ -82,7 +81,7 @@ func main() {
                         print(String(curPercent) + "% done in " + String(cur_time-start_time));
                     }
                 }
-                print("Avg Num Positions: " + String(numPositions/1000));
+                print("Avg Num Positions: " + String(solver.getNodeCount()/1000));
             } catch {
                 print(error)
             }
@@ -96,12 +95,7 @@ func main() {
             let score : Int = solver.solve(P:P);
             let end_time : CUnsignedLongLong = getTimeMicrosec();
             print(line + " " + String(score) + " " + String(solver.getNodeCount()) + " " + String((end_time - start_time)));
-            let start_time : CUnsignedLongLong = getTimeMicrosec();
-            let score : Int = solver.solve(P:P);
-            let end_time : CUnsignedLongLong = getTimeMicrosec();
-            print(line + " " + String(score) + " " + String(solver.getNodeCount()) + " " + String((end_time - start_time)));
         }
         l += 1;
     }
 }
-

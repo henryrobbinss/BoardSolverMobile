@@ -1,3 +1,8 @@
+// This code is merely a translation and remake of the solver by Pascal Pons
+// The code way originaly written in C++, and through the use of his GitHub and site, it has been rewritten for
+// Swift for BoardSolver. It is a fair bit slower than his model, but by utilizing a maximum depth check, it can
+// Output a response in a fast time.
+
 import Foundation
 public class MoveSorter {
     var sortedArr: [Entry] = [Entry]();

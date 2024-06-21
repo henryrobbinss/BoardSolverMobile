@@ -1,0 +1,14 @@
+ERROR: Invalid Score: 0 | 3
+ERROR: Invalid Score: 0 | -2
+ERROR: Invalid Score: 0 | 1
+ERROR: Invalid Score: 0 | 3
+ERROR: Invalid Score: 0 | 3
+ERROR: Invalid Score: 0 | -3
+ERROR: Invalid Score: 0 | 3
+ERROR: Invalid Score: 0 | -2
+ERROR: Invalid Score: 0 | 6
+ERROR: Invalid Score: 0 | -3
+ERROR: Invalid Score: 0 | 4
+ERROR: Invalid Score: 0 | 4
+ERROR: Invalid Score: 0 | -6
+ERROR: Invalid Score: 0 | 3

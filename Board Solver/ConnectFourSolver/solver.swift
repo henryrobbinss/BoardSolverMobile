@@ -1,5 +1,10 @@
+// This code is merely a translation and remake of the solver by Pascal Pons
+// The code way originaly written in C++, and through the use of his GitHub and site, it has been rewritten for
+// Swift for BoardSolver. It is a fair bit slower than his model, but by utilizing a maximum depth check, it can
+// Output a response in a fast time.
+
 public class Solver {
-    private var nodeCount : CUnsignedLongLong = 0; // counter of explored nodes
+    private var nodeCount : UInt64 = 0; // counter of explored nodes
     private var columnOrder : [Int] = Array(repeating: 0, count: Position.WIDTH)
     private var table : TranspositionTable = TranspositionTable();
 
@@ -9,7 +14,15 @@ public class Solver {
     // The number of moves before the end you can win (faster win is higher score)
     // Negative score if your opponent can force you to lose. Your score is the opposite
     // of the number of moves before the end you will lose (faster loss is lower score)
-    func negamax(P : Position, a : Int, b : Int) -> Int {
+    func negamax(P : Position, a : Int, b : Int, d : UInt) -> Int {
+        // Maximum depth cutoff, any depth larger than this value will just return 0
+        // In a perfect world this is considered "suboptimal", but in the real world
+        // It is perfectly fine, since the solver has shown that there is a way to not
+        // lose within 16 moves. Humans will make the wrong move at some point which will
+        // Make the solver solve within the 16 move limit, forcing a win
+        if (d >= 16) {
+            return 0;
+        }
         assert(a<b);
         var alpha : Int = a;
         var beta : Int = b;
@@ -19,18 +32,38 @@ public class Solver {
         if (P.nbMoves() >= Position.WIDTH*Position.HEIGHT-2) { // Check for drawn game
             return 0;
         }
-        let min : Int = -(Position.WIDTH*Position.HEIGHT-2-Int(P.nbMoves()))/2;
+        var min : Int = -(Position.WIDTH*Position.HEIGHT-2-Int(P.nbMoves()))/2;
         if (alpha < min) {alpha = min;}
         if (alpha >= beta) {return alpha;}
         // At this point since the code wouldve returned, the max score is less than that
         var max : Int = (Position.WIDTH*Position.HEIGHT - 1 - Int(P.nbMoves()))/2;
-        let val : Int = Int(table.get(key:P.key()));
-        if (val != 0) {max = val + Position.MIN_SCORE - 1;}
         if (beta > max) {
             beta = max;
             if (alpha >= beta) {return beta;}
         }
+        
+        let key : UInt64 = P.key();
+        var val : Int = Int(table.get(key:key));
+        if (val != 0) {
+            if (val > Position.MAX_SCORE - Position.MIN_SCORE + 1) { // lower bound
+                min = val + 2*Position.MIN_SCORE - Position.MAX_SCORE - 2;
+                if (alpha < min) {
+                    alpha = min; // no need to keep beta above max possible score
+                    // prune the exploration if the alpha;beta window is empty
+                    if (alpha >= beta) {return alpha;}
+                }
+            } else { // upper bound
+                max = val + Position.MIN_SCORE - 1;
+                if (beta > max) {
+                    beta = max;
+                    if (alpha >= beta) {return alpha;}
+                }
+            }
+        }
+        
         let moves : MoveSorter = MoveSorter();
+        val = Int(table.get(key:P.key()));
+        if (val != 0) {max = val + Position.MIN_SCORE - 1;}
         // Add all possible moves to move sorter in order by column order
         var i : Int = Position.WIDTH - 1;
         while(i >= 0) {
@@ -45,13 +78,13 @@ public class Solver {
         while(0 != nextMove) {
             let P2 : Position = P.copy(); // Copy the position to do temp work with recursion
             P2.play(move: nextMove); // Its opponent turn in P2 position after current player plays x column
-            let score : Int = -negamax(P:P2, a:-beta, b:-alpha); // If current player plays col x, his score will be the opposite of opponents score after this next move
+            let score : Int = -negamax(P:P2, a:-beta, b:-alpha, d: d+1); // If current player plays col x, his score will be the opposite of opponents score after this next move
             if(score >= beta) {return score;}
             if (score > alpha) {alpha = score;}
             nextMove = moves.getNext();
         }
         
-        table.put(key: P.key(), val: UInt8(alpha - Position.MIN_SCORE + 1));
+        table.put(key: key, val: UInt8(alpha - Position.MIN_SCORE + 1));
         return alpha;
     }
     func resetTable() {
@@ -70,7 +103,7 @@ public class Solver {
             else if (med >= 0 && max/2 > med) {med = max/2;}
             // Call negamax with a alpha;beta value of med;med+1
             // This is the null search window optimization
-            let val : Int = negamax(P:P, a:med, b:med+1);
+            let val : Int = negamax(P:P, a:med, b:med+1, d:0);
             if (val <= med) {max = val;}
             else {min = val;}
         }
@@ -78,7 +111,7 @@ public class Solver {
         return min;
     }
 
-    func getNodeCount() -> CUnsignedLongLong {
+    func getNodeCount() -> UInt64 {
         return nodeCount;
     }
     init() {

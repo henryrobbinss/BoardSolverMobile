@@ -1,3 +1,8 @@
+// This code is merely a translation and remake of the solver by Pascal Pons
+// The code way originaly written in C++, and through the use of his GitHub and site, it has been rewritten for
+// Swift for BoardSolver. It is a fair bit slower than his model, but by utilizing a maximum depth check, it can
+// Output a response in a fast time.
+
 public class Position {
     static let WIDTH = 7; // Width of the board
     static let HEIGHT = 6; // Height of the board
@@ -95,7 +100,6 @@ public class Position {
                           return CUnsignedInt(i);
             }
             play(col: col);
-            play(col: col);
         }
         return CUnsignedInt(seq.count);
     }
@@ -174,23 +178,10 @@ public class Position {
         }
         return c;
     }
-    func nbMoves() -> CUnsignedInt {
-        return moves;
-    }
     func copy() -> Position {
         return Position(board: self.board, mask: self.mask, moves: self.moves);
     }
-    func copy() -> Position {
-        return Position(board: self.board, height: self.height, moves: self.moves);
-    }
-    func deepCopyBoard(board: [[Int]]) -> [[Int]] {
-        // Initialize new board
-        var newBoard : [[Int]] = Array(repeating: Array(repeating: 0, count: Position.HEIGHT), count: Position.WIDTH);
-        for i in 0...Position.WIDTH-1 {
-            newBoard[i] = Array(board[i]);
-        }
-        return newBoard;
-    }
+    init() {} // Doesnt do anything since default values are set above
     init(board: UInt64, mask: UInt64, moves: CUnsignedInt) {
         self.board = board;
         self.mask = mask;
