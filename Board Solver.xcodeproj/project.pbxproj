@@ -27,6 +27,8 @@
 		FA960B1E2C13921800D5099C /* CMSampleBuffer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA960B1D2C13921800D5099C /* CMSampleBuffer+Extension.swift */; };
 		FA960B202C13924700D5099C /* CIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA960B1F2C13924700D5099C /* CIImage+Extension.swift */; };
 		FA960B222C13940B00D5099C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA960B212C13940B00D5099C /* ViewModel.swift */; };
+		FAC4715E2C2B380500EE6D97 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC4715D2C2B380500EE6D97 /* Board.swift */; };
+		FAC471602C2B389600EE6D97 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC4715F2C2B389600EE6D97 /* Cell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		FA960B1D2C13921800D5099C /* CMSampleBuffer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMSampleBuffer+Extension.swift"; sourceTree = "<group>"; };
 		FA960B1F2C13924700D5099C /* CIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CIImage+Extension.swift"; sourceTree = "<group>"; };
 		FA960B212C13940B00D5099C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		FAC4715D2C2B380500EE6D97 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		FAC4715F2C2B389600EE6D97 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 		2E04BE3E2C0F978D004A775C /* Board Solver */ = {
 			isa = PBXGroup;
 			children = (
+				FAC4715C2C2B37F600EE6D97 /* Data Types */,
 				2E8B6C972C26004800FBAF69 /* Connect4 1 Iteration 500.mlmodel */,
 				FA15B56C2C220FA5007DE6B6 /* Classifiers */,
 				2E082B3F2C1BE0FB0050C0F4 /* connect4.mlpackage */,
@@ -188,6 +193,15 @@
 				FA960B1F2C13924700D5099C /* CIImage+Extension.swift */,
 			);
 			path = Camera;
+			sourceTree = "<group>";
+		};
+		FAC4715C2C2B37F600EE6D97 /* Data Types */ = {
+			isa = PBXGroup;
+			children = (
+				FAC4715D2C2B380500EE6D97 /* Board.swift */,
+				FAC4715F2C2B389600EE6D97 /* Cell.swift */,
+			);
+			path = "Data Types";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,6 +343,7 @@
 				FA960B182C1390B600D5099C /* CameraManager.swift in Sources */,
 				FA15B56E2C220FDC007DE6B6 /* Classifier.swift in Sources */,
 				FA960B162C1390B600D5099C /* SampleBuffer.swift in Sources */,
+				FAC471602C2B389600EE6D97 /* Cell.swift in Sources */,
 				FA960B1E2C13921800D5099C /* CMSampleBuffer+Extension.swift in Sources */,
 				FA960B172C1390B600D5099C /* CameraView.swift in Sources */,
 				FA15B5592C22006D007DE6B6 /* ImageClassifier.swift in Sources */,
@@ -338,6 +353,7 @@
 				2E082B4B2C1CC64A0050C0F4 /* splashScreen.swift in Sources */,
 				2E082B402C1BE0FB0050C0F4 /* connect4.mlpackage in Sources */,
 				2E082B4D2C1CC6E70050C0F4 /* menuView.swift in Sources */,
+				FAC4715E2C2B380500EE6D97 /* Board.swift in Sources */,
 				2E04BE402C0F978D004A775C /* Board_SolverApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
