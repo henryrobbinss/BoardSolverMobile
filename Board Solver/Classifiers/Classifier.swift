@@ -62,6 +62,7 @@ struct Classifier
         for r in results{
             print("Results: found a \(r.labels[0].identifier) with \(r.labels[0].confidence) at (\(r.boundingBox.midX*CGFloat(ciImage.cgImage!.width)), \(r.boundingBox.midY*CGFloat(ciImage.cgImage!.width)))\n")
         }
+        print("Image Width: \(ciImage.cgImage!.width) Image Height \(ciImage.cgImage!.height)")
         
     }
     

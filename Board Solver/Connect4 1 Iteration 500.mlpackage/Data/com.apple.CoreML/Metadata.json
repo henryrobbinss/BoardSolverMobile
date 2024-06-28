@@ -1,0 +1,13 @@
+{
+  "MLModelVersionStringKey" : "--",
+  "MLModelDescriptionKey" : "Object Detection model for detecting Connect4 boards and positions",
+  "MLModelCreatorDefinedKey" : {
+    "com.apple.createml.version" : "13.6.1",
+    "com.apple.createml.app.tag" : "121.3",
+    "com.apple.coreml.model.preview.type" : "objectDetector",
+    "iterations" : "500",
+    "com.apple.createml.app.version" : "5.0"
+  },
+  "MLModelAuthorKey" : "Henry Robbins",
+  "MLModelLicenseKey" : "GPL-2.0"
+}

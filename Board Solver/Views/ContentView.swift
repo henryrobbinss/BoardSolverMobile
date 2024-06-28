@@ -9,32 +9,33 @@ import SwiftUI
 import CoreML
 import Vision
 import RealityKit
+import ARKit
 
 struct ContentView: View
 {
-    @State private var viewModel = ViewModel()
     @ObservedObject var classifier: ImageClassifier
+    @State private var arView = ARView(frame: .zero)
+    @State private var capturedImage: UIImage?
 
     var body: some View
     {
         ZStack
         {
-            ARViewContainer().edgesIgnoringSafeArea(.all)
+            ARViewContainer(arView: $arView)
+                .edgesIgnoringSafeArea(.all)
             VStack{
                 Spacer()
                 
                 BoardView()
                     .padding(.bottom, 20)
                 
-                
                 HStack{
                     Button
                     {
                         print("scanning")
-                        if let image = $viewModel.currentFrame.wrappedValue
-                        {
-                            let uiImage = UIImage.init(cgImage: image)
-                            classifier.detect(uiImage: uiImage)
+                        captureFrame()
+                        if let image = capturedImage {
+                            classifier.detect(uiImage: image)
                         }
                     } label: {
                         Label("", image: "scan_prompt")
@@ -42,7 +43,6 @@ struct ContentView: View
                     .frame(maxWidth: 175)
                     Button {
                         print("locking")
-                        viewModel.toggleLock()
                     } label: {
                         Label("", image: "lock_prompt")
                     }
@@ -54,33 +54,28 @@ struct ContentView: View
         }
         .ignoresSafeArea(.all)
     }
+    
+    private func captureFrame() {
+        let frame = arView.session.currentFrame
+        let ciImage = CIImage(cvPixelBuffer: frame!.capturedImage)
+        let context = CIContext()
+        if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
+            capturedImage = UIImage(cgImage: cgImage)
+        }
+    }
 }
 
 struct ARViewContainer: UIViewRepresentable {
+    @Binding var arView: ARView
     
     func makeUIView(context: Context) -> ARView {
-        
-        let arView = ARView(frame: .zero)
-
-        // Create a cube model
-        let mesh = MeshResource.generateBox(size: 0.1, cornerRadius: 0.005)
-        let material = SimpleMaterial(color: .gray, roughness: 0.15, isMetallic: true)
-        let model = ModelEntity(mesh: mesh, materials: [material])
-        model.transform.translation.y = 0.05
-
-        // Create horizontal plane anchor for the content
-        let anchor = AnchorEntity(.plane(.horizontal, classification: .any, minimumBounds: SIMD2<Float>(0.2, 0.2)))
-        anchor.children.append(model)
-
-        // Add the horizontal plane anchor to the scene
-        arView.scene.anchors.append(anchor)
-
+        arView = ARView(frame: .zero)
+        let config = ARWorldTrackingConfiguration()
+        arView.session.run(config)
         return arView
-        
     }
     
     func updateUIView(_ uiView: ARView, context: Context) {}
-    
 }
 
 #Preview {
