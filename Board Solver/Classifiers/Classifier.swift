@@ -66,7 +66,9 @@ struct Classifier
         }
         print("Image Width: \(ciImage.cgImage!.width) Image Height \(ciImage.cgImage!.height)")
         
+        Board.convertBoard(results: results, width: CGFloat(ciImage.cgImage!.width), height: CGFloat(ciImage.cgImage!.height))
     }
+    
     
 }
 
