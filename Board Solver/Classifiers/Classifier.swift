@@ -40,7 +40,7 @@ struct Classifier
     
     private(set) var results: [VNRecognizedObjectObservation]?
     
-    mutating func detect(ciImage: CIImage) -> UIImage
+    mutating func detect(ciImage: CIImage)
     {
         
         print("Creating request")
@@ -56,7 +56,7 @@ struct Classifier
         guard let results = request.results as? [VNRecognizedObjectObservation] else
         {
             print("Error getting results")
-            return UIImage(ciImage: ciImage)
+            return
         }
         
         print("Found \(results.count) results from the scan...")

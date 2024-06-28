@@ -12,10 +12,10 @@ class ImageClassifier: ObservableObject
     
     @Published private var classifier = Classifier()
         
-    func detect(uiImage: UIImage) -> UIImage
+    func detect(uiImage: UIImage)
     {
-        guard let ciImage = CIImage (image: uiImage) else { return uiImage}
-        return classifier.detect(ciImage: ciImage)
+        guard let ciImage = CIImage (image: uiImage) else { return }
+        classifier.detect(ciImage: ciImage)
     }
         
 }
