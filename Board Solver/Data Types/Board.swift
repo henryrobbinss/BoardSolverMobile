@@ -7,13 +7,15 @@
 
 import Foundation
 import Vision
+import SwiftUI
 
 class Board
 {
     // Members
     public var x: Double;
     public var y: Double;
-    public var grid: [[Cell]]?;
+    public static var grid: [[Cell]]?;
+    public static var image: Image?;
     
     // Constructor
     init()
@@ -23,12 +25,22 @@ class Board
     }
     
     // Fill board from results
-    func fillBoard(results: [VNRecognizedObjectObservation])
+    static func fillBoard(results: [VNRecognizedObjectObservation], width: CGFloat, height: CGFloat) -> UIImage
     {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: width, height: height))
+        
         // Go through every result
-        for r in results
+        return renderer.image
         {
+            context in let cgContext = context.cgContext
+            cgContext.setStrokeColor(UIColor.red.cgColor)
+            cgContext.setLineWidth(2)
             
+            for box in results
+            {
+                let rect = CGRect(x: box.boundingBox.minX, y: box.boundingBox.minY, width: box.boundingBox.width, height: box.boundingBox.height)
+                cgContext.stroke(rect)
+            }
         }
     }
 }

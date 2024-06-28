@@ -15,7 +15,7 @@ struct splashScreen: View {
         ZStack{
             if self.isActive 
             {
-                ContentView(classifier: ImageClassifier())
+                ContentView(classifier: ImageClassifier(), returned: UIImage())
             } else {
                 Rectangle()
                     .background(Color.white)

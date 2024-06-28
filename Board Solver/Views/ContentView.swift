@@ -34,14 +34,17 @@ struct ContentView: View
                     {
                         print("scanning")
                         captureFrame()
-                        if let image = capturedImage {
-                            classifier.detect(uiImage: image)
+                        if let image = capturedImage 
+                        {
+                            var results = classifier.detect(uiImage: image)
                         }
                     } label: {
                         Label("", image: "scan_prompt")
                     }
                     .frame(maxWidth: 175)
-                    Button {
+                   
+                    Button
+                    {
                         print("locking")
                     } label: {
                         Label("", image: "lock_prompt")

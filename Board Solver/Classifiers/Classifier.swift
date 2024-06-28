@@ -8,6 +8,7 @@
 import CoreML
 import Vision
 import CoreImage
+import UIKit
 
 struct Classifier 
 {
@@ -39,7 +40,7 @@ struct Classifier
     
     private(set) var results: [VNRecognizedObjectObservation]?
     
-    mutating func detect(ciImage: CIImage)
+    mutating func detect(ciImage: CIImage) -> UIImage
     {
         
         print("Creating request")
@@ -55,10 +56,11 @@ struct Classifier
         guard let results = request.results as? [VNRecognizedObjectObservation] else
         {
             print("Error getting results")
-            return
+            return UIImage(ciImage: ciImage)
         }
         
         print("Found \(results.count) results from the scan...")
+        print("Image size: w", ciImage.extent.width, " h", ciImage.extent.height)
         for r in results{
             print("Results: found a \(r.labels[0].identifier) with \(r.labels[0].confidence) at (\(r.boundingBox.midX*CGFloat(ciImage.cgImage!.width)), \(r.boundingBox.midY*CGFloat(ciImage.cgImage!.width)))\n")
         }
