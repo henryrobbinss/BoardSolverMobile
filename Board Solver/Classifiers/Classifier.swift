@@ -19,7 +19,7 @@ struct Classifier
         let defaultConfig = MLModelConfiguration()
 
         // Create an instance of the image classifier's wrapper class.
-        let imageClassifierWrapper = try? Connect4_1_Iteration_500(configuration: defaultConfig)
+        let imageClassifierWrapper = try? Connect4_2_Iteration_310(configuration: defaultConfig)
 
         guard let imageClassifier = imageClassifierWrapper else {
             fatalError("App failed to create an image classifier model instance.")
@@ -40,7 +40,7 @@ struct Classifier
     
     private(set) var results: [VNRecognizedObjectObservation]?
     
-    mutating func detect(ciImage: CIImage)
+    mutating func detect(ciImage: CIImage) -> [[Int]]
     {
         
         print("Creating request")
@@ -56,17 +56,10 @@ struct Classifier
         guard let results = request.results as? [VNRecognizedObjectObservation] else
         {
             print("Error getting results")
-            return
+            return [[0]]
         }
         
-        print("Found \(results.count) results from the scan...")
-        print("Image size: w", ciImage.extent.width, " h", ciImage.extent.height)
-        for r in results{
-            print("Results: found a \(r.labels[0].identifier) with \(r.labels[0].confidence) at (\(r.boundingBox.midX*CGFloat(ciImage.cgImage!.width)), \(r.boundingBox.midY*CGFloat(ciImage.cgImage!.width)))\n")
-        }
-        print("Image Width: \(ciImage.cgImage!.width) Image Height \(ciImage.cgImage!.height)")
-        
-        Board.convertBoard(results: results, width: CGFloat(ciImage.cgImage!.width), height: CGFloat(ciImage.cgImage!.height))
+        return Board.convertBoard(results: results, width: CGFloat(ciImage.cgImage!.width), height: CGFloat(ciImage.cgImage!.height))
     }
     
     

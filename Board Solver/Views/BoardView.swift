@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BoardView: View {
+    @State var board: [[Int]]
     let rows = 6
     let columns = 7
     let holeSize: CGFloat = 40
@@ -26,9 +27,19 @@ struct BoardView: View {
                 ForEach(0..<rows, id: \.self) { row in
                     HStack(spacing: spacing) {
                         ForEach(0..<columns, id: \.self) { column in
-                            Circle()
-                                .fill(Color.white)
-                                .frame(width: holeSize, height: holeSize)
+                            if board[row][column] == 0{
+                                Circle()
+                                    .fill(Color.red)
+                                    .frame(width: holeSize, height: holeSize)
+                            } else if board[row][column] == 1{
+                                Circle()
+                                    .fill(Color.yellow)
+                                    .frame(width: holeSize, height: holeSize)
+                            } else {
+                                Circle()
+                                    .fill(Color.white)
+                                    .frame(width: holeSize, height: holeSize)
+                            }
                         }
                     }
                 }
@@ -36,8 +47,11 @@ struct BoardView: View {
         }
         .padding(.bottom)
     }
+    func updateBoard(brd: [[Int]]){
+        board = brd
+    }
 }
 
 #Preview {
-    BoardView()
+    BoardView(board: Array(repeating: Array(repeating: 2, count: 7), count: 6))
 }

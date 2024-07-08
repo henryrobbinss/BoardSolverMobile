@@ -44,19 +44,19 @@ class Board
         }
     }
     
-    static func convertBoard(results: [VNRecognizedObjectObservation], width: CGFloat, height: CGFloat)
+    static func convertBoard(results: [VNRecognizedObjectObservation], width: CGFloat, height: CGFloat) -> [[Int]]
     {
         struct piece{
             var label: String
             var midx: CGFloat
             var midy: CGFloat
         }
-        let board: [[Cell]] = Array(repeating: Array(repeating: Cell(), count: 7), count: 6)
+        var board: [[Int]] = Array(repeating: Array(repeating: 2, count: 7), count: 6)
 
         
         // Assuming 0,0 is top left
-        var topBoard: CGFloat = 0
-        var bottomBoard: CGFloat = height
+        var topBoard: CGFloat = height
+        var bottomBoard: CGFloat = 0
         var leftBoard: CGFloat = width
         var rightBoard: CGFloat = 0
         
@@ -64,16 +64,19 @@ class Board
         var pieces: [piece] = []
         
         for r in results{
+            if r.labels[0].confidence < 0.75{
+                continue
+            }
             let x1 = r.boundingBox.minX*width
-            let y1 = r.boundingBox.maxX*height
+            let y1 = r.boundingBox.minY*height
             
             let x2 = r.boundingBox.maxX*width
-            let y2 = r.boundingBox.minY*height
+            let y2 = r.boundingBox.maxY*height
             
             leftBoard = min(x1, leftBoard)
             rightBoard = max(x2, rightBoard)
-            topBoard = max(y1, topBoard)
-            bottomBoard = min(y2, bottomBoard)
+            topBoard = min(y1, topBoard)
+            bottomBoard = max(y2, bottomBoard)
             
             let p = piece(label: r.labels[0].identifier, midx: r.boundingBox.midX*width, midy: r.boundingBox.midY*height)
             pieces.append(p)
@@ -98,19 +101,18 @@ class Board
             let col = columns.enumerated().min(by: { abs($0.element - p.midx) < abs($1.element - p.midx) })?.offset ?? columnsLength
             
             if(p.label == "Red Piece"){
-                board[row][col].type = 0
+                board[row][col] = 0
             } else if (p.label == "Yellow Piece"){
-                board[row][col].type = 1
-            } else {
-                board[row][col].type = 2
+                board[row][col] = 1
             }
         }
         
         for row in board {
           for cell in row {
-            print(cell.type, terminator: " ")
+            print(cell, terminator: " ")
           }
           print()
         }
+        return board
     }
 }

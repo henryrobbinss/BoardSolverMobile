@@ -15,6 +15,7 @@
 		2E04BE5D2C0F978F004A775C /* Board_SolverUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E04BE5C2C0F978F004A775C /* Board_SolverUITestsLaunchTests.swift */; };
 		2E082B4B2C1CC64A0050C0F4 /* splashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E082B4A2C1CC64A0050C0F4 /* splashScreen.swift */; };
 		2E082B4D2C1CC6E70050C0F4 /* menuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E082B4C2C1CC6E70050C0F4 /* menuView.swift */; };
+		2E5ED9782C3B30B200F12A1B /* Connect4 2 Iteration 310.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2E5ED9772C3B30B200F12A1B /* Connect4 2 Iteration 310.mlmodel */; };
 		2E8B6C572C2208F600FBAF69 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6C562C2208F600FBAF69 /* BoardView.swift */; };
 		2E8B6C9A2C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6C992C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage */; };
 		2E8B6C9E2C2F2EC300FBAF69 /* ConnectFourSolver in Resources */ = {isa = PBXBuildFile; fileRef = 2E8B6C9D2C2F2EC300FBAF69 /* ConnectFourSolver */; };
@@ -54,6 +55,7 @@
 		2E04BE5C2C0F978F004A775C /* Board_SolverUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board_SolverUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2E082B4A2C1CC64A0050C0F4 /* splashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splashScreen.swift; sourceTree = "<group>"; };
 		2E082B4C2C1CC6E70050C0F4 /* menuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuView.swift; sourceTree = "<group>"; };
+		2E5ED9772C3B30B200F12A1B /* Connect4 2 Iteration 310.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "Connect4 2 Iteration 310.mlmodel"; sourceTree = "<group>"; };
 		2E8B6C562C2208F600FBAF69 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		2E8B6C992C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "Connect4 1 Iteration 500.mlpackage"; sourceTree = "<group>"; };
 		2E8B6C9D2C2F2EC300FBAF69 /* ConnectFourSolver */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ConnectFourSolver; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				2E8B6C9D2C2F2EC300FBAF69 /* ConnectFourSolver */,
 				FAC4715C2C2B37F600EE6D97 /* Data Types */,
 				2E8B6C992C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage */,
+				2E5ED9772C3B30B200F12A1B /* Connect4 2 Iteration 310.mlmodel */,
 				FA15B56C2C220FA5007DE6B6 /* Classifiers */,
 				FA960B192C1390C500D5099C /* Views */,
 				2E04BE6B2C138BB1004A775C /* Preview Content */,
@@ -315,6 +318,7 @@
 			files = (
 				2E04BE422C0F978D004A775C /* ContentView.swift in Sources */,
 				FA15B56E2C220FDC007DE6B6 /* Classifier.swift in Sources */,
+				2E5ED9782C3B30B200F12A1B /* Connect4 2 Iteration 310.mlmodel in Sources */,
 				2E8B6C9A2C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage in Sources */,
 				FAC471602C2B389600EE6D97 /* Cell.swift in Sources */,
 				FA15B5592C22006D007DE6B6 /* ImageClassifier.swift in Sources */,
