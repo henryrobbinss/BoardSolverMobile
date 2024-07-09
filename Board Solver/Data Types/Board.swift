@@ -107,19 +107,24 @@ class Board
             }
         }
         
-//        for row in board {
-//          for cell in row {
-//            print(cell, terminator: " ")
-//          }
-//          print()
-//        }
-        
         let solveString = getSolverString(board: board, playerColor: playerColor)
-        print("Solve String \(solveString)")
-//        let pos = Position()
-//        let solver = Solver()
-//        let _ = pos.play(seq: solveString)
-//        let col = solver.solve(P: pos)
+        if solveString == ""{
+            return board
+        }
+        let pos = Position()
+        let solver = Solver()
+        let _ = pos.play(seq: solveString)
+        let colarray = solver.scoreAllMoves(P: pos)
+        let col = colarray.firstIndex(of: colarray.max()!)!
+        if colarray[col] == -999999{
+            return board
+        }
+        for row in board.reversed() {
+            if row[col] == 2{
+                board[board.firstIndex(of: row)!][col] = 3
+                break
+            }
+        }
         
         return board
     }
@@ -156,7 +161,7 @@ class Board
         
         var next = first
         // 0 - red, 1 - yellow, 2 - nothing
-        var RED = 0, YELLOW = 1
+        let RED = 0, YELLOW = 1
         for row in board {
             for i in 0..<row.count {
                 if row[i] == 2 {

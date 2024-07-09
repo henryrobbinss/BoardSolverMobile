@@ -41,9 +41,16 @@ struct BoardView: View {
                                     .onTapGesture(){
                                         board[row][column] = (board[row][column] + 1) % 3
                                     }
-                            } else {
+                            } else if board[row][column] == 2{
                                 Circle()
                                     .fill(Color.white)
+                                    .frame(width: holeSize, height: holeSize)
+                                    .onTapGesture(){
+                                        board[row][column] = (board[row][column] + 1) % 3
+                                    }
+                            } else {
+                                Circle()
+                                    .fill(Color.green)
                                     .frame(width: holeSize, height: holeSize)
                                     .onTapGesture(){
                                         board[row][column] = (board[row][column] + 1) % 3

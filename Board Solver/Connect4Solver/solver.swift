@@ -7,7 +7,23 @@ public class Solver {
     private var nodeCount : UInt64 = 0; // counter of explored nodes
     private var columnOrder : [Int] = Array(repeating: 0, count: Position.WIDTH)
     private var table : TranspositionTable = TranspositionTable();
-
+    
+    func scoreAllMoves(P : Position) -> [Int] {
+        var finalEvaluations : [Int] = Array(repeating : -999999, count: Position.WIDTH);
+        for i in 0...Position.WIDTH-1 {
+            if (P.canPlay(col:i)) {
+                if(P.isWinningMove(col:i)) {
+                    finalEvaluations[i] = (Position.WIDTH * Position.HEIGHT + 1 - Int(P.nbMoves())) / 2;
+                }
+              else {
+                  let P2 : Position = P.copy();
+                  P2.play(col:i);
+                  finalEvaluations[i] = -solve(P:P2);
+              }
+            }
+        }
+        return finalEvaluations;
+    }
     // Recursive solve of a negamax min-max algorithm
     // 0 is drawn game
     // Positive score if you can win whatever your opponent is playing. Your score is
@@ -20,7 +36,7 @@ public class Solver {
         // It is perfectly fine, since the solver has shown that there is a way to not
         // lose within 16 moves. Humans will make the wrong move at some point which will
         // Make the solver solve within the 16 move limit, forcing a win
-        if (d >= 16) {
+        if (d>=16) {
             return 0;
         }
         assert(a<b);
@@ -78,14 +94,24 @@ public class Solver {
         while(0 != nextMove) {
             let P2 : Position = P.copy(); // Copy the position to do temp work with recursion
             P2.play(move: nextMove); // Its opponent turn in P2 position after current player plays x column
-            let score : Int = -negamax(P:P2, a:-beta, b:-alpha, d: d+1); // If current player plays col x, his score will be the opposite of opponents score after this next move
-            if(score >= beta) {return score;}
+            let score = -negamax(P:P2, a:-beta, b:-alpha, d: d+1); // If current player plays col x, his score will be the opposite of opponents score after this next move
+            if(score >= beta) {
+                return score;
+            }
             if (score > alpha) {alpha = score;}
             nextMove = moves.getNext();
         }
         
         table.put(key: key, val: UInt8(alpha - Position.MIN_SCORE + 1));
         return alpha;
+    }
+    func findColumn(val : UInt64) -> Int {
+        var colCheck : UInt64 = 128
+        for i in 0...5 {
+            if colCheck > val {return i;}
+            colCheck = colCheck * 64;
+        }
+        return 6;
     }
     func resetTable() {
         table.reset();
