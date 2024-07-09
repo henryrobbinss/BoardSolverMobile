@@ -61,7 +61,7 @@ struct splashScreen: View
                     }
                     else
                     {
-                        ContentView(classifier: ImageClassifier(), boardView: BoardView(board: $board), board: $board)
+                        ContentView(classifier: ImageClassifier(), boardView: BoardView(board: $board), playerColor: $playerColor, board: $board)
                     }
                 } else {
                     Rectangle()

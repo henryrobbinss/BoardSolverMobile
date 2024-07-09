@@ -40,7 +40,7 @@ struct Classifier
     
     private(set) var results: [VNRecognizedObjectObservation]?
     
-    mutating func detect(ciImage: CIImage) -> [[Int]]
+    mutating func detect(ciImage: CIImage, playerColor: Int) -> [[Int]]
     {
         
         let request = VNCoreMLRequest(model: Classifier.imageClassifier.self)
@@ -54,7 +54,7 @@ struct Classifier
             return [[0]]
         }
         
-        return Board.convertBoard(results: results, width: CGFloat(ciImage.cgImage!.width), height: CGFloat(ciImage.cgImage!.height))
+        return Board.convertBoard(results: results, width: CGFloat(ciImage.cgImage!.width), height: CGFloat(ciImage.cgImage!.height), playerColor: playerColor)
     }
     
     

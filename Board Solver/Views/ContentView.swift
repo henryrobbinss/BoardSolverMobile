@@ -17,6 +17,7 @@ struct ContentView: View
     @State private var arView = ARView(frame: .zero)
     @State private var capturedImage: UIImage?
     @State var boardView: BoardView
+    @Binding var playerColor: Int
     @Binding var board: [[Int]]
 
     var body: some View
@@ -38,7 +39,7 @@ struct ContentView: View
                         captureFrame()
                         if let image = capturedImage 
                         {
-                            var resultsBoard = classifier.detect(uiImage: rotateImage90DegreesClockwise(image: image)!)
+                            var resultsBoard = classifier.detect(uiImage: rotateImage90DegreesClockwise(image: image)!, playerColor: playerColor)
                             $boardView.wrappedValue.updateBoard(brd: resultsBoard)
                             boardView.board = resultsBoard
                         }

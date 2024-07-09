@@ -45,7 +45,7 @@ class Board
         }
     }
     
-    static func convertBoard(results: [VNRecognizedObjectObservation], width: CGFloat, height: CGFloat) -> [[Int]]
+    static func convertBoard(results: [VNRecognizedObjectObservation], width: CGFloat, height: CGFloat, playerColor: Int) -> [[Int]]
     {
         struct piece{
             var label: String
@@ -114,7 +114,7 @@ class Board
 //          print()
 //        }
         
-        let solveString = getSolverString(board: board)
+        let solveString = getSolverString(board: board, playerColor: playerColor)
         print("Solve String \(solveString)")
 //        let pos = Position()
 //        let solver = Solver()
@@ -132,13 +132,28 @@ class Board
       return result
     }
     
-    static func getSolverString(board: [[Int]]) -> String {
+    static func getSolverString(board: [[Int]], playerColor: Int) -> String {
         var flippedbBoard = board
         flippedbBoard.reverse()
         var pending: [Int] = []
         var result = ""
         // TEMP UNTIL WE ADD MENU
+        
+            
         var first = "red"
+        if(playerColor == 0)
+        {
+            first = "red"
+        }
+        else if(playerColor == 1)
+        {
+            first = "yellow"
+        }
+        else
+        {
+            return "epic fail"
+        }
+        
         var next = first
         // 0 - red, 1 - yellow, 2 - nothing
         var RED = 0, YELLOW = 1
