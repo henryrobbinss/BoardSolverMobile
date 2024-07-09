@@ -107,79 +107,66 @@ class Board
             }
         }
         
-        for row in board {
-          for cell in row {
-            print(cell, terminator: " ")
-          }
-          print()
-        }
+//        for row in board {
+//          for cell in row {
+//            print(cell, terminator: " ")
+//          }
+//          print()
+//        }
+        
+        let solveString = getSolverString(board: board)
+        print("Solve String \(solveString)")
+//        let pos = Position()
+//        let solver = Solver()
+//        let _ = pos.play(seq: solveString)
+//        let col = solver.solve(P: pos)
+        
         return board
     }
     
-//    static func getSolverString(board: [[Int]]) -> String {
-//        /*
-//             for row in board:
-//                 for i in range(len(row)):
-//                     if row[i] == 0:
-//                         continue
-//                     elif next == "red" and row[i] == RED_PIECE:
-//                         finalString = "".join([finalString, str(i + 1)])
-//                         if len(pending_moves) != 0:
-//                             finalString = "".join([finalString, str(pending_moves[0])])
-//                             pending_moves[0] = pending_moves[-1]
-//                             pending_moves.pop()
-//                         else:
-//                             next = "yellow"
-//                     elif next == "yellow" and row[i] == YELLOW_PIECE:
-//                         finalString = "".join([finalString, str(i + 1)])
-//                         if len(pending_moves) != 0:
-//                             finalString = "".join([finalString, str(pending_moves[0])])
-//                             pending_moves[0] = pending_moves[-1]
-//                             pending_moves.pop()
-//                         else:
-//                             next = "red"
-//                     else:
-//                         pending_moves.append(str(i + 1))
-//             finalString = "".join([finalString] + pending_moves)
-//             return finalString
-//         */
-//        var flippedbBoard = board
-//        flippedbBoard.reverse()
-//        var pending: [Int] = []
-//        var result = ""
-//        // TEMP UNTIL WE ADD MENU
-//        var first = "r"
-//        var next = first
-//        // 0 - red, 1 - yellow, 2 - nothing
-//        var RED = 0, YELLOW = 1
-//        for row in board {
-//            for i in Sequence(row.count) {
-//                if row[i] == 2 {
-//                    continue
-//                } else if next == "red" && piece == RED {
-//                    result = result +
-//                        finalString = "".join([finalString, str(i + 1)])
-//                        if len(pending_moves) != 0:
-//                            finalString = "".join([finalString, str(pending_moves[0])])
-//                            pending_moves[0] = pending_moves[-1]
-//                            pending_moves.pop()
-//                        else:
-//                            next = "yellow"
-//                    elif next == "yellow" and row[i] == YELLOW_PIECE:
-//                        finalString = "".join([finalString, str(i + 1)])
-//                        if len(pending_moves) != 0:
-//                            finalString = "".join([finalString, str(pending_moves[0])])
-//                            pending_moves[0] = pending_moves[-1]
-//                            pending_moves.pop()
-//                        else:
-//                            next = "red"
-//                    else:
-//                        pending_moves.append(str(i + 1))
-//                }
-//            }
-//        }
-//        
-//        //finalString = "".join([finalString] + pending_moves)
-//        return result
-//    }
+    private static func concatIntsToString(string: String, intArray: [Int]) -> String {
+      var result = string
+      for num in intArray {
+        result += "\(num)"
+      }
+      return result
+    }
+    
+    static func getSolverString(board: [[Int]]) -> String {
+        var flippedbBoard = board
+        flippedbBoard.reverse()
+        var pending: [Int] = []
+        var result = ""
+        // TEMP UNTIL WE ADD MENU
+        var first = "red"
+        var next = first
+        // 0 - red, 1 - yellow, 2 - nothing
+        var RED = 0, YELLOW = 1
+        for row in board {
+            for i in 0..<row.count {
+                if row[i] == 2 {
+                    continue
+                } else if next == "red" && row[i] == RED {
+                    result = result + String(i + 1)
+                    if pending.count != 0{
+                        result = result + String(pending[0])
+                        pending.removeFirst()
+                    } else {
+                        next = "yellow"
+                    }
+                } else if next == "yellow" && row[i] == YELLOW {
+                    result = result + String(i + 1)
+                    if pending.count != 0{
+                        result = result + String(pending[0])
+                        pending.removeFirst()
+                    } else {
+                        next = "red"
+                    }
+                } else {
+                    pending.append(i+1)
+                }
+            }
+        }
+        return concatIntsToString(string: result, intArray: pending)
+    }
 }

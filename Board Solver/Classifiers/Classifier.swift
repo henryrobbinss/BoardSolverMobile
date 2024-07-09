@@ -43,19 +43,14 @@ struct Classifier
     mutating func detect(ciImage: CIImage) -> [[Int]]
     {
         
-        print("Creating request")
         let request = VNCoreMLRequest(model: Classifier.imageClassifier.self)
         
-        print("Creating handler")
         let handler = VNImageRequestHandler(ciImage: ciImage, options: [:])
-        
-        print("Performing request")
+
         try? handler.perform([request])
         
-        print("Getting results")
         guard let results = request.results as? [VNRecognizedObjectObservation] else
         {
-            print("Error getting results")
             return [[0]]
         }
         
