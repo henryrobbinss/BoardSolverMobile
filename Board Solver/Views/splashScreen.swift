@@ -12,13 +12,13 @@ import SwiftUI
 struct splashScreen: View {
     // This is parent view, so pass down state...
     @State var isActive: Bool = false
-    var board = Array(repeating: Array(repeating: 2, count: 7), count: 6)
+    @State var board = Array(repeating: Array(repeating: 2, count: 7), count: 6)
     
     var body: some View {
         ZStack{
             if self.isActive 
             {
-                ContentView(classifier: ImageClassifier(), boardView: BoardView(board: board))
+                ContentView(classifier: ImageClassifier(), boardView: BoardView(board: $board), board: $board)
             } else {
                 Rectangle()
                     .background(Color.white)

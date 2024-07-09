@@ -33,6 +33,7 @@ class Board
         return renderer.image
         {
             context in let cgContext = context.cgContext
+
             cgContext.setStrokeColor(UIColor.red.cgColor)
             cgContext.setLineWidth(2)
             
@@ -52,7 +53,6 @@ class Board
             var midy: CGFloat
         }
         var board: [[Int]] = Array(repeating: Array(repeating: 2, count: 7), count: 6)
-
         
         // Assuming 0,0 is top left
         var topBoard: CGFloat = height

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BoardView: View {
-    @State var board: [[Int]]
+    @Binding var board: [[Int]]
     let rows = 6
     let columns = 7
     let holeSize: CGFloat = 40
@@ -44,14 +44,10 @@ struct BoardView: View {
                     }
                 }
             }
-        }
+        }.onChange(of: board) {}
         .padding(.bottom)
     }
     func updateBoard(brd: [[Int]]){
         board = brd
     }
-}
-
-#Preview {
-    BoardView(board: Array(repeating: Array(repeating: 2, count: 7), count: 6))
 }

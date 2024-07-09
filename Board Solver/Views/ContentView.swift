@@ -17,6 +17,7 @@ struct ContentView: View
     @State private var arView = ARView(frame: .zero)
     @State private var capturedImage: UIImage?
     @State var boardView: BoardView
+    @Binding var board: [[Int]]
 
     var body: some View
     {
@@ -37,8 +38,9 @@ struct ContentView: View
                         captureFrame()
                         if let image = capturedImage 
                         {
-                            $boardView.wrappedValue.updateBoard(brd: classifier.detect(uiImage: rotateImage90DegreesClockwise(image: image)!))
-                            
+                            var resultsBoard = classifier.detect(uiImage: rotateImage90DegreesClockwise(image: image)!)
+                            $boardView.wrappedValue.updateBoard(brd: resultsBoard)
+                            boardView.board = resultsBoard
                         }
                     } label: {
                         Label("", image: "scan_prompt")
@@ -110,8 +112,4 @@ func rotateImage90DegreesClockwise(image: UIImage) -> UIImage? {
     UIGraphicsEndImageContext()
     
     return rotatedImage
-}
-
-#Preview {
-    BoardView(board: Array(repeating: Array(repeating: 2, count: 7), count: 6))
 }
