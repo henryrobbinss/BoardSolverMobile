@@ -17,14 +17,12 @@
 		2E082B4D2C1CC6E70050C0F4 /* menuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E082B4C2C1CC6E70050C0F4 /* menuView.swift */; };
 		2E5ED9782C3B30B200F12A1B /* Connect4 2 Iteration 310.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2E5ED9772C3B30B200F12A1B /* Connect4 2 Iteration 310.mlmodel */; };
 		2E5ED9812C3DB70C00F12A1B /* solver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5ED97C2C3DB70C00F12A1B /* solver.swift */; };
-		2E5ED9822C3DB70C00F12A1B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5ED97D2C3DB70C00F12A1B /* main.swift */; };
 		2E5ED9832C3DB70C00F12A1B /* moveSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5ED97E2C3DB70C00F12A1B /* moveSorter.swift */; };
 		2E5ED9842C3DB70C00F12A1B /* entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5ED97F2C3DB70C00F12A1B /* entry.swift */; };
 		2E5ED9852C3DB70C00F12A1B /* position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5ED9802C3DB70C00F12A1B /* position.swift */; };
 		2E5ED9892C3DB73E00F12A1B /* transpositionTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5ED9882C3DB73E00F12A1B /* transpositionTable.swift */; };
 		2E8B6C572C2208F600FBAF69 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6C562C2208F600FBAF69 /* BoardView.swift */; };
 		2E8B6C9A2C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6C992C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage */; };
-		2E8B6C9E2C2F2EC300FBAF69 /* ConnectFourSolver in Resources */ = {isa = PBXBuildFile; fileRef = 2E8B6C9D2C2F2EC300FBAF69 /* ConnectFourSolver */; };
 		FA10923D2C1377F7005AD2FE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FA10923C2C1377F7005AD2FE /* .gitignore */; };
 		FA15B5592C22006D007DE6B6 /* ImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B5582C22006D007DE6B6 /* ImageClassifier.swift */; };
 		FA15B56E2C220FDC007DE6B6 /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B56D2C220FDC007DE6B6 /* Classifier.swift */; };
@@ -63,14 +61,12 @@
 		2E082B4C2C1CC6E70050C0F4 /* menuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuView.swift; sourceTree = "<group>"; };
 		2E5ED9772C3B30B200F12A1B /* Connect4 2 Iteration 310.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "Connect4 2 Iteration 310.mlmodel"; sourceTree = "<group>"; };
 		2E5ED97C2C3DB70C00F12A1B /* solver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = solver.swift; sourceTree = "<group>"; };
-		2E5ED97D2C3DB70C00F12A1B /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		2E5ED97E2C3DB70C00F12A1B /* moveSorter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = moveSorter.swift; sourceTree = "<group>"; };
 		2E5ED97F2C3DB70C00F12A1B /* entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = entry.swift; sourceTree = "<group>"; };
 		2E5ED9802C3DB70C00F12A1B /* position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = position.swift; sourceTree = "<group>"; };
 		2E5ED9882C3DB73E00F12A1B /* transpositionTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transpositionTable.swift; sourceTree = "<group>"; };
 		2E8B6C562C2208F600FBAF69 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		2E8B6C992C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "Connect4 1 Iteration 500.mlpackage"; sourceTree = "<group>"; };
-		2E8B6C9D2C2F2EC300FBAF69 /* ConnectFourSolver */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ConnectFourSolver; sourceTree = "<group>"; };
 		FA10923C2C1377F7005AD2FE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FA15B5582C22006D007DE6B6 /* ImageClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassifier.swift; sourceTree = "<group>"; };
 		FA15B56D2C220FDC007DE6B6 /* Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
@@ -128,7 +124,6 @@
 			isa = PBXGroup;
 			children = (
 				2E5ED97B2C3DB6F200F12A1B /* Connect4Solver */,
-				2E8B6C9D2C2F2EC300FBAF69 /* ConnectFourSolver */,
 				FAC4715C2C2B37F600EE6D97 /* Data Types */,
 				2E8B6C992C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage */,
 				2E5ED9772C3B30B200F12A1B /* Connect4 2 Iteration 310.mlmodel */,
@@ -169,7 +164,6 @@
 			isa = PBXGroup;
 			children = (
 				2E5ED97F2C3DB70C00F12A1B /* entry.swift */,
-				2E5ED97D2C3DB70C00F12A1B /* main.swift */,
 				2E5ED97E2C3DB70C00F12A1B /* moveSorter.swift */,
 				2E5ED9802C3DB70C00F12A1B /* position.swift */,
 				2E5ED97C2C3DB70C00F12A1B /* solver.swift */,
@@ -316,7 +310,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA10923D2C1377F7005AD2FE /* .gitignore in Resources */,
-				2E8B6C9E2C2F2EC300FBAF69 /* ConnectFourSolver in Resources */,
 				2E04BE442C0F978F004A775C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,7 +336,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E04BE422C0F978D004A775C /* ContentView.swift in Sources */,
-				2E5ED9822C3DB70C00F12A1B /* main.swift in Sources */,
 				FA15B56E2C220FDC007DE6B6 /* Classifier.swift in Sources */,
 				2E5ED9782C3B30B200F12A1B /* Connect4 2 Iteration 310.mlmodel in Sources */,
 				2E8B6C9A2C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage in Sources */,
