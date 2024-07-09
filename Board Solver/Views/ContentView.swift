@@ -35,7 +35,6 @@ struct ContentView: View
                 HStack{
                     Button
                     {
-                        print("scanning")
                         captureFrame()
                         if let image = capturedImage 
                         {

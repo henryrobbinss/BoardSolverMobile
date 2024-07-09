@@ -31,14 +31,23 @@ struct BoardView: View {
                                 Circle()
                                     .fill(Color.red)
                                     .frame(width: holeSize, height: holeSize)
+                                    .onTapGesture(){
+                                        board[row][column] = (board[row][column] + 1) % 3
+                                    }
                             } else if board[row][column] == 1{
                                 Circle()
                                     .fill(Color.yellow)
                                     .frame(width: holeSize, height: holeSize)
+                                    .onTapGesture(){
+                                        board[row][column] = (board[row][column] + 1) % 3
+                                    }
                             } else {
                                 Circle()
                                     .fill(Color.white)
                                     .frame(width: holeSize, height: holeSize)
+                                    .onTapGesture(){
+                                        board[row][column] = (board[row][column] + 1) % 3
+                                    }
                             }
                         }
                     }
