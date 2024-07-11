@@ -203,6 +203,13 @@ class Board
                 }
             }
         }
+        while !(pending.isEmpty || conflict.isEmpty) {
+            result = result + String(conflict[0])
+            conflict.removeFirst()
+            result = result + String(pending[0])
+            pending.removeFirst()
+        }
+        result = concatIntsToString(string: result, intArray: conflict)
         return concatIntsToString(string: result, intArray: pending)
     }
 }
