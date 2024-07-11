@@ -4,12 +4,12 @@ Board Solver Mobile (BSM) is a mobile aplication which leverages computer vision
 
 ## Table of Contents
 
-[Project Overview](#ProjectOverview)
-[Features](#Features)
-[Requirements](#Requirments)
-[Contributing](#Contributing)
-[License](#License)
-[Contributers](#Contributers)
+* [Project Overview](#ProjectOverview)
+* [Features](#Features)
+* [Requirements](#Requirements)
+* [Contributing](#Contributing)
+* [License](#License)
+* [Contributers](#Contributers)
 
 ## Project Overview
 
@@ -44,7 +44,7 @@ We welcome contributions from the community! Here's how you can get involved wit
 Fork this repository by clicking the "Fork" button on GitHub. This creates your own copy of the codebase.
 Clone your forked repository to your local machine. You can use the following command in your terminal:
 ```
-git clone https://github.com/henryrobbins/BoardSolverMobile.git
+git clone https://github.com/henryrobbinss/BoardSolverMobile.git
 ```
 
 #### Making Changes
