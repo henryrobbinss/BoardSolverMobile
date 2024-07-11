@@ -111,6 +111,7 @@ class Board
         if solveString == ""{
             return board
         }
+        print("\(solveString)")
         let pos = Position()
         let solver = Solver()
         let _ = pos.play(seq: solveString)
@@ -138,11 +139,12 @@ class Board
     }
     
     static func getSolverString(board: [[Int]], playerColor: Int) -> String {
-        var flippedbBoard = board
-        flippedbBoard.reverse()
+        var flippedBoard = board
+        flippedBoard.reverse()
+        
         var pending: [Int] = []
+        var conflict: [Int] = []
         var result = ""
-        // TEMP UNTIL WE ADD MENU
         
             
         var first = "red"
@@ -162,24 +164,38 @@ class Board
         var next = first
         // 0 - red, 1 - yellow, 2 - nothing
         let RED = 0, YELLOW = 1
-        for row in board {
+        for row in flippedBoard {
             for i in 0..<row.count {
                 if row[i] == 2 {
                     continue
                 } else if next == "red" && row[i] == RED {
+                    if pending.contains(i + 1) {
+                        conflict.append(i+1)
+                        continue
+                    }
                     result = result + String(i + 1)
                     if pending.count != 0{
                         result = result + String(pending[0])
                         pending.removeFirst()
+                    } else if conflict.count != 0{
+                        result = result + String(conflict[0])
+                        conflict.removeFirst()
                     } else {
                         next = "yellow"
                     }
                 } else if next == "yellow" && row[i] == YELLOW {
+                    if pending.contains(i + 1) {
+                        conflict.append(i+1)
+                        continue
+                    }
                     result = result + String(i + 1)
                     if pending.count != 0{
                         result = result + String(pending[0])
                         pending.removeFirst()
-                    } else {
+                    } else if conflict.count != 0{
+                        result = result + String(conflict[0])
+                        conflict.removeFirst()
+                    }  else {
                         next = "red"
                     }
                 } else {
