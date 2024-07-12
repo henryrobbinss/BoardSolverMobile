@@ -54,7 +54,7 @@ struct ContentView: View
                         $boardView.wrappedValue.updateBoard(brd: resultsBoard)
                         boardView.board = resultsBoard
                     } label: {
-                        Label("", image: "lock_prompt")
+                        Label("", image: "solve_prompt")
                     }
                     .frame(maxWidth: 175)
                 }
