@@ -17,7 +17,7 @@ struct ContentView: View
     @State private var arView = ARView(frame: .zero)
     @State private var capturedImage: UIImage?
     @State var boardView: BoardView
-    @Binding var playerColor: Int
+    @State var playerColor: Int
     @Binding var board: [[Int]]
     @State var resultsBoard: [[Int]]
 
@@ -27,7 +27,9 @@ struct ContentView: View
         {
             ARViewContainer(arView: $arView)
                 .edgesIgnoringSafeArea(.all)
-            VStack{
+            
+            VStack
+            {
                 Spacer()
                 
                 boardView
@@ -54,7 +56,7 @@ struct ContentView: View
                         $boardView.wrappedValue.updateBoard(brd: resultsBoard)
                         boardView.board = resultsBoard
                     } label: {
-                        Label("", image: "lock_prompt")
+                        Label("", image: "solve_prompt")
                     }
                     .frame(maxWidth: 175)
                 }
@@ -65,7 +67,8 @@ struct ContentView: View
         .ignoresSafeArea(.all)
     }
     
-    private func captureFrame() {
+    private func captureFrame()
+    {
         let frame = arView.session.currentFrame
         let ciImage = CIImage(cvPixelBuffer: frame!.capturedImage)
         let context = CIContext()
@@ -75,7 +78,8 @@ struct ContentView: View
     }
 }
 
-struct ARViewContainer: UIViewRepresentable {
+struct ARViewContainer: UIViewRepresentable 
+{
     @Binding var arView: ARView
     
     func makeUIView(context: Context) -> ARView {
