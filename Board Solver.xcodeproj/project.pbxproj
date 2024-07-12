@@ -19,6 +19,7 @@
 		2E5ED9842C3DB70C00F12A1B /* entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5ED97F2C3DB70C00F12A1B /* entry.swift */; };
 		2E5ED9852C3DB70C00F12A1B /* position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5ED9802C3DB70C00F12A1B /* position.swift */; };
 		2E5ED9892C3DB73E00F12A1B /* transpositionTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5ED9882C3DB73E00F12A1B /* transpositionTable.swift */; };
+		2E5ED98F2C41D56700F12A1B /* FourInARowBufferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5ED98E2C41D56700F12A1B /* FourInARowBufferView.swift */; };
 		2E8B6C572C2208F600FBAF69 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6C562C2208F600FBAF69 /* BoardView.swift */; };
 		2E8B6C9A2C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6C992C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage */; };
 		FA10923D2C1377F7005AD2FE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FA10923C2C1377F7005AD2FE /* .gitignore */; };
@@ -64,6 +65,7 @@
 		2E5ED97F2C3DB70C00F12A1B /* entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = entry.swift; sourceTree = "<group>"; };
 		2E5ED9802C3DB70C00F12A1B /* position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = position.swift; sourceTree = "<group>"; };
 		2E5ED9882C3DB73E00F12A1B /* transpositionTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transpositionTable.swift; sourceTree = "<group>"; };
+		2E5ED98E2C41D56700F12A1B /* FourInARowBufferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourInARowBufferView.swift; sourceTree = "<group>"; };
 		2E8B6C562C2208F600FBAF69 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		2E8B6C992C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "Connect4 1 Iteration 500.mlpackage"; sourceTree = "<group>"; };
 		FA10923C2C1377F7005AD2FE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				FA12DC002C41A86E00E7D60F /* SplashScreen.swift */,
 				FA12DC042C41A8B900E7D60F /* MenuView.swift */,
 				FA12DC082C41A98700E7D60F /* FourInARowMenuView.swift */,
+				2E5ED98E2C41D56700F12A1B /* FourInARowBufferView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E5ED98F2C41D56700F12A1B /* FourInARowBufferView.swift in Sources */,
 				2E04BE422C0F978D004A775C /* ContentView.swift in Sources */,
 				FA15B56E2C220FDC007DE6B6 /* Classifier.swift in Sources */,
 				2E5ED9782C3B30B200F12A1B /* Connect4 2 Iteration 310.mlmodel in Sources */,
