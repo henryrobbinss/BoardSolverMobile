@@ -13,8 +13,6 @@
 		2E04BE512C0F978F004A775C /* Board_SolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E04BE502C0F978F004A775C /* Board_SolverTests.swift */; };
 		2E04BE5B2C0F978F004A775C /* Board_SolverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E04BE5A2C0F978F004A775C /* Board_SolverUITests.swift */; };
 		2E04BE5D2C0F978F004A775C /* Board_SolverUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E04BE5C2C0F978F004A775C /* Board_SolverUITestsLaunchTests.swift */; };
-		2E082B4B2C1CC64A0050C0F4 /* splashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E082B4A2C1CC64A0050C0F4 /* splashScreen.swift */; };
-		2E082B4D2C1CC6E70050C0F4 /* menuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E082B4C2C1CC6E70050C0F4 /* menuView.swift */; };
 		2E5ED9782C3B30B200F12A1B /* Connect4 2 Iteration 310.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2E5ED9772C3B30B200F12A1B /* Connect4 2 Iteration 310.mlmodel */; };
 		2E5ED9812C3DB70C00F12A1B /* solver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5ED97C2C3DB70C00F12A1B /* solver.swift */; };
 		2E5ED9832C3DB70C00F12A1B /* moveSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5ED97E2C3DB70C00F12A1B /* moveSorter.swift */; };
@@ -24,6 +22,9 @@
 		2E8B6C572C2208F600FBAF69 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6C562C2208F600FBAF69 /* BoardView.swift */; };
 		2E8B6C9A2C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6C992C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage */; };
 		FA10923D2C1377F7005AD2FE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FA10923C2C1377F7005AD2FE /* .gitignore */; };
+		FA12DC012C41A86E00E7D60F /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA12DC002C41A86E00E7D60F /* SplashScreen.swift */; };
+		FA12DC052C41A8B900E7D60F /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA12DC042C41A8B900E7D60F /* MenuView.swift */; };
+		FA12DC092C41A98700E7D60F /* FourInARowMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA12DC082C41A98700E7D60F /* FourInARowMenuView.swift */; };
 		FA15B5592C22006D007DE6B6 /* ImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B5582C22006D007DE6B6 /* ImageClassifier.swift */; };
 		FA15B56E2C220FDC007DE6B6 /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B56D2C220FDC007DE6B6 /* Classifier.swift */; };
 		FAC4715E2C2B380500EE6D97 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC4715D2C2B380500EE6D97 /* Board.swift */; };
@@ -57,8 +58,6 @@
 		2E04BE562C0F978F004A775C /* Board SolverUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Board SolverUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E04BE5A2C0F978F004A775C /* Board_SolverUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board_SolverUITests.swift; sourceTree = "<group>"; };
 		2E04BE5C2C0F978F004A775C /* Board_SolverUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board_SolverUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		2E082B4A2C1CC64A0050C0F4 /* splashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splashScreen.swift; sourceTree = "<group>"; };
-		2E082B4C2C1CC6E70050C0F4 /* menuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuView.swift; sourceTree = "<group>"; };
 		2E5ED9772C3B30B200F12A1B /* Connect4 2 Iteration 310.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "Connect4 2 Iteration 310.mlmodel"; sourceTree = "<group>"; };
 		2E5ED97C2C3DB70C00F12A1B /* solver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = solver.swift; sourceTree = "<group>"; };
 		2E5ED97E2C3DB70C00F12A1B /* moveSorter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = moveSorter.swift; sourceTree = "<group>"; };
@@ -68,6 +67,9 @@
 		2E8B6C562C2208F600FBAF69 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		2E8B6C992C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "Connect4 1 Iteration 500.mlpackage"; sourceTree = "<group>"; };
 		FA10923C2C1377F7005AD2FE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		FA12DC002C41A86E00E7D60F /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		FA12DC042C41A8B900E7D60F /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		FA12DC082C41A98700E7D60F /* FourInARowMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourInARowMenuView.swift; sourceTree = "<group>"; };
 		FA15B5582C22006D007DE6B6 /* ImageClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassifier.swift; sourceTree = "<group>"; };
 		FA15B56D2C220FDC007DE6B6 /* Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
 		FAC4715D2C2B380500EE6D97 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
@@ -185,9 +187,10 @@
 			isa = PBXGroup;
 			children = (
 				2E04BE412C0F978D004A775C /* ContentView.swift */,
-				2E082B4A2C1CC64A0050C0F4 /* splashScreen.swift */,
-				2E082B4C2C1CC6E70050C0F4 /* menuView.swift */,
 				2E8B6C562C2208F600FBAF69 /* BoardView.swift */,
+				FA12DC002C41A86E00E7D60F /* SplashScreen.swift */,
+				FA12DC042C41A8B900E7D60F /* MenuView.swift */,
+				FA12DC082C41A98700E7D60F /* FourInARowMenuView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -343,9 +346,10 @@
 				FA15B5592C22006D007DE6B6 /* ImageClassifier.swift in Sources */,
 				2E5ED9812C3DB70C00F12A1B /* solver.swift in Sources */,
 				2E8B6C572C2208F600FBAF69 /* BoardView.swift in Sources */,
+				FA12DC012C41A86E00E7D60F /* SplashScreen.swift in Sources */,
+				FA12DC052C41A8B900E7D60F /* MenuView.swift in Sources */,
 				2E5ED9842C3DB70C00F12A1B /* entry.swift in Sources */,
-				2E082B4B2C1CC64A0050C0F4 /* splashScreen.swift in Sources */,
-				2E082B4D2C1CC6E70050C0F4 /* menuView.swift in Sources */,
+				FA12DC092C41A98700E7D60F /* FourInARowMenuView.swift in Sources */,
 				2E5ED9832C3DB70C00F12A1B /* moveSorter.swift in Sources */,
 				FAC4715E2C2B380500EE6D97 /* Board.swift in Sources */,
 				2E5ED9852C3DB70C00F12A1B /* position.swift in Sources */,
@@ -514,7 +518,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Board Solver/Preview Content\"";
-				DEVELOPMENT_TEAM = 97VF596VP5;
+				DEVELOPMENT_TEAM = DNR6Y7TPQM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "To scan game board";
@@ -528,7 +532,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "BoardSolver.Board-Solver";
+				PRODUCT_BUNDLE_IDENTIFIER = "BoardSolver.Board-Solverr";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -544,7 +548,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Board Solver/Preview Content\"";
-				DEVELOPMENT_TEAM = 97VF596VP5;
+				DEVELOPMENT_TEAM = DNR6Y7TPQM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "To scan game board";
@@ -558,7 +562,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "BoardSolver.Board-Solver";
+				PRODUCT_BUNDLE_IDENTIFIER = "BoardSolver.Board-Solverr";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

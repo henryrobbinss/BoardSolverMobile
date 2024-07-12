@@ -1,24 +1,44 @@
 //
-//  menuView.swift
+//  MenuView.swift
 //  Board Solver
 //
-//  Created by Henry Robbins on 6/14/24.
+//  Created by Alex Mattoni on 7/12/24.
 //
 
 import SwiftUI
 
-struct menuView: View {
-    var body: some View {
-        ZStack{
-            Rectangle()
-                .background(Color.white)
-            VStack{
-                Image("prompt1").resizable()
-                    .scaledToFit()
-                    .frame(width: 300, height: 300)
-                HStack{
-                    Image("red_prompt")
-                    Image("yellow_prompt")
+struct MenuView: View 
+{
+    var body: some View
+    {
+        // Selection buttons
+        NavigationView
+        {
+            ZStack
+            {
+                //Background
+                Color.white.ignoresSafeArea(.all)
+                
+                VStack
+                {
+                    // Four In A Row
+                    NavigationLink
+                    {
+                        FourInARowMenuView().navigationBarTitle("").navigationBarHidden(true)
+                    } label:
+                    {
+                        Label("", image: "fourinarow_prompt")
+                    }
+                    
+                    // Word scramble
+                    NavigationLink
+                    {
+                        FourInARowMenuView().navigationBarTitle("").navigationBarHidden(true)
+                    } label:
+                    {
+                        Label("", image: "scribble_prompt")
+                    }
+                    
                 }
             }
         }
@@ -26,5 +46,5 @@ struct menuView: View {
 }
 
 #Preview {
-    menuView()
+    MenuView()
 }
