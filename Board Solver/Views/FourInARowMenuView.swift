@@ -44,8 +44,8 @@ struct FourInARowMenuView: View
                     
                     NavigationLink
                     {
-                        ContentView(classifier: ImageClassifier(), boardView: BoardView(board: $board), playerColor: 0, board: $board, resultsBoard: resultsBoard).navigationBarTitle("")
-                            .navigationBarHidden(true)
+                        //ContentView(classifier: ImageClassifier(), boardView: BoardView(board: $board), playerColor: 0, board: $board, resultsBoard: resultsBoard).navigationBarTitle("")
+                            //.navigationBarHidden(true)
                     } label:
                     {
                         Label("", image: "red_prompt")

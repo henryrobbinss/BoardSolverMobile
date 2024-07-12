@@ -518,7 +518,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Board Solver/Preview Content\"";
-				DEVELOPMENT_TEAM = DNR6Y7TPQM;
+				DEVELOPMENT_TEAM = 97VF596VP5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "To scan game board";
@@ -532,7 +532,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "BoardSolver.Board-Solverr";
+				PRODUCT_BUNDLE_IDENTIFIER = "BoardSolver.Board-Solver";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -548,7 +548,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Board Solver/Preview Content\"";
-				DEVELOPMENT_TEAM = DNR6Y7TPQM;
+				DEVELOPMENT_TEAM = 97VF596VP5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "To scan game board";
@@ -562,7 +562,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "BoardSolver.Board-Solverr";
+				PRODUCT_BUNDLE_IDENTIFIER = "BoardSolver.Board-Solver";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
