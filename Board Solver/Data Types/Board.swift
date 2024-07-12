@@ -120,19 +120,19 @@ class Board
         let pos = Position()
         let solver = Solver()
         if solveString == ""{
-            // nop
+            board2[5][3] = 3
         } else {
             let _ = pos.play(seq: solveString)
-        }
-        let colarray = solver.scoreAllMoves(P: pos)
-        let col = colarray.firstIndex(of: colarray.max()!)!
-        if colarray[col] == -999999{
-            return board2
-        }
-        for row in board.reversed() {
-            if row[col] == 2{
-                board2[board2.firstIndex(of: row)!][col] = 3
-                break
+            let colarray = solver.scoreAllMoves(P: pos)
+            let col = colarray.firstIndex(of: colarray.max()!)!
+            if colarray[col] == -999999{
+                return board2
+            }
+            for row in board.reversed() {
+                if row[col] == 2{
+                    board2[board2.firstIndex(of: row)!][col] = 3
+                    break
+                }
             }
         }
         return board2
