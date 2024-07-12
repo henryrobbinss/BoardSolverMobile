@@ -107,7 +107,15 @@ class Board
             }
         }
         
-        let solveString = getSolverString(board: board, playerColor: playerColor)
+        return board
+    }
+    
+    // Takes the detected board and the player's color and then generates a solution. Returns the solution
+    // as a [[Int]], whereby the solution placement cell equals 3.
+    public static func startSolving(board: [[Int]], playerColor: Int) -> [[Int]]
+    {
+        var board2 = board
+        let solveString = getSolverString(board: board2, playerColor: playerColor)
         print("\(solveString)")
         let pos = Position()
         let solver = Solver()
@@ -119,16 +127,15 @@ class Board
         let colarray = solver.scoreAllMoves(P: pos)
         let col = colarray.firstIndex(of: colarray.max()!)!
         if colarray[col] == -999999{
-            return board
+            return board2
         }
         for row in board.reversed() {
             if row[col] == 2{
-                board[board.firstIndex(of: row)!][col] = 3
+                board2[board2.firstIndex(of: row)!][col] = 3
                 break
             }
         }
-        
-        return board
+        return board2
     }
     
     private static func concatIntsToString(string: String, intArray: [Int]) -> String {

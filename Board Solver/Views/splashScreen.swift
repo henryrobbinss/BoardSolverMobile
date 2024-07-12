@@ -16,6 +16,7 @@ struct splashScreen: View
     @State var isActive: Bool = false
     @State var board = Array(repeating: Array(repeating: 2, count: 7), count: 6)
     @State var playerColor: Int = -1
+    @State var resultsBoard = Array(repeating: Array(repeating: 2, count: 7), count: 6)
     
     var body: some View 
     {
@@ -61,7 +62,7 @@ struct splashScreen: View
                     }
                     else
                     {
-                        ContentView(classifier: ImageClassifier(), boardView: BoardView(board: $board), playerColor: $playerColor, board: $board)
+                        ContentView(classifier: ImageClassifier(), boardView: BoardView(board: $board), playerColor: $playerColor, board: $board, resultsBoard: resultsBoard)
                     }
                 } else {
                     Rectangle()

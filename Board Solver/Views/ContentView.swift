@@ -19,6 +19,7 @@ struct ContentView: View
     @State var boardView: BoardView
     @Binding var playerColor: Int
     @Binding var board: [[Int]]
+    @State var resultsBoard: [[Int]]
 
     var body: some View
     {
@@ -38,7 +39,7 @@ struct ContentView: View
                         captureFrame()
                         if let image = capturedImage 
                         {
-                            var resultsBoard = classifier.detect(uiImage: rotateImage90DegreesClockwise(image: image)!, playerColor: playerColor)
+                            resultsBoard = classifier.detect(uiImage: rotateImage90DegreesClockwise(image: image)!, playerColor: playerColor)
                             $boardView.wrappedValue.updateBoard(brd: resultsBoard)
                             boardView.board = resultsBoard
                         }
@@ -49,7 +50,9 @@ struct ContentView: View
                    
                     Button
                     {
-                        print("locking")
+                        resultsBoard = Board.startSolving(board: board, playerColor: playerColor)
+                        $boardView.wrappedValue.updateBoard(brd: resultsBoard)
+                        boardView.board = resultsBoard
                     } label: {
                         Label("", image: "lock_prompt")
                     }
