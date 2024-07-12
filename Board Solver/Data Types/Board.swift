@@ -108,13 +108,14 @@ class Board
         }
         
         let solveString = getSolverString(board: board, playerColor: playerColor)
-        if solveString == ""{
-            return board
-        }
         print("\(solveString)")
         let pos = Position()
         let solver = Solver()
-        let _ = pos.play(seq: solveString)
+        if solveString == ""{
+            // nop
+        } else {
+            let _ = pos.play(seq: solveString)
+        }
         let colarray = solver.scoreAllMoves(P: pos)
         let col = colarray.firstIndex(of: colarray.max()!)!
         if colarray[col] == -999999{
