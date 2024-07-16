@@ -11,19 +11,6 @@ import SwiftUI
 
 class Board
 {
-    // Members
-    public var x: Double;
-    public var y: Double;
-    public static var grid: [[Cell]]?;
-    public static var image: Image?;
-    
-    // Constructor
-    init()
-    {
-        x = 0;
-        y = 0;
-    }
-    
     // Fill board from results
     static func fillBoard(results: [VNRecognizedObjectObservation], width: CGFloat, height: CGFloat) -> UIImage
     {

@@ -14,6 +14,7 @@ import ARKit
 struct ContentView: View
 {
     @ObservedObject var classifier: ImageClassifier
+    @Environment(\.dismiss) private var dismiss
     @State private var arView = ARView(frame: .zero)
     @State private var capturedImage: UIImage?
     @State var boardView: BoardView
@@ -61,6 +62,13 @@ struct ContentView: View
                     .frame(maxWidth: 175)
                 }
                 .padding()
+                
+                Button {
+                    dismiss()
+                } label: {
+                    Label("", image: "Back_prompt")
+                }
+                .frame(minWidth: 200)
             }
             .padding(.bottom, 50)
         }

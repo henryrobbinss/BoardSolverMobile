@@ -21,6 +21,22 @@ struct MenuView: View
                 
                 VStack
                 {
+                    VStack {
+                        Text("BOARD")
+                            .font(.system(size: 80))
+                            .monospacedDigit()
+                        Text("SOLVER")
+                            .font(.system(size: 80))
+                            .monospacedDigit()
+                    }
+                    .frame(maxWidth: .infinity)
+                    
+                    Image("image1")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 300, height: 230)
+                        //.offset(y: -10)
+                    
                     // Four In A Row
                     NavigationLink
                     {
@@ -29,6 +45,7 @@ struct MenuView: View
                     {
                         Label("", image: "fourinarow_prompt")
                     }
+                    //.offset(y: -110)
                     
                     // Word scramble
                     NavigationLink
@@ -38,7 +55,17 @@ struct MenuView: View
                     {
                         Label("", image: "scribble_prompt")
                     }
+                    //.offset(y: -100)
                     
+                    // About
+                    NavigationLink
+                    {
+                        // about prompt
+                    } label:
+                    {
+                        Label("", image: "about_prompt")
+                    }
+                    //.offset(y: -90)
                 }
             }
         }

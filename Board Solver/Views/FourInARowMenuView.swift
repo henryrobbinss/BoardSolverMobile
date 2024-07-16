@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FourInARowMenuView: View
 {
+    @Environment(\.dismiss) private var dismiss
     @State var yellow: Int = 1
     @State var red: Int = 0
     // Disable animation transitions
@@ -27,26 +28,49 @@ struct FourInARowMenuView: View
                 // Background
                 Color.white.ignoresSafeArea(.all)
                 
-                VStack
-                {
-                    NavigationLink
-                    {
-                        FourInARowBufferView(playerColor: $yellow)
-                            .navigationBarTitle("")
-                            .navigationBarHidden(true)
-                    } label: {
-                        Label("", image: "yellow_prompt")
+                
+                VStack {
+                    
+                    HStack {
+                        Button {
+                            dismiss()
+                        } label: {
+                            Label("", image: "Back_prompt")
+                        }
+                        .padding()
+                        
+                        Spacer()
                     }
                     
-                    NavigationLink
+                    Spacer()
+                    
+                    Text("Please Select Which \n Color Went First")
+                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        .monospaced()
+                        .scaledToFit()
+                
+                    HStack
                     {
-                        FourInARowBufferView(playerColor: $red)
-                            .navigationBarTitle("")
-                            .navigationBarHidden(true)
-                    } label:
-                    {
-                        Label("", image: "red_prompt")
+                        NavigationLink
+                        {
+                            FourInARowBufferView(playerColor: $yellow)
+                                .navigationBarTitle("")
+                                .navigationBarHidden(true)
+                        } label: {
+                            Label("", image: "yellow_prompt")
+                        }
+                        
+                        NavigationLink
+                        {
+                            FourInARowBufferView(playerColor: $red)
+                                .navigationBarTitle("")
+                                .navigationBarHidden(true)
+                        } label:
+                        {
+                            Label("", image: "red_prompt")
+                        }
                     }
+                    Spacer()
                 }
             }
         }
@@ -54,5 +78,5 @@ struct FourInARowMenuView: View
 }
 
 #Preview {
-    MenuView()
+    FourInARowMenuView()
 }
