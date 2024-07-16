@@ -23,6 +23,8 @@
 		2E8B6C9A2C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6C992C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage */; };
 		2EA0FE8E2C46E207001E1F8C /* KoHo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EA0FE8D2C46E207001E1F8C /* KoHo-Medium.ttf */; };
 		2EA0FE912C46E768001E1F8C /* FourInARowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA0FE902C46E768001E1F8C /* FourInARowView.swift */; };
+		2EA0FE932C46F0BB001E1F8C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA0FE922C46F0BB001E1F8C /* AboutView.swift */; };
+		2EA0FE952C46F48C001E1F8C /* WordScrambleMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA0FE942C46F48C001E1F8C /* WordScrambleMenuView.swift */; };
 		2EBAC1602C46CDDE001404D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EBAC15F2C46CDDE001404D4 /* LaunchScreen.storyboard */; };
 		FA10923D2C1377F7005AD2FE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FA10923C2C1377F7005AD2FE /* .gitignore */; };
 		FA12DC052C41A8B900E7D60F /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA12DC042C41A8B900E7D60F /* MenuView.swift */; };
@@ -70,6 +72,8 @@
 		2EA0FE8D2C46E207001E1F8C /* KoHo-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KoHo-Medium.ttf"; sourceTree = "<group>"; };
 		2EA0FE8F2C46E28C001E1F8C /* Board-Solver-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Board-Solver-Info.plist"; sourceTree = SOURCE_ROOT; };
 		2EA0FE902C46E768001E1F8C /* FourInARowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourInARowView.swift; sourceTree = "<group>"; };
+		2EA0FE922C46F0BB001E1F8C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		2EA0FE942C46F48C001E1F8C /* WordScrambleMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleMenuView.swift; sourceTree = "<group>"; };
 		2EBAC15F2C46CDDE001404D4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA10923C2C1377F7005AD2FE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FA12DC042C41A8B900E7D60F /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -205,6 +209,8 @@
 				FA12DC082C41A98700E7D60F /* FourInARowMenuView.swift */,
 				2E5ED98E2C41D56700F12A1B /* FourInARowBufferView.swift */,
 				2EA0FE902C46E768001E1F8C /* FourInARowView.swift */,
+				2EA0FE922C46F0BB001E1F8C /* AboutView.swift */,
+				2EA0FE942C46F48C001E1F8C /* WordScrambleMenuView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -355,9 +361,11 @@
 			files = (
 				2E5ED98F2C41D56700F12A1B /* FourInARowBufferView.swift in Sources */,
 				FA15B56E2C220FDC007DE6B6 /* Classifier.swift in Sources */,
+				2EA0FE932C46F0BB001E1F8C /* AboutView.swift in Sources */,
 				2E5ED9782C3B30B200F12A1B /* Connect4 2 Iteration 310.mlmodel in Sources */,
 				2E8B6C9A2C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage in Sources */,
 				FA15B5592C22006D007DE6B6 /* ImageClassifier.swift in Sources */,
+				2EA0FE952C46F48C001E1F8C /* WordScrambleMenuView.swift in Sources */,
 				2E5ED9812C3DB70C00F12A1B /* solver.swift in Sources */,
 				2EA0FE912C46E768001E1F8C /* FourInARowView.swift in Sources */,
 				2E8B6C572C2208F600FBAF69 /* BoardView.swift in Sources */,

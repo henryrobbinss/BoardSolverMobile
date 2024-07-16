@@ -103,7 +103,6 @@ class Board
     {
         var board2 = board
         let solveString = getSolverString(board: board2, playerColor: playerColor)
-        print("\(solveString)")
         let pos = Position()
         let solver = Solver()
         if solveString == ""{
@@ -163,7 +162,9 @@ class Board
             for i in 0..<row.count {
                 if row[i] == 2 {
                     continue
-                } else if next == "red" && row[i] == RED {
+                } else if row[i] == 3 {
+                    continue
+                }else if next == "red" && row[i] == RED {
                     if pending.contains(i + 1) {
                         conflict.append(i+1)
                         continue

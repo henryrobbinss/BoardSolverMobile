@@ -33,13 +33,18 @@ struct MenuView: View
                             .multilineTextAlignment(.center)
                             .monospacedDigit()
                     }
-                    .frame(maxWidth: .infinity)
                     
                     Image("image1")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 300, height: 230)
-                        .offset(y: -10)
+                        .offset(y: -20)
+                    
+                    Text("Select a Game Below")
+                        .font(.custom("KoHo-Medium", size: 30))
+                        .foregroundColor(Color.black)
+                        .multilineTextAlignment(.center)
+                        .monospacedDigit()
                     
                     // Four In A Row
                     NavigationLink
@@ -53,7 +58,7 @@ struct MenuView: View
                     // Word scramble
                     NavigationLink
                     {
-                        FourInARowMenuView().navigationBarTitle("").navigationBarHidden(true)
+                        WordScrambleMenuView().navigationBarTitle("").navigationBarHidden(true)
                     } label:
                     {
                         Label("", image: "scribble_prompt")
@@ -62,7 +67,7 @@ struct MenuView: View
                     // About
                     NavigationLink
                     {
-                        // about prompt
+                        AboutView().navigationBarTitle("").navigationBarHidden(true)
                     } label:
                     {
                         Label("", image: "about_prompt")

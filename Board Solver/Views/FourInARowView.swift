@@ -21,6 +21,9 @@ struct FourInARowView: View
     @State var playerColor: Int
     @Binding var board: [[Int]]
     @State var resultsBoard: [[Int]]
+    @State private var isScanning = false
+    @State private var isSolving = false
+    @State var canSolve: Bool = false
 
     var body: some View
     {
@@ -39,13 +42,18 @@ struct FourInARowView: View
                 HStack{
                     Button
                     {
-                        captureFrame()
-                        if let image = capturedImage
-                        {
-                            resultsBoard = classifier.detect(uiImage: rotateImage90DegreesClockwise(image: image)!, playerColor: playerColor)
-                            $boardView.wrappedValue.updateBoard(brd: resultsBoard)
-                            boardView.board = resultsBoard
+                        isScanning = true
+                        withAnimation(){
+                            canSolve = true
+                            captureFrame()
+                            if let image = capturedImage
+                            {
+                                resultsBoard = classifier.detect(uiImage: rotateImage90DegreesClockwise(image: image)!, playerColor: playerColor)
+                                $boardView.wrappedValue.updateBoard(brd: resultsBoard)
+                                boardView.board = resultsBoard
+                            }
                         }
+                        isScanning = false
                     } label: {
                         Label("", image: "scan_prompt")
                     }
@@ -53,13 +61,18 @@ struct FourInARowView: View
                    
                     Button
                     {
-                        resultsBoard = Board.startSolving(board: board, playerColor: playerColor)
-                        $boardView.wrappedValue.updateBoard(brd: resultsBoard)
-                        boardView.board = resultsBoard
+                        isSolving = true
+                        withAnimation(){
+                            resultsBoard = Board.startSolving(board: board, playerColor: playerColor)
+                            $boardView.wrappedValue.updateBoard(brd: resultsBoard)
+                            boardView.board = resultsBoard
+                        }
+                        isSolving = false
                     } label: {
                         Label("", image: "solve_prompt")
                     }
                     .frame(maxWidth: 175)
+                    .disabled(!canSolve)
                 }
                 .padding()
                 
@@ -71,6 +84,17 @@ struct FourInARowView: View
                 .frame(minWidth: 200)
             }
             .padding(.bottom, 50)
+            
+            if(isScanning)
+            {
+                ProgressView("Scanning")
+                    .progressViewStyle(CircularProgressViewStyle())
+            }
+            if(isSolving)
+            {
+                ProgressView("Solving")
+                    .progressViewStyle(CircularProgressViewStyle())
+            }
         }
         .ignoresSafeArea(.all)
     }
