@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2E04BE402C0F978D004A775C /* Board_SolverApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E04BE3F2C0F978D004A775C /* Board_SolverApp.swift */; };
-		2E04BE422C0F978D004A775C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E04BE412C0F978D004A775C /* ContentView.swift */; };
 		2E04BE442C0F978F004A775C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E04BE432C0F978F004A775C /* Assets.xcassets */; };
 		2E04BE512C0F978F004A775C /* Board_SolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E04BE502C0F978F004A775C /* Board_SolverTests.swift */; };
 		2E04BE5B2C0F978F004A775C /* Board_SolverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E04BE5A2C0F978F004A775C /* Board_SolverUITests.swift */; };
@@ -22,9 +21,10 @@
 		2E5ED98F2C41D56700F12A1B /* FourInARowBufferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5ED98E2C41D56700F12A1B /* FourInARowBufferView.swift */; };
 		2E8B6C572C2208F600FBAF69 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6C562C2208F600FBAF69 /* BoardView.swift */; };
 		2E8B6C9A2C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 2E8B6C992C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage */; };
+		2EA0FE8E2C46E207001E1F8C /* KoHo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EA0FE8D2C46E207001E1F8C /* KoHo-Medium.ttf */; };
+		2EA0FE912C46E768001E1F8C /* FourInARowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA0FE902C46E768001E1F8C /* FourInARowView.swift */; };
 		2EBAC1602C46CDDE001404D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EBAC15F2C46CDDE001404D4 /* LaunchScreen.storyboard */; };
 		FA10923D2C1377F7005AD2FE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FA10923C2C1377F7005AD2FE /* .gitignore */; };
-		FA12DC012C41A86E00E7D60F /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA12DC002C41A86E00E7D60F /* SplashScreen.swift */; };
 		FA12DC052C41A8B900E7D60F /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA12DC042C41A8B900E7D60F /* MenuView.swift */; };
 		FA12DC092C41A98700E7D60F /* FourInARowMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA12DC082C41A98700E7D60F /* FourInARowMenuView.swift */; };
 		FA15B5592C22006D007DE6B6 /* ImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B5582C22006D007DE6B6 /* ImageClassifier.swift */; };
@@ -52,7 +52,6 @@
 /* Begin PBXFileReference section */
 		2E04BE3C2C0F978D004A775C /* Board Solver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Board Solver.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E04BE3F2C0F978D004A775C /* Board_SolverApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board_SolverApp.swift; sourceTree = "<group>"; };
-		2E04BE412C0F978D004A775C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2E04BE432C0F978F004A775C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E04BE4C2C0F978F004A775C /* Board SolverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Board SolverTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E04BE502C0F978F004A775C /* Board_SolverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board_SolverTests.swift; sourceTree = "<group>"; };
@@ -68,9 +67,11 @@
 		2E5ED98E2C41D56700F12A1B /* FourInARowBufferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourInARowBufferView.swift; sourceTree = "<group>"; };
 		2E8B6C562C2208F600FBAF69 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		2E8B6C992C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = "Connect4 1 Iteration 500.mlpackage"; sourceTree = "<group>"; };
+		2EA0FE8D2C46E207001E1F8C /* KoHo-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KoHo-Medium.ttf"; sourceTree = "<group>"; };
+		2EA0FE8F2C46E28C001E1F8C /* Board-Solver-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Board-Solver-Info.plist"; sourceTree = SOURCE_ROOT; };
+		2EA0FE902C46E768001E1F8C /* FourInARowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourInARowView.swift; sourceTree = "<group>"; };
 		2EBAC15F2C46CDDE001404D4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA10923C2C1377F7005AD2FE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		FA12DC002C41A86E00E7D60F /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		FA12DC042C41A8B900E7D60F /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		FA12DC082C41A98700E7D60F /* FourInARowMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourInARowMenuView.swift; sourceTree = "<group>"; };
 		FA15B5582C22006D007DE6B6 /* ImageClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassifier.swift; sourceTree = "<group>"; };
@@ -127,6 +128,8 @@
 		2E04BE3E2C0F978D004A775C /* Board Solver */ = {
 			isa = PBXGroup;
 			children = (
+				2EA0FE8F2C46E28C001E1F8C /* Board-Solver-Info.plist */,
+				2EA0FE8A2C46E11E001E1F8C /* Fonts */,
 				2E5ED97B2C3DB6F200F12A1B /* Connect4Solver */,
 				FAC4715C2C2B37F600EE6D97 /* Data Types */,
 				2E8B6C992C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage */,
@@ -177,6 +180,14 @@
 			path = Connect4Solver;
 			sourceTree = "<group>";
 		};
+		2EA0FE8A2C46E11E001E1F8C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2EA0FE8D2C46E207001E1F8C /* KoHo-Medium.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		FA15B56C2C220FA5007DE6B6 /* Classifiers */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,12 +200,11 @@
 		FA960B192C1390C500D5099C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2E04BE412C0F978D004A775C /* ContentView.swift */,
 				2E8B6C562C2208F600FBAF69 /* BoardView.swift */,
-				FA12DC002C41A86E00E7D60F /* SplashScreen.swift */,
 				FA12DC042C41A8B900E7D60F /* MenuView.swift */,
 				FA12DC082C41A98700E7D60F /* FourInARowMenuView.swift */,
 				2E5ED98E2C41D56700F12A1B /* FourInARowBufferView.swift */,
+				2EA0FE902C46E768001E1F8C /* FourInARowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -317,6 +327,7 @@
 			files = (
 				2EBAC1602C46CDDE001404D4 /* LaunchScreen.storyboard in Resources */,
 				FA10923D2C1377F7005AD2FE /* .gitignore in Resources */,
+				2EA0FE8E2C46E207001E1F8C /* KoHo-Medium.ttf in Resources */,
 				2E04BE442C0F978F004A775C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,14 +354,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E5ED98F2C41D56700F12A1B /* FourInARowBufferView.swift in Sources */,
-				2E04BE422C0F978D004A775C /* ContentView.swift in Sources */,
 				FA15B56E2C220FDC007DE6B6 /* Classifier.swift in Sources */,
 				2E5ED9782C3B30B200F12A1B /* Connect4 2 Iteration 310.mlmodel in Sources */,
 				2E8B6C9A2C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage in Sources */,
 				FA15B5592C22006D007DE6B6 /* ImageClassifier.swift in Sources */,
 				2E5ED9812C3DB70C00F12A1B /* solver.swift in Sources */,
+				2EA0FE912C46E768001E1F8C /* FourInARowView.swift in Sources */,
 				2E8B6C572C2208F600FBAF69 /* BoardView.swift in Sources */,
-				FA12DC012C41A86E00E7D60F /* SplashScreen.swift in Sources */,
 				FA12DC052C41A8B900E7D60F /* MenuView.swift in Sources */,
 				2E5ED9842C3DB70C00F12A1B /* entry.swift in Sources */,
 				FA12DC092C41A98700E7D60F /* FourInARowMenuView.swift in Sources */,
@@ -525,10 +535,12 @@
 				DEVELOPMENT_TEAM = 97VF596VP5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Board-Solver-Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "To scan game board";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -555,10 +567,12 @@
 				DEVELOPMENT_TEAM = 97VF596VP5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Board-Solver-Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "To scan game board";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (

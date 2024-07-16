@@ -11,7 +11,7 @@ import Vision
 import RealityKit
 import ARKit
 
-struct ContentView: View
+struct FourInARowView: View
 {
     @ObservedObject var classifier: ImageClassifier
     @Environment(\.dismiss) private var dismiss
@@ -40,7 +40,7 @@ struct ContentView: View
                     Button
                     {
                         captureFrame()
-                        if let image = capturedImage 
+                        if let image = capturedImage
                         {
                             resultsBoard = classifier.detect(uiImage: rotateImage90DegreesClockwise(image: image)!, playerColor: playerColor)
                             $boardView.wrappedValue.updateBoard(brd: resultsBoard)
@@ -86,7 +86,7 @@ struct ContentView: View
     }
 }
 
-struct ARViewContainer: UIViewRepresentable 
+struct ARViewContainer: UIViewRepresentable
 {
     @Binding var arView: ARView
     

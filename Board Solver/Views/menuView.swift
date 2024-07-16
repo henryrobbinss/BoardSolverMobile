@@ -23,10 +23,14 @@ struct MenuView: View
                 {
                     VStack {
                         Text("BOARD")
-                            .font(.system(size: 80))
+                            .font(.custom("KoHo-Medium", size: 90))
+                            .foregroundColor(Color.black)
+                            .multilineTextAlignment(.center)
                             .monospacedDigit()
                         Text("SOLVER")
-                            .font(.system(size: 80))
+                            .font(.custom("KoHo-Medium", size: 90))
+                            .foregroundColor(Color.black)
+                            .multilineTextAlignment(.center)
                             .monospacedDigit()
                     }
                     .frame(maxWidth: .infinity)
@@ -35,7 +39,7 @@ struct MenuView: View
                         .resizable()
                         .scaledToFit()
                         .frame(width: 300, height: 230)
-                        //.offset(y: -10)
+                        .offset(y: -10)
                     
                     // Four In A Row
                     NavigationLink
@@ -45,7 +49,6 @@ struct MenuView: View
                     {
                         Label("", image: "fourinarow_prompt")
                     }
-                    //.offset(y: -110)
                     
                     // Word scramble
                     NavigationLink
@@ -55,7 +58,6 @@ struct MenuView: View
                     {
                         Label("", image: "scribble_prompt")
                     }
-                    //.offset(y: -100)
                     
                     // About
                     NavigationLink
@@ -68,7 +70,7 @@ struct MenuView: View
                     //.offset(y: -90)
                 }
             }
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

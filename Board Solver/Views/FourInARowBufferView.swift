@@ -13,6 +13,6 @@ struct FourInARowBufferView: View {
     @State var resultsBoard = Array(repeating: Array(repeating: 2, count: 7), count: 6)
     
     var body: some View {
-        ContentView(classifier: ImageClassifier(), boardView: BoardView(board: $board), playerColor: playerColor, board: $board, resultsBoard: resultsBoard)
+        FourInARowView(classifier: ImageClassifier(), boardView: BoardView(board: $board), playerColor: playerColor, board: $board, resultsBoard: resultsBoard)
     }
 }

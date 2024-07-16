@@ -44,8 +44,10 @@ struct FourInARowMenuView: View
                     
                     Spacer()
                     
-                    Text("Please Select Which \n Color Went First")
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                    Text("Please Select Which\nColor Went First")
+                        .font(.custom("KoHo-Medium", size: 20))
+                        .foregroundColor(Color.black)
+                        .multilineTextAlignment(.center)
                         .monospaced()
                         .scaledToFit()
                 
@@ -73,7 +75,7 @@ struct FourInARowMenuView: View
                     Spacer()
                 }
             }
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
