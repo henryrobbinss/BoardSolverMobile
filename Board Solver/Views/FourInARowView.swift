@@ -42,18 +42,21 @@ struct FourInARowView: View
                 HStack{
                     Button
                     {
-                        isScanning = true
-                        withAnimation(){
-                            canSolve = true
-                            captureFrame()
-                            if let image = capturedImage
-                            {
-                                resultsBoard = classifier.detect(uiImage: rotateImage90DegreesClockwise(image: image)!, playerColor: playerColor)
-                                $boardView.wrappedValue.updateBoard(brd: resultsBoard)
-                                boardView.board = resultsBoard
+                        DispatchQueue.global().async
+                        {
+                            isScanning = true
+                            withAnimation(){
+                                canSolve = true
+                                captureFrame()
+                                if let image = capturedImage
+                                {
+                                    resultsBoard = classifier.detect(uiImage: rotateImage90DegreesClockwise(image: image)!, playerColor: playerColor)
+                                    $boardView.wrappedValue.updateBoard(brd: resultsBoard)
+                                    boardView.board = resultsBoard
+                                }
                             }
+                            isScanning = false
                         }
-                        isScanning = false
                     } label: {
                         Label("", image: "scan_prompt")
                     }
@@ -61,13 +64,16 @@ struct FourInARowView: View
                    
                     Button
                     {
-                        isSolving = true
-                        withAnimation(){
-                            resultsBoard = Board.startSolving(board: board, playerColor: playerColor)
-                            $boardView.wrappedValue.updateBoard(brd: resultsBoard)
-                            boardView.board = resultsBoard
+                        DispatchQueue.global().async
+                        {
+                            isSolving = true
+                            withAnimation(){
+                                resultsBoard = Board.startSolving(board: board, playerColor: playerColor)
+                                $boardView.wrappedValue.updateBoard(brd: resultsBoard)
+                                boardView.board = resultsBoard
+                            }
+                            isSolving = false
                         }
-                        isSolving = false
                     } label: {
                         Label("", image: "solve_prompt")
                     }
@@ -84,17 +90,21 @@ struct FourInARowView: View
                 .frame(minWidth: 200)
             }
             .padding(.bottom, 50)
+
+            ProgressView("Scanning")
+                .progressViewStyle(CircularProgressViewStyle())
+                .background(.white)
+                .foregroundColor(.black)
+                .opacity(isScanning ? 0.9 : 0)
+                .frame(width: 150, height: 150)
             
-            if(isScanning)
-            {
-                ProgressView("Scanning")
-                    .progressViewStyle(CircularProgressViewStyle())
-            }
-            if(isSolving)
-            {
-                ProgressView("Solving")
-                    .progressViewStyle(CircularProgressViewStyle())
-            }
+            ProgressView("Solving")
+                .progressViewStyle(CircularProgressViewStyle())
+                .background(.white)
+                .foregroundColor(.black)
+                .opacity(isSolving ? 0.9 : 0)
+                .frame(width: 150, height: 150)
+
         }
         .ignoresSafeArea(.all)
     }
