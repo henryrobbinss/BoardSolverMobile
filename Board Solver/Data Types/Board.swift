@@ -102,22 +102,33 @@ class Board
     public static func startSolving(board: [[Int]], playerColor: Int) -> [[Int]]
     {
         var board2 = board
+        // clean up any current solved pieces
+        for i in 0..<board2.count{
+            for j in 0..<board2[i].count {
+                if board2[i][j] == 3{
+                    board2[i][j] = 2
+                }
+            }
+        }
         let solveString = getSolverString(board: board2, playerColor: playerColor)
+        if(solveString == ""){
+            board2[5][3] = 3
+            return board2
+        }
         let pos = Position()
         let solver = Solver()
-        if solveString == ""{
-            board2[5][3] = 3
-        } else {
-            let _ = pos.play(seq: solveString)
-            let colarray = solver.scoreAllMoves(P: pos)
-            let col = colarray.firstIndex(of: colarray.max()!)!
-            if colarray[col] == -999999{
-                return board2
-            }
-            for row in board.reversed() {
-                if row[col] == 2{
-                    board2[board2.firstIndex(of: row)!][col] = 3
-                    break
+        let _ = pos.play(seq: solveString)
+        let colarray = solver.scoreAllMoves(P: pos)
+        let col = colarray.firstIndex(of: colarray.max()!)!
+        if colarray[col] == -999999{
+            return board2
+        }
+        // place in first open column
+        for i in 0..<board2.count {
+            for j in 0..<board2[i].count {
+                if board2.reversed()[i][j] == 2{
+                    board2[5-i][col] = 3
+                    return board2
                 }
             }
         }

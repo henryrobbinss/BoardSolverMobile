@@ -29,8 +29,6 @@ struct WordScrambleMenuView: View {
                 
                 Spacer()
                 
-                Image(systemName: "exclamationmark.triangle.fill.multicolor")
-                
                 Text("Coming Soon!")
                     .font(.custom("KoHo-Medium", size: 40))
                     .foregroundColor(Color.black)
