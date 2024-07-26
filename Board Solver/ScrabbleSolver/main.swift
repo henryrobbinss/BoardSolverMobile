@@ -20,16 +20,17 @@ func printPosOptions(pos:[[[Bool]]]) {
 }
 func main() {
     do {
-        let _ : Solver = Solver();
         let filename : String = "test.txt";
         let relativePath = "/Users/chris/Documents/ScrabbleSolver/ScrabbleSolver"
         let data = try String(contentsOfFile: relativePath+"/TestFiles/"+filename, encoding: .utf8);
         let myStrings = data.components(separatedBy: .newlines);
-        let curPos : Position = Position(rack: Array(myStrings[0]));
+        let solver : Solver = Solver(rack:Array(myStrings[0]));
+        var rack : [Character] = [];
         var gotRack : Bool = false;
         for curLine in myStrings {
             if (!gotRack) {
                 gotRack = true;
+                rack = Array(curLine);
                 continue;
             }
             let lineArr : [String] = curLine.components(separatedBy: " ");
@@ -49,18 +50,20 @@ func main() {
             print("x: " + String(x));
             print("y: " + String(y));
             print("dir: " + String(dir));
-            curPos.playMove(word:Array(word), x:x, y:y, dir:dir);
-            curPos.displayBoard();
-            let posWords : [[Character]] = curPos.getPossibleWords();
-            allMoves = Array<String>
-            for word in posWords {
-                print("-------")
-                print(word)
-                curMoves = pos.findSpotsForWord(word:word);
-
+            print("--------------------");
+            solver.playMove(word:Array(word),x:x,y:y,dir:dir)
         }
-        let solver : Solver = Solver();
-        solver.solve(p:curPos);
+        solver.displayBoard();
+        print(rack);
+        let move : String = solver.solve();
+        print(move);
+        let moveSegments : [String] = move.components(separatedBy: " ");
+        if moveSegments[3] == "down" {
+            solver.playMove(word:Array(moveSegments[0]), x:Int(moveSegments[1])!, y:Int(moveSegments[2])!, dir:true);
+        } else {
+            solver.playMove(word:Array(moveSegments[0]), x:Int(moveSegments[1])!, y:Int(moveSegments[2])!, dir:false);
+        }
+        solver.displayBoard();
     } catch {
         print(error);
     }

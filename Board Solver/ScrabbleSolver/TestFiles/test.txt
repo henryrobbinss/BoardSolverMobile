@@ -1,2 +1,19 @@
-UPERADD
-SI 7 7 down
+AEEJRRT
+RAW 4 2 right
+QIN 3 3 right
+WOOF 1 5 right
+FAVE 4 4 right
+UP 6 11 right
+ERK 6 12 right
+DEY 6 13 right
+HOODY 7 3 right
+BUTES 9 1 right
+REVEAL 9 7 right
+TANA 5 1 down
+HENNA 7 3 down
+LANGUED 6 7 down
+PREZ 7 11 down
+BLOOMERS 9 1 down
+DUI 10 3 down
+STRIP 13 1 down
+UNEXOTIC 12 5 down

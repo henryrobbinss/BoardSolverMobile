@@ -150,7 +150,6 @@ public class Position {
                 returnList[0][i][j] = checkForWordAtSpot(word:word, x:j, y:i, dir:false);
                 if (returnList[0][i][j]) {returnList[0][i][j] = checkConnected(word:word, x:j, y:i, dir:false);}
                 if (returnList[0][i][j]) {returnList[0][i][j] = checkNewWordsCreated(word:word, x:j, y:i, dir:false);}
-                if (returnList[0][i][j]) {print(String(j)+","+String(i)+",right : "+String(scoreMove(word:word,x:j,y:i,dir:false)));}
             }
         }
         // Down
@@ -159,7 +158,6 @@ public class Position {
                 returnList[1][i][j] = checkForWordAtSpot(word:word, x:j, y:i, dir:true);
                 if (returnList[1][i][j]) {returnList[1][i][j] = checkConnected(word:word, x:j, y:i, dir:true);}
                 if (returnList[1][i][j]) {returnList[1][i][j] = checkNewWordsCreated(word:word, x:j, y:i, dir:true);}
-                if (returnList[1][i][j]) {print(String(j)+","+String(i)+",down : "+String(scoreMove(word:word,x:j,y:i,dir:true)));}
             }
         }
         return returnList;
