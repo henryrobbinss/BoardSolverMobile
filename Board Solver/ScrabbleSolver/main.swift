@@ -24,13 +24,11 @@ func main() {
         let relativePath = "/Users/chris/Documents/ScrabbleSolver/ScrabbleSolver"
         let data = try String(contentsOfFile: relativePath+"/TestFiles/"+filename, encoding: .utf8);
         let myStrings = data.components(separatedBy: .newlines);
-        let solver : Solver = Solver(rack:Array(myStrings[0]));
-        var rack : [Character] = [];
+        let solver : Solver = Solver();
         var gotRack : Bool = false;
         for curLine in myStrings {
             if (!gotRack) {
                 gotRack = true;
-                rack = Array(curLine);
                 continue;
             }
             let lineArr : [String] = curLine.components(separatedBy: " ");
@@ -53,16 +51,25 @@ func main() {
             print("--------------------");
             solver.playMove(word:Array(word),x:x,y:y,dir:dir)
         }
-        solver.displayBoard();
-        print(rack);
-        let move : String = solver.solve();
-        print(move);
-        let moveSegments : [String] = move.components(separatedBy: " ");
-        if moveSegments[3] == "down" {
-            solver.playMove(word:Array(moveSegments[0]), x:Int(moveSegments[1])!, y:Int(moveSegments[2])!, dir:true);
-        } else {
-            solver.playMove(word:Array(moveSegments[0]), x:Int(moveSegments[1])!, y:Int(moveSegments[2])!, dir:false);
-        }
+       // solver.displayBoard();
+       // print(rack);
+       // let move : String = solver.solve();
+      //  print(move);
+      //  let moveSegments : [String] = move.components(separatedBy: " ");
+      //  if moveSegments[3] == "down" {
+      //      solver.playMove(word:Array(moveSegments[0]), x:Int(moveSegments[1])!, y:Int(moveSegments[2])!, dir:true);
+      //  } else {
+       //     solver.playMove(word:Array(moveSegments[0]), x:Int(moveSegments[1])!, y:Int(moveSegments[2])!, dir:false);
+       // }
+        var before = Date().timeIntervalSince1970
+        solver.loadWords();
+        var after = Date().timeIntervalSince1970
+        print(after-before);
+        solver.setRack(rack:Array(myStrings[0]));
+        before = Date().timeIntervalSince1970
+        let _ = solver.newSolve();
+        after = Date().timeIntervalSince1970
+        print(after-before);
         solver.displayBoard();
     } catch {
         print(error);

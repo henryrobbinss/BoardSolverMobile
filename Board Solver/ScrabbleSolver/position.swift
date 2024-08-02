@@ -8,7 +8,6 @@ public class Position {
     static let tl = [20:true,24:true,76:true,80:true,84:true,88:true,136:true,140:true,144:true,148:true,200:true,204:true];
     static let dl = [3:true,11:true,36:true,38:true,45:true,52:true,59:true,92:true,96:true,98:true,102:true,108:true,116:true,122:true,126:true,128:true,132:true,165:true,172:true,179:true,186:true,188:true,213:true,221:true];
     static let tileScore : [Character:Int] = ["A":1,"B":3,"C":3,"D":2,"E":1,"F":4,"G":2,"H":4,"I":1,"J":8,"K":5,"L":1,"M":3,"N":1,"O":1,"P":3,"Q":10,"R":1,"S":1,"T":1,"U":1,"V":4,"W":4,"X":8,"Y":4,"Z":10," ":0];
-    var allWords : Set<String>;
     
     // Create an empty 15x15 char board(all values are 0)
     var board : [[Character]] = Array();
@@ -68,6 +67,13 @@ public class Position {
             print(curLine);
         }
     }
+    public func isFilled(x: Int, y: Int) -> Bool {
+        if (x < 0 || x > 14 || y < 0 || y > 14) {return false;}
+        return board[y][x] != "0";
+    }
+    public func getChar(x:Int, y:Int) -> Character {
+        return board[y][x];
+    }
     func removeFromArr(c : Character, a : [Character]) -> [Character] {
         var cpy : [Character] = a;
         if let index = a.firstIndex(where: {$0 == c}) {
@@ -89,23 +95,23 @@ public class Position {
             }
         }
     }
-    func getPossibleWords() -> [[Character]] {
-        var possibleWords : [[Character]] = Array();
-        let d : [Character: Int] = letterDict();
-        for word in allWords {
-            let wordArr : [Character] = Array(word);
-            let wordDict : [Character: Int] = letterDictForWord(word:wordArr);
-            var possibleWord : Bool = true
-            for k in wordDict.keys {
-                if !(d.keys.contains(k)) || d[k]! < wordDict[k]! {
-                    possibleWord = false;
-                    break;
-                }
-            }
-            if (possibleWord) {possibleWords.append(wordArr);}
-        }
-        return possibleWords;
-    }
+ //   func getPossibleWords() -> [[Character]] {
+ //       var possibleWords : [[Character]] = Array();
+ //       let d : [Character: Int] = letterDict();
+ //       for word in allWords {
+ //           let wordArr : [Character] = Array(word);
+ //           let wordDict : [Character: Int] = letterDictForWord(word:wordArr);
+ //           var possibleWord : Bool = true
+ //           for k in wordDict.keys {
+ //               if !(d.keys.contains(k)) || d[k]! < wordDict[k]! {
+ //                   possibleWord = false;
+  //                  break;
+  //              }
+  //          }
+  //          if (possibleWord) {possibleWords.append(wordArr);}
+  //      }
+  //      return possibleWords;
+  //  }
     func letterDictForWord(word: [Character]) -> [Character: Int] {
         var d = [Character: Int]()
         for c in word {
@@ -162,9 +168,9 @@ public class Position {
         }
         return returnList;
     }
-    func validateSingleWord(w : [Character]) -> Bool {
-        return allWords.contains(String(w));
-    }
+//    func validateSingleWord(w : [Character]) -> Bool {
+//        return allWords.contains(String(w));
+//    }
     func scoreMove(word : [Character], x : Int, y : Int, dir : Bool) -> Int {
         var score : Int = 0;
         // Get new board with word added
@@ -318,13 +324,13 @@ public class Position {
         for i in 0...14 {
             for j in 0...14 {
                 if b[i][j] == "0" {
-                    if (curWord.count >= 2 && !validateSingleWord(w:curWord)) {return false;}
+     //               if (curWord.count >= 2 && !validateSingleWord(w:curWord)) {return false;}
                     curWord = [];
                     continue;
                 }
                 curWord.append(b[i][j]);
             }
-            if (curWord.count >= 2 && !validateSingleWord(w:curWord)) {return false;}
+    //        if (curWord.count >= 2 && !validateSingleWord(w:curWord)) {return false;}
             curWord = [];
         }
         // Check down next
@@ -332,7 +338,7 @@ public class Position {
         for i in 0...14 {
             for j in 0...14 {
                 if b[j][i] == "0" {
-                    if (curWord.count >= 2 && !validateSingleWord(w:curWord)) {return false;}
+       //             if (curWord.count >= 2 && !validateSingleWord(w:curWord)) {return false;}
                     curWord = [];
                     continue;
                 }
@@ -340,7 +346,7 @@ public class Position {
             }
             curWord = [];
         }
-        if (curWord.count >= 2 && !validateSingleWord(w:curWord)) {return false;}
+     //   if (curWord.count >= 2 && !validateSingleWord(w:curWord)) {return false;}
         return true;
     }
     // Precondition: word at this x and y wont go out of bounds in the direction listed
@@ -440,18 +446,17 @@ public class Position {
         if (alreadyPlayed == word.count) {return false;}
         return true;
     }
+    public func setRack(rack : [Character]) {
+        curPlayerRack = rack;
+    }
     // Initialize a new board
     init(rack : [Character]) {
         curPlayerRack = rack;
         board = Array(repeating: Array(repeating: "0", count: 15), count: 15);
-        allWords = Set();
-        do {
-            let wordfile : String = "words.txt";
-            let relativePath = "/Users/chris/Documents/ScrabbleSolver/ScrabbleSolver"
-            let data = try String(contentsOfFile: relativePath+"/"+wordfile, encoding: .utf8);
-            allWords = Set(data.components(separatedBy: .newlines));
-        } catch {
-            print(error);
-        }
-    } // Board is initialized when declared above
+
+    }
+    init() {
+        curPlayerRack = Array();
+        board = Array(repeating: Array(repeating: "0", count: 15), count: 15);
+    }
 }
