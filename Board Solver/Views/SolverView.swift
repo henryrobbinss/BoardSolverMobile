@@ -11,19 +11,20 @@ import Vision
 import RealityKit
 import ARKit
 
-struct FourInARowView: View
+struct SolverView: View
 {
-    @ObservedObject var classifier: ImageClassifier
+    @ObservedObject var FClassifier: ImageClassifier
     @Environment(\.dismiss) private var dismiss
     @State private var arView = ARView(frame: .zero)
     @State private var capturedImage: UIImage?
-    @State var boardView: BoardView
+    @State var FBoardView: BoardView
     @State var playerColor: Int
-    @Binding var board: [[Int]]
-    @State var resultsBoard: [[Int]]
+    @Binding var FBoard: [[Int]]
+    @State var FResultsBoard: [[Int]]
     @State private var isScanning = false
     @State private var isSolving = false
     @State var canSolve: Bool = false
+    @Binding var game: String
 
     var body: some View
     {
@@ -36,27 +37,37 @@ struct FourInARowView: View
             {
                 Spacer()
                 
-                boardView
-                    .padding(.bottom, 20)
+                if game == "four" {
+                    FBoardView
+                        .padding(.bottom, 20)
+                } else if game == "scramble" {
+                    Text("Scramble Board")
+                }
+                
                 
                 HStack{
                     Button
                     {
-                        DispatchQueue.global().async
-                        {
-                            isScanning = true
-                            withAnimation(){
-                                canSolve = true
-                                captureFrame()
-                                if let image = capturedImage
-                                {
-                                    resultsBoard = classifier.detect(uiImage: rotateImage90DegreesClockwise(image: image)!, playerColor: playerColor)
-                                    $boardView.wrappedValue.updateBoard(brd: resultsBoard)
-                                    boardView.board = resultsBoard
+                        if game == "four" {
+                            DispatchQueue.global().async
+                            {
+                                isScanning = true
+                                withAnimation(){
+                                    canSolve = true
+                                    captureFrame()
+                                    if let image = capturedImage
+                                    {
+                                        FResultsBoard = FClassifier.detect(uiImage: rotateImage90DegreesClockwise(image: image)!, playerColor: playerColor)
+                                        $FBoardView.wrappedValue.updateBoard(brd: FResultsBoard)
+                                        FBoardView.board = FResultsBoard
+                                    }
                                 }
+                                isScanning = false
                             }
-                            isScanning = false
+                        } else if game == "scramble" {
+                            print("scanning for scramble")
                         }
+                        
                     } label: {
                         Label("", image: "scan_prompt")
                     }
@@ -64,15 +75,19 @@ struct FourInARowView: View
                    
                     Button
                     {
-                        DispatchQueue.global().async
-                        {
-                            isSolving = true
-                            withAnimation(){
-                                resultsBoard = Board.startSolving(board: board, playerColor: playerColor)
-                                $boardView.wrappedValue.updateBoard(brd: resultsBoard)
-                                boardView.board = resultsBoard
+                        if game == "four" {
+                            DispatchQueue.global().async
+                            {
+                                isSolving = true
+                                withAnimation(){
+                                    FResultsBoard = Board.startSolving(board: FBoard, playerColor: playerColor)
+                                    $FBoardView.wrappedValue.updateBoard(brd: FResultsBoard)
+                                    FBoardView.board = FResultsBoard
+                                }
+                                isSolving = false
                             }
-                            isSolving = false
+                        } else if game == "scramble" {
+                            print("solving for scramble")
                         }
                     } label: {
                         Label("", image: "solve_prompt")

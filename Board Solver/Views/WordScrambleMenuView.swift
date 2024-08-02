@@ -9,32 +9,41 @@ import SwiftUI
 
 struct WordScrambleMenuView: View {
     @Environment(\.dismiss) private var dismiss
+    @State var pc = -1
+    @State var game = "scramble"
     
     var body: some View {
-        ZStack {
-            //Background
-            Color.white.ignoresSafeArea(.all)
+        NavigationView {
             
-            VStack {
-                HStack {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Label("", image: "Back_prompt")
+            ZStack {
+                //Background
+                Color.white.ignoresSafeArea(.all)
+                
+                VStack {
+                    HStack {
+                        Button {
+                            dismiss()
+                        } label: {
+                            Label("", image: "Back_prompt")
+                        }
+                        .padding()
+                        
+                        Spacer()
                     }
-                    .padding()
+                    
+                    Spacer()
+                    
+                    NavigationLink
+                    {
+                        BufferView(playerColor: $pc, g: $game)
+                            .navigationBarTitle("")
+                            .navigationBarHidden(true)
+                    } label: {
+                        Label("", image: "yellow_prompt")
+                    }
                     
                     Spacer()
                 }
-                
-                Spacer()
-                
-                Text("Coming Soon!")
-                    .font(.custom("KoHo-Medium", size: 40))
-                    .foregroundColor(Color.black)
-                    .monospacedDigit()
-                
-                Spacer()
             }
         }
     }

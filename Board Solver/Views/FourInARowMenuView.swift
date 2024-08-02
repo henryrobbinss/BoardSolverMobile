@@ -12,6 +12,7 @@ struct FourInARowMenuView: View
     @Environment(\.dismiss) private var dismiss
     @State var yellow: Int = 1
     @State var red: Int = 0
+    @State var game = "four"
     // Disable animation transitions
     init()
     {
@@ -55,7 +56,7 @@ struct FourInARowMenuView: View
                     {
                         NavigationLink
                         {
-                            FourInARowBufferView(playerColor: $yellow)
+                            BufferView(playerColor: $yellow, g: $game)
                                 .navigationBarTitle("")
                                 .navigationBarHidden(true)
                         } label: {
@@ -64,7 +65,7 @@ struct FourInARowMenuView: View
                         
                         NavigationLink
                         {
-                            FourInARowBufferView(playerColor: $red)
+                            BufferView(playerColor: $red, g: $game)
                                 .navigationBarTitle("")
                                 .navigationBarHidden(true)
                         } label:

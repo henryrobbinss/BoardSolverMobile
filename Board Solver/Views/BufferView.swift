@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-struct FourInARowBufferView: View {
+struct BufferView: View {
     @Binding var playerColor: Int
     @State var board = Array(repeating: Array(repeating: 2, count: 7), count: 6)
     @State var resultsBoard = Array(repeating: Array(repeating: 2, count: 7), count: 6)
+    @Binding var g: String
     
     var body: some View {
-        FourInARowView(classifier: ImageClassifier(), boardView: BoardView(board: $board), playerColor: playerColor, board: $board, resultsBoard: resultsBoard)
+        SolverView(FClassifier: ImageClassifier(), FBoardView: BoardView(board: $board), playerColor: playerColor, FBoard: $board, FResultsBoard: resultsBoard, game: $g)
     }
 }
