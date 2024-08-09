@@ -19,6 +19,16 @@ public class Trie {
             displaySingleWord(n:tempDict[i]!);
         }
     }
+    public func checkIfWordExists(word : [Character]) -> Bool {
+        var cur : Node = root;
+        for i in word {
+            if cur.checkIfChildExists(c:i) {
+                cur = cur.getChild(c:i);
+            } else {return false;}
+        }
+        if cur.getLetters().count >= 2 {return true;}
+        return false;
+    }
     init() {
         root = Node();
     }

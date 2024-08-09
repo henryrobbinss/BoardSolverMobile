@@ -130,6 +130,47 @@ public class Solver {
         }
         return false;
     }
+    private func checkNewWordsCreated(word : [Character], x : Int, y : Int, dir : Bool) -> Bool {
+        // Duplicate board and play next move
+        let newBoard : Position = Position(p:pos);
+        newBoard.playMove(word:word,x:x,y:y,dir:dir);
+        return checkAllWords(b:newBoard);
+    }
+    func validateSingleWord(w:[Character]) -> Bool {
+        return tree.checkIfWordExists(word:w);
+    }
+    // Validate that all words exist
+    func checkAllWords(b : Position) -> Bool {
+        var curWord : [Character] = [];
+        // Check right first
+        for i in 0...14 {
+            for j in 0...14 {
+                if b.getChar(x:j,y:i) == "0" {
+                    if (curWord.count >= 2 && !validateSingleWord(w:curWord)) {return false;}
+                    curWord = [];
+                    continue;
+                }
+                curWord.append(b.getChar(x:j,y:i));
+            }
+            if (curWord.count >= 2 && !validateSingleWord(w:curWord)) {return false;}
+            curWord = [];
+        }
+        // Check down next
+        curWord = [];
+        for i in 0...14 {
+            for j in 0...14 {
+                if b.getChar(x:i,y:j) == "0" {
+                    if (curWord.count >= 2 && !validateSingleWord(w:curWord)) {return false;}
+                    curWord = [];
+                    continue;
+                }
+                curWord.append(b.getChar(x:i,y:j));
+            }
+            curWord = [];
+        }
+        if (curWord.count >= 2 && !validateSingleWord(w:curWord)) {return false;}
+        return true;
+    }
     public func newSolve() -> String {
         let final : String = "";
         var foundWords : [String] = Array();
@@ -151,6 +192,13 @@ public class Solver {
                         tempWords = checkDown(x:x,y:y,n:tree.getRoot(),l:pos.curPlayerRack, cur:Array())
                     }
                     for word in tempWords {
+                        if (dir == 0) {
+                            if (!pos.checkConnected(word:word, x:x, y:y, dir:false)) {continue;}
+                            if (!checkNewWordsCreated(word:word, x:x, y:y, dir:false)) {continue;}
+                        } else {
+                            if (!pos.checkConnected(word:word, x:x, y:y, dir:true)) {continue;}
+                            if (!checkNewWordsCreated(word:word, x:x, y:y, dir:false)) {continue;}
+                        }
                         let curStr : String = String(word) + " " + String(x) + " " + String(y) + " " + String(dir)
                         foundWords.append(curStr)
                     }
@@ -160,48 +208,5 @@ public class Solver {
         }
         for word in foundWords {print(word+"\n");}
         return final;
-    }
-    public func solve() -> String {
-        let posWords : [[Character]]  = Array()//= pos.getPossibleWords();
-        var moveToScore: [String: Int] = [:]
-        for word in posWords {
-            let curMoves : [[[Bool]]] = pos.findSpotsForWord(word:word);
-            for i in 0...1 {
-                for j in 0...14 {
-                    for k in 0...14 {
-                        // If it passes here, valid move!
-                        if (curMoves[i][j][k]) {
-                            print("found word!")
-                            var curString : String = "";
-                            curString += word + " ";
-                            curString += String(k) + " ";
-                            curString += String(j) + " ";
-                            var score : Int = 0;
-                            if i == 1 {
-                                curString += "down";
-                                score = pos.scoreMove(word:word,x:k,y:j,dir:true);
-                            } else {
-                                curString += "right";
-                                score = pos.scoreMove(word:word,x:k,y:j,dir:false);
-                            }
-                            moveToScore[curString] = score;
-                        }
-                    }
-                }
-            }
-        }
-        // Get arr of the moves and sort them
-        // Sort from high to low
-        let moveArr : Array<String> = Array(moveToScore.keys);
-        let sortedArr = moveArr.sorted { (moveOne, moveTwo) -> Bool in
-            let scoreOne = moveToScore[moveOne]!;
-            let scoreTwo = moveToScore[moveTwo]!;
-            return scoreOne > scoreTwo
-        }
-//        for key in sortedArr {
-//            print(key + ": " + String(moveToScore[key]!));
-//        }
-        // Return the best move
-        return sortedArr[0] + ": " + String(moveToScore[sortedArr[0]]!) + "pts";
     }
 }
