@@ -26,6 +26,7 @@ struct SolverView: View
     @State private var isSolving = false
     @State var canSolve: Bool = false
     @Binding var game: String
+    @Binding var letters: String
 
     var body: some View
     {
@@ -78,7 +79,7 @@ struct SolverView: View
                                     captureFrame()
                                     if let image = capturedImage
                                     {
-                                        // Board stuff here
+                                        print(image)// Board stuff here
                                     }
                                 }
                                 isScanning = false

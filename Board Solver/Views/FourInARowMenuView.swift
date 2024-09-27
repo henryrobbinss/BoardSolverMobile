@@ -13,6 +13,7 @@ struct FourInARowMenuView: View
     @State var yellow: Int = 1
     @State var red: Int = 0
     @State var game = "four"
+    @State var letters: String = ""
     // Disable animation transitions
     init()
     {
@@ -56,7 +57,7 @@ struct FourInARowMenuView: View
                     {
                         NavigationLink
                         {
-                            BufferView(playerColor: $yellow, g: $game)
+                            BufferView(playerColor: $yellow, g: $game, letters: $letters)
                                 .navigationBarTitle("")
                                 .navigationBarHidden(true)
                         } label: {
@@ -65,7 +66,7 @@ struct FourInARowMenuView: View
                         
                         NavigationLink
                         {
-                            BufferView(playerColor: $red, g: $game)
+                            BufferView(playerColor: $red, g: $game, letters: $letters)
                                 .navigationBarTitle("")
                                 .navigationBarHidden(true)
                         } label:
