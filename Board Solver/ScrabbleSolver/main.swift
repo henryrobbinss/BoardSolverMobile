@@ -7,7 +7,6 @@ func main() {
         let filename : String = "test1.txt";
         let relativePath = "/Users/spauln/Documents/GitHub/BoardSolverMobile/Board Solver/ScrabbleSolver"
         let data = try String(contentsOfFile: relativePath+"/TestFiles/"+filename, encoding: .utf8);
-        print("MADE IT2");
         let myStrings = data.components(separatedBy: .newlines);
         let curPos : Position = Position(rack: Array(myStrings[0]));
         var gotRack : Bool = false;
@@ -20,11 +19,7 @@ func main() {
                 //empty string because of newline
                 continue;
             }
-            print (curLine);
             let lineArr : [String] = curLine.components(separatedBy: " ");
-            print(myStrings);
-            print(lineArr);
-            print(lineArr.count);
             if (lineArr.count != 4) {
                 print ("ERROR: lineArr is not length 3");
                 return;

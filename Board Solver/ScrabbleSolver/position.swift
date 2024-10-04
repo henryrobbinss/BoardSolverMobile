@@ -54,10 +54,10 @@ public class Position {
         for i in 0...word.count-1 {
             if (dir && board[y+i][x] == "0") {
                 curPlayerRack = removeFromArr(c: word[i], a: curPlayerRack);
-                board[y+i][x] = word[i];
+                board[y][x+i] = word[i];
             } else if (!dir && board[y][x+i] == "0"){
                 curPlayerRack = removeFromArr(c: word[i], a: curPlayerRack);
-                board[y][x+i] = word[i];
+                board[y+i][x] = word[i];
             }
         }
     }

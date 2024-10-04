@@ -1,2 +1,2 @@
 saioufc
-focus 7 7 right
+focus 7 7 down
