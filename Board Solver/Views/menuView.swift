@@ -6,6 +6,10 @@
 //
 //  This view represents the main menu of the Board Solver app, providing navigation to different game modes and infomation.
 
+
+// Todo: found a bug on iPhone SE (3rd generation, iOS 17.5), where some elements are overflow with the screen boundary. Trying to make it adaptive. (Attached the behavour on OverflowBug.png)
+
+
 import SwiftUI
 
 // The main menu view for the Board Solver app.
