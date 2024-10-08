@@ -21,14 +21,21 @@ func printPosOptions(pos:[[[Bool]]]) {
 func main() {
     do {
         let filename : String = "test.txt";
-        let relativePath = "/Users/chris/Documents/ScrabbleSolver/ScrabbleSolver"
+//        let relativePath = "/Users/chris/Documents/ScrabbleSolver/ScrabbleSolver"
+        let relativePath = "/Users/spauln/Documents/GitHub/BoardSolverMobile/Board Solver/ScrabbleSolver";
+
         let data = try String(contentsOfFile: relativePath+"/TestFiles/"+filename, encoding: .utf8);
         let myStrings = data.components(separatedBy: .newlines);
+        print (myStrings);
         let solver : Solver = Solver();
         var gotRack : Bool = false;
-        for curLine in myStrings {
+        for curLine: String in myStrings {
             if (!gotRack) {
                 gotRack = true;
+                continue;
+            }
+            if(curLine.isEmpty) {
+                //empty string because of newline
                 continue;
             }
             let lineArr : [String] = curLine.components(separatedBy: " ");
@@ -51,6 +58,7 @@ func main() {
             print("--------------------");
             solver.playMove(word:Array(word),x:x,y:y,dir:dir)
         }
+
        // solver.displayBoard();
        // print(rack);
        // let move : String = solver.solve();

@@ -25,7 +25,8 @@ public class Solver {
         do {
             let wordfile : String = "words.txt";
             // Change relative path with the path from the pc to the folder of the words file
-            let relativePath = "/Users/chris/Documents/ScrabbleSolver/ScrabbleSolver"
+            //let relativePath = "/Users/chris/Documents/ScrabbleSolver/ScrabbleSolver"
+            let relativePath = "/Users/spauln/Documents/GitHub/BoardSolverMobile/Board Solver/ScrabbleSolver"
             let data = try String(contentsOfFile: relativePath+"/"+wordfile, encoding: .utf8).components(separatedBy: .newlines);
             for word in data {
                 tree.addWord(l:Array(word)); 
