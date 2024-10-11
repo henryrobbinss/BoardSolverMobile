@@ -69,17 +69,30 @@ func main() {
       //  } else {
        //     solver.playMove(word:Array(moveSegments[0]), x:Int(moveSegments[1])!, y:Int(moveSegments[2])!, dir:false);
        // }
-        var before = Date().timeIntervalSince1970
+        var before: TimeInterval = Date().timeIntervalSince1970
         solver.loadWords();
         var after = Date().timeIntervalSince1970
-        print(after-before);
+        print("Time to load words (s):  ", terminator: "")
+        print(+after-before);
         solver.setRack(rack:Array(myStrings[0]));
         before = Date().timeIntervalSince1970
         let _ = solver.newSolve();
         after = Date().timeIntervalSince1970
+        print("Time to solve (s):  ", terminator: "")
         print(after-before);
         solver.displayBoard();
     } catch {
         print(error);
     }
 }
+
+/*
+checklist:
+- make sure given an empty board returns move starting on starting square
+- adjust to take in a board initially and return best move given a rack rather than take in a move
+    * create a class for testing purposes to read in a board file to a board
+- create function to evaluate word scores
+    * requires point values per letter
+    * 
+*/
+   

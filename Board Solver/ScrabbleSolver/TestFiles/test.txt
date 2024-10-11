@@ -1,2 +1,2 @@
 AEEJRRT
-RAW 4 2 right
+RAW 1 0 right

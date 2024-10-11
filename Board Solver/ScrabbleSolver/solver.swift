@@ -2,6 +2,7 @@ import Foundation
 public class Solver {
     var pos : Position;
     var tree : Trie;
+    var pointValues:[Int] = [1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10]
     init(rack : [Character]) {
         // Create an empty position given the rack
         pos = Position(rack:rack);
@@ -38,6 +39,16 @@ public class Solver {
     public func displayWords() {
         tree.displayWords();
     }
+
+    /*
+    Function that takes parameters:
+        x, y (Int)          - x, y location of current  
+        n (Node)            - root node of solver tree
+        l (Char Array)      - current player rack
+        cur (Char Array)    - empty array
+    Returns:
+        2d array of Characters containing all possible words
+    */
     private func checkRight(x:Int,y:Int, n:Node, l:[Character], cur:[Character]) -> [[Character]] {
         var final : [[Character]] = Array();
         if (x > 14 || l.count == 0) {return final;}
@@ -55,7 +66,7 @@ public class Solver {
                 // If space, go through every child
                 if l[i] == " " {
                     let allChildren : [Character : Node] = n.getAllChildren();
-                    var tempRack = l;
+                    var tempRack: [Character] = l;
                     tempRack.remove(at: i);
                     for j in allChildren.keys {
                         var newWord : [Character] = cur;
@@ -175,7 +186,7 @@ public class Solver {
     public func newSolve() -> String {
         let final : String = "";
         var foundWords : [String] = Array();
-        for dir in 0...1 {
+        for dir: Int in 0...1 {
             for y in 0...14 {
                 for x in 0...14 {
                     var tempWords : [[Character]] = Array();
@@ -208,6 +219,10 @@ public class Solver {
             }
         }
         for word in foundWords {print(word+"\n");}
+        print("FINAL:  ", terminator: "")
+        print(final);
+        print(pointValues);        
         return final;
+        
     }
 }
