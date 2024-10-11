@@ -13,9 +13,47 @@ public class Solver {
         pos = Position();
         tree = Trie();
     }
+    init(path: String) {
+        //init with given board (input is string path to board file)
+        tree = Trie();
+        //iterate through each tile and create position board
+        var b: [[Character]] = Array(repeating: Array(repeating: "*", count: 15), count: 15);
+        let rows: [String] = path.components(separatedBy: .newlines);
+        var x: Int = 0;
+        var y: Int = 0;
+        //for each y value (each row)
+        for curRow: String in rows {
+            x = 0;
+            if(curRow.isEmpty) {
+                continue;
+            }
+            let lineArr : [String] = curRow.components(separatedBy: " ");
+            if (lineArr.count != 15) {
+                print ("ERROR: lineArr is not length 15");
+                break;
+            }
+            //for each tile in x direction of current row
+            for curTile: String in lineArr {
+                if(curTile.count != 1) {
+                    print ("ERROR: current tile is not length 1 (1 character)");
+                    break;
+                }
+                
+                var tile : Character = Character(curTile);
+                b[y][x]=tile;
+                x += 1;
+            }
+            y += 1;
+        }
+        
+        pos = Position(b: b);
+
+    }
+
     public func playMove(word : [Character], x : Int, y : Int, dir: Bool) {
         pos.playMove(word:word,x:x,y:y,dir:dir);
     }
+
     public func displayBoard() {
         pos.displayBoard();
     }

@@ -313,5 +313,10 @@ public class Position {
         curPlayerRack = p.getRack();
         board = p.getFullBoard().map{$0.map{$0}};
     }
+    init(b: [[Character]]) {
+        curPlayerRack = Array();
+        board = b;
+        print(board);
+    }
     
 }
