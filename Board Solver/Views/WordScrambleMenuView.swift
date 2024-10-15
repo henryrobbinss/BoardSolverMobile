@@ -61,9 +61,9 @@ struct WordScrambleMenuView: View {
                                 } else if index == letters.count{
                                     // Highlight the current input spot with a grey box
                                     Rectangle()
-                                        .foregroundColor(Color.gray.opacity(0.3))
-                                        .frame(width: 55, height: 60)
-                                        .cornerRadius(2.0)
+                                        .foregroundColor(Color.gray.opacity(0.2))
+                                        .frame(width: 50, height: 60)
+                                        .cornerRadius(4.0)
                                 } else {
                                     // Empty box for remaining letters
                                     Text(" ")
@@ -73,12 +73,13 @@ struct WordScrambleMenuView: View {
                                 Rectangle()
                                     .frame(height: 2)
                                     .foregroundColor(.gray)
+                                    .frame(width: 40)
                                     .padding(.top, 35)
                             }
                         }
                     }
                     .padding(.vertical, 20)
-                    .padding(.horizontal, 10)
+                    .padding(.horizontal, 30)
                     .overlay(
                         // Hidden TextField to capture input
                         TextField("", text: $letters)
