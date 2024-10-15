@@ -16,56 +16,59 @@ import SwiftUI
 struct MenuView: View {
     var body: some View {
         NavigationStack {
-            ZStack {
-                // Background: set to white, covering the entire screen.
-                Color.white
-                    .ignoresSafeArea()
+            GeometryReader {geomery in
+                ZStack {
+                    // Background: set to white, covering the entire screen.
+                    Color.white
+                        .ignoresSafeArea()
 
-                VStack {
-                    // Display the title text.
                     VStack {
-                        Text("BOARD")
-                            .font(.custom("KoHo-Medium", size: 90))
+                        // Display the title text.
+                        VStack {
+                            Text("BOARD")
+                                .font(.custom("KoHo-Medium", size: 90))
+                                .foregroundColor(.black)
+                                .multilineTextAlignment(.center)
+                            Text("SOLVER")
+                                .font(.custom("KoHo-Medium", size: 90))
+                                .foregroundColor(.black)
+                                .multilineTextAlignment(.center)
+                        }
+
+                        // Display the main image below the title.
+                        Image("image1")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 300, height: 230)
+                            .offset(y: -20)
+
+                        // Display a prompt to select a game.
+                        Text("Select a Game Below")
+                            .font(.custom("KoHo-Medium", size: 30))
                             .foregroundColor(.black)
                             .multilineTextAlignment(.center)
-                        Text("SOLVER")
-                            .font(.custom("KoHo-Medium", size: 90))
-                            .foregroundColor(.black)
-                            .multilineTextAlignment(.center)
-                    }
 
-                    // Display the main image below the title.
-                    Image("image1")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 300, height: 230)
-                        .offset(y: -20)
+                        // Navigation link to the "Four In A Row" game menu.
+                        NavigationLink(destination: FourInARowMenuView()
+                            .toolbar(.hidden, for: .navigationBar)) {
+                            Image("fourinarow_prompt")
+                        }
 
-                    // Display a prompt to select a game.
-                    Text("Select a Game Below")
-                        .font(.custom("KoHo-Medium", size: 30))
-                        .foregroundColor(.black)
-                        .multilineTextAlignment(.center)
+                        // Navigation link to the "Word Scramble" game menu.
+                        NavigationLink(destination: WordScrambleMenuView()
+                            .toolbar(.hidden, for: .navigationBar)) {
+                            Image("scribble_prompt")
+                        }
 
-                    // Navigation link to the "Four In A Row" game menu.
-                    NavigationLink(destination: FourInARowMenuView()
-                        .toolbar(.hidden, for: .navigationBar)) {
-                        Image("fourinarow_prompt")
-                    }
-
-                    // Navigation link to the "Word Scramble" game menu.
-                    NavigationLink(destination: WordScrambleMenuView()
-                        .toolbar(.hidden, for: .navigationBar)) {
-                        Image("scribble_prompt")
-                    }
-
-                    // Navigation link to the "About" view.
-                    NavigationLink(destination: AboutView()
-                        .toolbar(.hidden, for: .navigationBar)) {
-                        Image("about_prompt")
+                        // Navigation link to the "About" view.
+                        NavigationLink(destination: AboutView()
+                            .toolbar(.hidden, for: .navigationBar)) {
+                            Image("about_prompt")
+                        }
                     }
                 }
             }
+            
         }
     }
 }
