@@ -16,21 +16,24 @@ import SwiftUI
 struct MenuView: View {
     var body: some View {
         NavigationStack {
-            GeometryReader {geomery in
+            GeometryReader {geometry in
                 ZStack {
                     // Background: set to white, covering the entire screen.
                     Color.white
                         .ignoresSafeArea()
 
-                    VStack {
+                    VStack (spacing: geometry.size.height * 0.02) {
+                        // Calculate the fond size based on screen width
+                        let titileFontSize = geometry.size.width * 0.15
+                        
                         // Display the title text.
                         VStack {
                             Text("BOARD")
-                                .font(.custom("KoHo-Medium", size: 90))
+                                .font(.custom("KoHo-Medium", size: titileFontSize))
                                 .foregroundColor(.black)
                                 .multilineTextAlignment(.center)
                             Text("SOLVER")
-                                .font(.custom("KoHo-Medium", size: 90))
+                                .font(.custom("KoHo-Medium", size: titileFontSize))
                                 .foregroundColor(.black)
                                 .multilineTextAlignment(.center)
                         }
