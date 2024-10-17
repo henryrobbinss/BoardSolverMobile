@@ -11,6 +11,7 @@ struct ScrambleBoardView: View {
     
     let rows = 15
     let columns = 15
+    @Binding var board: [[Character]]
     
     // Grid colors corresponding to different tile types
     func colorForTile(row: Int, column: Int) -> Color {
@@ -71,22 +72,33 @@ struct ScrambleBoardView: View {
             }
             .frame(maxWidth: 500, maxHeight: 400)
             
-            //
-            VStack(spacing: 2) { // Vertical stack for rows
-                ForEach(0..<rows, id: \.self) { row in
-                    HStack(spacing: 2) { // Horizontal stack for columns
-                        ForEach(0..<columns, id: \.self) { column in
-                            Rectangle()
-                                .fill(colorForTile(row: row, column: column))
-                                .frame(width: 15, height: 15)
-                                .cornerRadius(2.0)
-                                .opacity(0.75)
+            
+            ZStack {
+                Rectangle()
+                    .fill(Color.brown)
+                    .frame(width: (15+4)*CGFloat(columns), height: (15+4)*CGFloat(rows))
+                    .opacity(0.5)
+                    .cornerRadius(15.0)
+                VStack(spacing: 2) { // Vertical stack for rows
+                    ForEach(0..<rows, id: \.self) { row in
+                        HStack(spacing: 2) { // Horizontal stack for columns
+                            ForEach(0..<columns, id: \.self) { column in
+                                Rectangle()
+                                    .fill(colorForTile(row: row, column: column))
+                                    .frame(width: 15, height: 15)
+                                    .cornerRadius(2.0)
+                                    .opacity(0.75)
+                                    
+                                    .overlay(Group {
+                                        Text(board[row][column] == "*" ? "" : String(board[row][column]))
+                                    })
+                            }
                         }
                     }
                 }
+                .padding()
             }
             .offset(y: -100)
-            .padding()
         }
     }
 }
@@ -108,5 +120,6 @@ struct LShape: View {
 }
 
 #Preview {
-    ScrambleBoardView()
+    @Previewable @State var tempBoard: [[Character]] = Array(repeating: Array(repeating: Character("*"), count: 15), count: 15)
+    ScrambleBoardView(board: $tempBoard)
 }

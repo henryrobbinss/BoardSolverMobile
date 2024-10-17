@@ -21,6 +21,7 @@ struct SolverView: View
     @State var FBoardView: BoardView
     @State var playerColor: Int
     @Binding var FBoard: [[Int]]
+    @Binding var SBoard: [[Character]]
     @State var FResultsBoard: [[Int]]
     @State private var isScanning = false
     @State private var isSolving = false
@@ -36,7 +37,7 @@ struct SolverView: View
                 .edgesIgnoringSafeArea(.all)
             
             if game == "scramble" {
-                ScrambleBoardView()
+                ScrambleBoardView(board: $SBoard)
             }
             
             VStack
@@ -84,6 +85,12 @@ struct SolverView: View
                                 }
                                 isScanning = false
                             }
+                            SBoard[7][7] = "F"
+                            SBoard[7][8] = "O"
+                            SBoard[7][9] = "C"
+                            SBoard[7][10] = "U"
+                            SBoard[7][11] = "S"
+                            
                         }
                         
                     } label: {
