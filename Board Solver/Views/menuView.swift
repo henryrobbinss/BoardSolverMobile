@@ -29,11 +29,11 @@ struct MenuView: View {
                         // Display the title text.
                         VStack {
                             Text("BOARD")
-                                .font(.custom("KoHo-Medium", size: titileFontSize))
+                                .font(.custom("KoHo-Medium", size: titleFontSize))
                                 .foregroundColor(.black)
                                 .multilineTextAlignment(.center)
                             Text("SOLVER")
-                                .font(.custom("KoHo-Medium", size: titileFontSize))
+                                .font(.custom("KoHo-Medium", size: titleFontSize))
                                 .foregroundColor(.black)
                                 .multilineTextAlignment(.center)
                         }
@@ -51,8 +51,9 @@ struct MenuView: View {
                             .foregroundColor(.black)
                             .multilineTextAlignment(.center)
 
-                        // Navigation link to the "Four In A Row" game menu.
-                        VStack(spacing: geometry:size:height * 0.015) {
+                        // Navigation links
+                        VStack(spacing: geometry.size.height * 0.015) {
+                            // Navigation link to the "Four In A Row" game menu.
                             NavigationLink(destination: FourInARowMenuView()
                                 .toolbar(.hidden, for: .navigationBar)) {
                                 Image("fourinarow_prompt")
