@@ -94,9 +94,19 @@ struct SolverView: View
                         }
                         
                     } label: {
-                        Label("", image: "scan_prompt")
+                        Rectangle()
+                            .fill(.orange)
+                            .frame(width: 180, height: 75)
+                            .cornerRadius(15)
+                            .overlay(Group{
+                                Text("SCAN")
+                                    .font(.custom("PatrickHandSC-Regular", size: 50))
+                                    .foregroundStyle(.black)
+                                RoundedRectangle(cornerRadius: 15)
+                                            .stroke(Color.black, lineWidth: 5)
+                                })
                     }
-                    .frame(maxWidth: 175)
+                    .frame(maxWidth: 180)
                    
                     Button
                     {
@@ -115,9 +125,19 @@ struct SolverView: View
                             print("solving for scramble")
                         }
                     } label: {
-                        Label("", image: "solve_prompt")
+                        Rectangle()
+                            .fill(.green)
+                            .frame(width: 180, height: 75)
+                            .cornerRadius(15)
+                            .overlay(Group{
+                                Text("SOLVE")
+                                    .font(.custom("PatrickHandSC-Regular", size: 50))
+                                    .foregroundStyle(.black)
+                                RoundedRectangle(cornerRadius: 15)
+                                            .stroke(Color.black, lineWidth: 5)
+                                })
                     }
-                    .frame(maxWidth: 175)
+                    .frame(maxWidth: 180)
                     .disabled(!canSolve)
                 }
                 .padding()
@@ -125,7 +145,17 @@ struct SolverView: View
                 Button {
                     dismiss()
                 } label: {
-                    Label("", image: "Back_prompt")
+                    Rectangle()
+                        .fill(.gray)
+                        .frame(width: 100, height: 60)
+                        .cornerRadius(15)
+                        .overlay(Group{
+                            Text("BACK")
+                                .font(.custom("PatrickHandSC-Regular", size: 30))
+                                .foregroundStyle(.white)
+                            RoundedRectangle(cornerRadius: 15)
+                                        .stroke(Color.black, lineWidth: 5)
+                            })
                 }
                 .frame(minWidth: 200)
             }

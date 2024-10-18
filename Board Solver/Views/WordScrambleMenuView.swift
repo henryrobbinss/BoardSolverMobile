@@ -28,7 +28,17 @@ struct WordScrambleMenuView: View {
                         Button {
                             dismiss()
                         } label: {
-                            Label("", image: "Back_prompt")
+                            Rectangle()
+                                .fill(.gray)
+                                .frame(width: 80, height: 40)
+                                .cornerRadius(15)
+                                .overlay(Group{
+                                    Text("BACK")
+                                        .font(.custom("PatrickHandSC-Regular", size: 25))
+                                        .foregroundStyle(.white)
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .stroke(Color.black, lineWidth: 2.5)
+                                    })
                         }
                         .padding()
                         
@@ -38,13 +48,13 @@ struct WordScrambleMenuView: View {
                     Spacer()
                     
                     // Main prompt text
-                    Text("Please Type in Your Letters")
-                        .font(.custom("KoHo-Medium", size: 30))
+                    Text("please type in your letters")
+                        .font(.custom("PatrickHandSC-Regular", size: 30))
                         .padding(.bottom, 5)
                         .foregroundColor(.black)
                     
                     Text("(type in a '?' for blanks)")
-                        .font(.custom("KoHo-Medium", size: 15))
+                        .font(.custom("PatrickHandSC-Regular", size: 15))
                         .foregroundColor(.gray)
                         .padding(.bottom, 50)
                     
@@ -108,7 +118,17 @@ struct WordScrambleMenuView: View {
                             .navigationBarTitle("")
                             .navigationBarHidden(true)
                     } label: {
-                        Label("", image: "solve_prompt")
+                        Rectangle()
+                            .fill(.orange)
+                            .frame(width: 180, height: 75)
+                            .cornerRadius(15)
+                            .overlay(Group{
+                                Text("NEXT")
+                                    .font(.custom("PatrickHandSC-Regular", size: 50))
+                                    .foregroundStyle(.white)
+                                RoundedRectangle(cornerRadius: 15)
+                                            .stroke(Color.black, lineWidth: 5)
+                                })
                     }
                 }
             }
