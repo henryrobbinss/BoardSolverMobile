@@ -52,22 +52,34 @@ struct MenuView: View {
                             .multilineTextAlignment(.center)
 
                         // Navigation link to the "Four In A Row" game menu.
-                        NavigationLink(destination: FourInARowMenuView()
-                            .toolbar(.hidden, for: .navigationBar)) {
-                            Image("fourinarow_prompt")
-                        }
+                        VStack(spacing: geometry:size:height * 0.015) {
+                            NavigationLink(destination: FourInARowMenuView()
+                                .toolbar(.hidden, for: .navigationBar)) {
+                                Image("fourinarow_prompt")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: geometry.size.width * 0.6)
+                            }
 
-                        // Navigation link to the "Word Scramble" game menu.
-                        NavigationLink(destination: WordScrambleMenuView()
-                            .toolbar(.hidden, for: .navigationBar)) {
-                            Image("scribble_prompt")
-                        }
+                            // Navigation link to the "Word Scramble" game menu.
+                            NavigationLink(destination: WordScrambleMenuView()
+                                .toolbar(.hidden, for: .navigationBar)) {
+                                Image("scribble_prompt")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: geometry.size.width * 0.6)
+                            }
 
-                        // Navigation link to the "About" view.
-                        NavigationLink(destination: AboutView()
-                            .toolbar(.hidden, for: .navigationBar)) {
-                            Image("about_prompt")
+                            // Navigation link to the "About" view.
+                            NavigationLink(destination: AboutView()
+                                .toolbar(.hidden, for: .navigationBar)) {
+                                Image("about_prompt")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: geometry.size.width * 0.6)
+                            }
                         }
+                        
                     }
                 }
             }
