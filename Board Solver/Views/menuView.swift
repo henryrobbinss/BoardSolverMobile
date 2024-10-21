@@ -24,7 +24,7 @@ struct MenuView: View {
 
                     VStack (spacing: geometry.size.height * 0.02) {
                         // Calculate the fond size based on screen width
-                        let titileFontSize = geometry.size.width * 0.15
+                        let titleFontSize = geometry.size.width * 0.15
                         
                         // Display the title text.
                         VStack {
@@ -37,7 +37,9 @@ struct MenuView: View {
                                 .foregroundColor(.black)
                                 .multilineTextAlignment(.center)
                         }
+                        .padding(.top, geometry.size.height * 0.05)
 
+                        
                         // Display the main image below the title.
                         Image("image1")
                             .resizable()
@@ -50,6 +52,8 @@ struct MenuView: View {
                             .font(.custom("KoHo-Medium", size: 30))
                             .foregroundColor(.black)
                             .multilineTextAlignment(.center)
+                            .padding(.bottom, geometry.size.height * 0.01)
+
 
                         // Navigation links
                         VStack(spacing: geometry.size.height * 0.015) {
@@ -80,6 +84,7 @@ struct MenuView: View {
                                         .frame(width: geometry.size.width * 0.6)
                             }
                         }
+                        .padding(.bottom, geometry.size.height * 0.05)
                         
                     }
                 }
