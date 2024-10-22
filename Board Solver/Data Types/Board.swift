@@ -125,11 +125,9 @@ class Board
         }
         // place in first open column
         for i in 0..<board2.count {
-            for j in 0..<board2[i].count {
-                if board2.reversed()[i][j] == 2{
-                    board2[5-i][col] = 3
-                    return board2
-                }
+            if board2.reversed()[i][col] == 2{
+                board2[5-i][col] = 3
+                return board2
             }
         }
         return board2

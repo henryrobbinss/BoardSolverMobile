@@ -57,11 +57,9 @@ struct FourInARowMenuView: View
                     Spacer()
                     
                     Text("Please Select Which\nColor Went First")
-                        .font(.custom("PatrickHandSC-Regular", size: 20))
-                        .foregroundColor(Color.black)
+                        .font(.custom("PatrickHandSC-Regular", size: 40))
+                        .foregroundColor(.black)
                         .multilineTextAlignment(.center)
-                        .monospaced()
-                        .scaledToFit()
                 
                     HStack
                     {
