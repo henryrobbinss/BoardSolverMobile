@@ -27,33 +27,34 @@ struct MenuView: View {
                         let titleFontSize = geometry.size.width * 0.15
                         
                         // Display the title text.
-                        VStack {
+                        VStack(spacing: 0) {
                             Text("BOARD")
                                 .font(.custom("KoHo-Medium", size: titleFontSize))
                                 .foregroundColor(.black)
                                 .multilineTextAlignment(.center)
+                                .minimumScaleFactor(0.5)
                             Text("SOLVER")
                                 .font(.custom("KoHo-Medium", size: titleFontSize))
                                 .foregroundColor(.black)
                                 .multilineTextAlignment(.center)
+                                .minimumScaleFactor(0.5)
                         }
                         .padding(.top, geometry.size.height * 0.05)
 
-                        
                         // Display the main image below the title.
                         Image("image1")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 300, height: 230)
-                            .offset(y: -20)
+                            .frame(width: geometry.size.width * 0.8)
+                            .offset(y: -geometry.size.height * 0.02)
 
                         // Display a prompt to select a game.
                         Text("Select a Game Below")
-                            .font(.custom("KoHo-Medium", size: 30))
+                            .font(.custom("KoHo-Medium", size: geometry.size.width * 0.07))
                             .foregroundColor(.black)
                             .multilineTextAlignment(.center)
                             .padding(.bottom, geometry.size.height * 0.01)
-
+                            .minimumScaleFactor(0.5)
 
                         // Navigation links
                         VStack(spacing: geometry.size.height * 0.015) {
@@ -85,11 +86,10 @@ struct MenuView: View {
                             }
                         }
                         .padding(.bottom, geometry.size.height * 0.05)
-                        
                     }
+                    .frame(width: geometry.size.width, height: geometry.size.height)
                 }
             }
-            
         }
     }
 }
