@@ -28,6 +28,7 @@ struct SolverView: View
     @State var canSolve: Bool = false
     @Binding var game: String
     @Binding var letters: String
+    @State private var alreadyWon = false
 
     var body: some View
     {
@@ -107,6 +108,7 @@ struct SolverView: View
                                 })
                     }
                     .frame(maxWidth: 180)
+                    
                    
                     Button
                     {
@@ -116,8 +118,12 @@ struct SolverView: View
                                 isSolving = true
                                 withAnimation(){
                                     FResultsBoard = Board.startSolving(board: FBoard, playerColor: playerColor)
-                                    $FBoardView.wrappedValue.updateBoard(brd: FResultsBoard)
-                                    FBoardView.board = FResultsBoard
+                                    if(FResultsBoard == FBoardView.board){
+                                        alreadyWon = true
+                                    } else {
+                                        $FBoardView.wrappedValue.updateBoard(brd: FResultsBoard)
+                                        FBoardView.board = FResultsBoard
+                                    }
                                 }
                                 isSolving = false
                             }
@@ -141,6 +147,13 @@ struct SolverView: View
                     .disabled(!canSolve)
                 }
                 .padding()
+                .alert("Solving Error", isPresented: $alreadyWon) {
+                            Button("OK", role: .cancel) {
+                                alreadyWon = false
+                            }
+                        } message: {
+                            Text("This Board is Already Solved!")
+                        }
                 
                 Button {
                     dismiss()

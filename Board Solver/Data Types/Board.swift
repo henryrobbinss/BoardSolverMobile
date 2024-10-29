@@ -101,6 +101,11 @@ class Board
     // as a [[Int]], whereby the solution placement cell equals 3.
     public static func startSolving(board: [[Int]], playerColor: Int) -> [[Int]]
     {
+        // Check for winner
+        if checkForWinner(board: board) != nil {
+            return board;
+        }
+        
         var board2 = board
         // clean up any current solved pieces
         for i in 0..<board2.count{
@@ -123,6 +128,7 @@ class Board
         if colarray[col] == -999999{
             return board2
         }
+        
         // place in first open column
         for i in 0..<board2.count {
             if board2.reversed()[i][col] == 2{
@@ -217,4 +223,39 @@ class Board
         result = concatIntsToString(string: result, intArray: conflict)
         return concatIntsToString(string: result, intArray: pending)
     }
+    
+    static func checkForWinner(board: [[Int]]) -> Int? {
+        let rows = board.count
+        let cols = board[0].count
+        
+        func checkDirection(row: Int, col: Int, dRow: Int, dCol: Int, player: Int) -> Bool {
+            for i in 0..<4 {
+                let r = row + i * dRow
+                let c = col + i * dCol
+                if r < 0 || r >= rows || c < 0 || c >= cols || board[r][c] != player {
+                    return false
+                }
+            }
+            return true
+        }
+        
+        for row in 0..<rows {
+            for col in 0..<cols {
+                let player = board[row][col]
+                if player == 2 { continue }  // Skip empty cells
+                
+                // Check horizontal, vertical, diagonal-right, diagonal-left
+                if checkDirection(row: row, col: col, dRow: 0, dCol: 1, player: player) ||  // Horizontal
+                    checkDirection(row: row, col: col, dRow: 1, dCol: 0, player: player) ||  // Vertical
+                    checkDirection(row: row, col: col, dRow: 1, dCol: 1, player: player) ||  // Diagonal-right
+                    checkDirection(row: row, col: col, dRow: 1, dCol: -1, player: player) {  // Diagonal-left
+                    return player
+                }
+            }
+        }
+        
+        return nil  // No winner
+    }
+
 }
+
