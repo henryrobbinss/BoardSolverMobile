@@ -23,18 +23,18 @@ struct MenuView: View
                 
                 VStack
                 {
+                    Spacer()
                     // Display the title text.
                     VStack {
                         Text("BOARD")
-                            .font(.custom("KoHo-Medium", size: 90))
+                            .font(.custom("PatrickHandSC-Regular", size: 90))
                             .foregroundColor(Color.black)
                             .multilineTextAlignment(.center)
-                            .monospacedDigit()
+                            .offset(y: 30)
                         Text("SOLVER")
-                            .font(.custom("KoHo-Medium", size: 90))
+                            .font(.custom("PatrickHandSC-Regular", size: 90))
                             .foregroundColor(Color.black)
                             .multilineTextAlignment(.center)
-                            .monospacedDigit()
                     }
                     
                     // Display the main image below the title.
@@ -42,14 +42,15 @@ struct MenuView: View
                         .resizable()
                         .scaledToFit()
                         .frame(width: 300, height: 230)
-                        .offset(y: -20)
+                        .offset(y: -60)
                     
                     // Display a prompt to select a game.
                     Text("Select a Game Below")
-                        .font(.custom("KoHo-Medium", size: 30))
+                        .font(.custom("PatrickHandSC-Regular", size: 30))
                         .foregroundColor(Color.black)
                         .multilineTextAlignment(.center)
                         .monospacedDigit()
+                        .offset(y: -60)
                     
                     // Navigation link to the "Four In A Row" game menu.
                     NavigationLink
@@ -57,8 +58,19 @@ struct MenuView: View
                         FourInARowMenuView().navigationBarTitle("").navigationBarHidden(true)
                     } label:
                     {
-                        Label("", image: "fourinarow_prompt")
+                        Rectangle()
+                            .fill(.yellow)
+                            .frame(width: 300, height: 80)
+                            .cornerRadius(15.0)
+                            .overlay(Group{
+                                Text("4 In-A-Row")
+                                    .font(.custom("PatrickHandSC-Regular", size: 60))
+                                    .foregroundStyle(.red)
+                                RoundedRectangle(cornerRadius: 15)
+                                            .stroke(Color.black, lineWidth: 5)
+                                })
                     }
+                    .offset(y: -60)
                     
                     // Navigation link to the "Word Scramble" game menu.
                     NavigationLink
@@ -66,8 +78,19 @@ struct MenuView: View
                         WordScrambleMenuView().navigationBarTitle("").navigationBarHidden(true)
                     } label:
                     {
-                        Label("", image: "scribble_prompt")
+                        Rectangle()
+                            .fill(.red)
+                            .frame(width: 300, height: 80)
+                            .cornerRadius(15.0)
+                            .overlay(Group{
+                                Text("Scramble")
+                                    .font(.custom("PatrickHandSC-Regular", size: 60))
+                                    .foregroundStyle(.white)
+                                RoundedRectangle(cornerRadius: 15)
+                                            .stroke(Color.black, lineWidth: 5)
+                                })
                     }
+                    .offset(y: -50)
                     
                     // Navigation link to the "About" view.
                     NavigationLink
@@ -75,9 +98,19 @@ struct MenuView: View
                         AboutView().navigationBarTitle("").navigationBarHidden(true)
                     } label:
                     {
-                        Label("", image: "about_prompt")
+                        Rectangle()
+                            .fill(.gray)
+                            .frame(width: 150, height: 80)
+                            .cornerRadius(15)
+                            .overlay(Group{
+                                Text("About")
+                                    .font(.custom("PatrickHandSC-Regular", size: 50))
+                                    .foregroundStyle(.white)
+                                RoundedRectangle(cornerRadius: 15)
+                                            .stroke(Color.black, lineWidth: 5)
+                                })
                     }
-                    //.offset(y: -90)
+                    .offset(y: -40)
                 }
             }
         }.navigationViewStyle(StackNavigationViewStyle())

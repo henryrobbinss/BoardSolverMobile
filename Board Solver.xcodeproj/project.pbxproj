@@ -25,6 +25,7 @@
 		2EA0FE932C46F0BB001E1F8C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA0FE922C46F0BB001E1F8C /* AboutView.swift */; };
 		2EA0FE952C46F48C001E1F8C /* WordScrambleMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA0FE942C46F48C001E1F8C /* WordScrambleMenuView.swift */; };
 		2EBAC1602C46CDDE001404D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EBAC15F2C46CDDE001404D4 /* LaunchScreen.storyboard */; };
+		2ED4BA052CC182BF00671ECA /* PatrickHandSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2ED4BA042CC182BF00671ECA /* PatrickHandSC-Regular.ttf */; };
 		2EE7F5442C5D52F7007B4F2C /* SolverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE7F5432C5D52F7007B4F2C /* SolverView.swift */; };
 		2EE7F5482C5D565B007B4F2C /* BufferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE7F5472C5D565B007B4F2C /* BufferView.swift */; };
 		FA10923D2C1377F7005AD2FE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FA10923C2C1377F7005AD2FE /* .gitignore */; };
@@ -75,6 +76,7 @@
 		2EA0FE922C46F0BB001E1F8C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		2EA0FE942C46F48C001E1F8C /* WordScrambleMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleMenuView.swift; sourceTree = "<group>"; };
 		2EBAC15F2C46CDDE001404D4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2ED4BA042CC182BF00671ECA /* PatrickHandSC-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PatrickHandSC-Regular.ttf"; sourceTree = "<group>"; };
 		2EE7F5432C5D52F7007B4F2C /* SolverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolverView.swift; sourceTree = "<group>"; };
 		2EE7F5472C5D565B007B4F2C /* BufferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferView.swift; sourceTree = "<group>"; };
 		FA10923C2C1377F7005AD2FE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				2EA0FE8D2C46E207001E1F8C /* KoHo-Medium.ttf */,
+				2ED4BA042CC182BF00671ECA /* PatrickHandSC-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -292,7 +295,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
-				LastUpgradeCheck = 1520;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					2E04BE3B2C0F978D004A775C = {
 						CreatedOnToolsVersion = 15.2;
@@ -334,6 +337,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ED4BA052CC182BF00671ECA /* PatrickHandSC-Regular.ttf in Resources */,
 				2EBAC1602C46CDDE001404D4 /* LaunchScreen.storyboard in Resources */,
 				FA10923D2C1377F7005AD2FE /* .gitignore in Resources */,
 				2EA0FE8E2C46E207001E1F8C /* KoHo-Medium.ttf in Resources */,
@@ -560,7 +564,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "BoardSolver.Board-Solver";
+				PRODUCT_BUNDLE_IDENTIFIER = BoardSolver.BoardSolver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -596,7 +600,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "BoardSolver.Board-Solver";
+				PRODUCT_BUNDLE_IDENTIFIER = BoardSolver.BoardSolver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -611,7 +615,6 @@
 		2E04BE642C0F978F004A775C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -631,7 +634,6 @@
 		2E04BE652C0F978F004A775C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -651,7 +653,6 @@
 		2E04BE672C0F978F004A775C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 97VF596VP5;
@@ -669,7 +670,6 @@
 		2E04BE682C0F978F004A775C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 97VF596VP5;
