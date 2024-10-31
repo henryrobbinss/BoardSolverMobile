@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-struct FourInARowMenuView: View
-{
+struct FourInARowMenuView: View {
     // Environment variable to handle view dismissal
     @Environment(\.dismiss) private var dismiss
     
@@ -23,12 +22,9 @@ struct FourInARowMenuView: View
         UINavigationBar.setAnimationsEnabled(false)
     }
     
-    var body: some View
-    {
-        NavigationView
-        {
-            ZStack
-            {
+    var body: some View {
+        NavigationStack {
+            ZStack {
                 // Set the background color to white and ignore safe area edges
                 Color.white.ignoresSafeArea(.all)
                 
@@ -40,7 +36,7 @@ struct FourInARowMenuView: View
                             dismiss()
                         } label: {
                             // Custom back button image
-                            Label("", image: "Back_prompt")
+                            Image("Back_prompt")
                         }
                         .padding()
                         
@@ -58,29 +54,23 @@ struct FourInARowMenuView: View
                         .scaledToFit()
                 
                     // Buttons for selecting the first player color
-                    HStack
-                    {
+                    HStack {
                         // Navigation link to BufferView with yellow as the first player
-                        NavigationLink
-                        {
+                        NavigationLink {
                             BufferView(playerColor: $yellow, g: $game, letters: $letters)
-                                .navigationBarTitle("") // Hide the navigation bar title
-                                .navigationBarHidden(true) // Hide the navigation bar
+                                .toolbar(.hidden, for: .navigationBar)
                         } label: {
                             // Custom yellow button image
-                            Label("", image: "yellow_prompt")
+                            Image("yellow_prompt")
                         }
                         
                         // Navigation link to BufferView with red as the first player
-                        NavigationLink
-                        {
+                        NavigationLink {
                             BufferView(playerColor: $red, g: $game, letters: $letters)
-                                .navigationBarTitle("") // Hide the navigation bar title
-                                .navigationBarHidden(true) // Hide the navigation bar
-                        } label:
-                        {
+                                .toolbar(.hidden, for: .navigationBar)
+                        } label: {
                             // Custom red button image
-                            Label("", image: "red_prompt")
+                            Image("red_prompt")
                         }
                     }
                     
@@ -88,8 +78,6 @@ struct FourInARowMenuView: View
                 }
             }
         }
-        // Use stack navigation style for better compatibility across devices
-        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
