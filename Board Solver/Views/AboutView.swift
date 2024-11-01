@@ -21,7 +21,17 @@ struct AboutView: View {
                     Button {
                         dismiss()
                     } label: {
-                        Label("", image: "Back_prompt")
+                        Rectangle()
+                            .fill(.gray)
+                            .frame(width: 80, height: 40)
+                            .cornerRadius(15)
+                            .overlay(Group{
+                                Text("BACK")
+                                    .font(.custom("PatrickHandSC-Regular", size: 25))
+                                    .foregroundStyle(.white)
+                                RoundedRectangle(cornerRadius: 15)
+                                    .stroke(Color.black, lineWidth: 2.5)
+                                })
                     }
                     .padding()
                     
@@ -29,13 +39,13 @@ struct AboutView: View {
                 }
                 
                 Text("About The BOARD SOLVER Project")
-                    .font(.custom("KoHo-Medium", size: 40))
+                    .font(.custom("PatrickHandSC-Regular", size: 40))
                     .foregroundColor(Color.black)
                     .multilineTextAlignment(.center)
                     .monospacedDigit()
                 ScrollView {
                     Text("Do you ever get stuck trying to decide on your next move in a board game? Board Solver Mobile (BSM), aims to be your assistant for strategic board games. Leveraging the power of computer vision, BSM analyzes game states through your iOS device's camera and suggests the next optimal move based on pre-trained algorithms.\n\tBSM currently supports the popular game of Connect4, with hopes to support more games in the future. For each game, BSM considers various factors like piece placement, potential threats, and strategic goals to recommend the move with the highest chance of success. The difficulty level of the solver currently only returns the best move, but we plan to make the diffculty of the opponent be adjustable, allowing you to test your skills against a range of challenges.\n\tThis project is a great tool for both casual and experienced board game players. Whether you're looking for a helping hand to improve your game or simply want to explore different strategic options, BSM can be your guide to becoming a board game champion!")
-                        .font(.custom("KoHo-Medium", size: 20))
+                        .font(.custom("PatrickHandSC-Regular", size: 20))
                         .foregroundColor(Color.black)
                     .monospacedDigit()
                 }.padding()

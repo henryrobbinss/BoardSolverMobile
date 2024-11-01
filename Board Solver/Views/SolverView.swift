@@ -21,12 +21,14 @@ struct SolverView: View
     @State var FBoardView: BoardView
     @State var playerColor: Int
     @Binding var FBoard: [[Int]]
+    @Binding var SBoard: [[Character]]
     @State var FResultsBoard: [[Int]]
     @State private var isScanning = false
     @State private var isSolving = false
     @State var canSolve: Bool = false
     @Binding var game: String
     @Binding var letters: String
+    @State private var alreadyWon = false
 
     var body: some View
     {
@@ -36,7 +38,7 @@ struct SolverView: View
                 .edgesIgnoringSafeArea(.all)
             
             if game == "scramble" {
-                ScrambleBoardView()
+                ScrambleBoardView(board: $SBoard)
             }
             
             VStack
@@ -84,12 +86,29 @@ struct SolverView: View
                                 }
                                 isScanning = false
                             }
+                            SBoard[7][7] = "F"
+                            SBoard[7][8] = "O"
+                            SBoard[7][9] = "C"
+                            SBoard[7][10] = "U"
+                            SBoard[7][11] = "S"
+                            
                         }
                         
                     } label: {
-                        Label("", image: "scan_prompt")
+                        Rectangle()
+                            .fill(.orange)
+                            .frame(width: 180, height: 75)
+                            .cornerRadius(15)
+                            .overlay(Group{
+                                Text("SCAN")
+                                    .font(.custom("PatrickHandSC-Regular", size: 50))
+                                    .foregroundStyle(.black)
+                                RoundedRectangle(cornerRadius: 15)
+                                            .stroke(Color.black, lineWidth: 5)
+                                })
                     }
-                    .frame(maxWidth: 175)
+                    .frame(maxWidth: 180)
+                    
                    
                     Button
                     {
@@ -99,8 +118,12 @@ struct SolverView: View
                                 isSolving = true
                                 withAnimation(){
                                     FResultsBoard = Board.startSolving(board: FBoard, playerColor: playerColor)
-                                    $FBoardView.wrappedValue.updateBoard(brd: FResultsBoard)
-                                    FBoardView.board = FResultsBoard
+                                    if(FResultsBoard == FBoardView.board){
+                                        alreadyWon = true
+                                    } else {
+                                        $FBoardView.wrappedValue.updateBoard(brd: FResultsBoard)
+                                        FBoardView.board = FResultsBoard
+                                    }
                                 }
                                 isSolving = false
                             }
@@ -108,17 +131,44 @@ struct SolverView: View
                             print("solving for scramble")
                         }
                     } label: {
-                        Label("", image: "solve_prompt")
+                        Rectangle()
+                            .fill(.green)
+                            .frame(width: 180, height: 75)
+                            .cornerRadius(15)
+                            .overlay(Group{
+                                Text("SOLVE")
+                                    .font(.custom("PatrickHandSC-Regular", size: 50))
+                                    .foregroundStyle(.black)
+                                RoundedRectangle(cornerRadius: 15)
+                                            .stroke(Color.black, lineWidth: 5)
+                                })
                     }
-                    .frame(maxWidth: 175)
+                    .frame(maxWidth: 180)
                     .disabled(!canSolve)
                 }
                 .padding()
+                .alert("Solving Error", isPresented: $alreadyWon) {
+                            Button("OK", role: .cancel) {
+                                alreadyWon = false
+                            }
+                        } message: {
+                            Text("This Board is Already Solved!")
+                        }
                 
                 Button {
                     dismiss()
                 } label: {
-                    Label("", image: "Back_prompt")
+                    Rectangle()
+                        .fill(.gray)
+                        .frame(width: 100, height: 60)
+                        .cornerRadius(15)
+                        .overlay(Group{
+                            Text("BACK")
+                                .font(.custom("PatrickHandSC-Regular", size: 30))
+                                .foregroundStyle(.white)
+                            RoundedRectangle(cornerRadius: 15)
+                                        .stroke(Color.black, lineWidth: 5)
+                            })
                 }
                 .frame(minWidth: 200)
             }

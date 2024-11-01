@@ -21,6 +21,7 @@ struct BoardView: View {
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color.blue)
                 .frame(width: CGFloat(columns) * holeSize + 40, height: CGFloat(rows) * holeSize + 40)
+                .opacity(0.5)
             
             // Grid of holes
             VStack(spacing: spacing) {
@@ -31,6 +32,7 @@ struct BoardView: View {
                                 Circle()
                                     .fill(Color.red)
                                     .frame(width: holeSize, height: holeSize)
+                                    .opacity(0.75)
                                     .onTapGesture(){
                                         board[row][column] = (board[row][column] + 1) % 3
                                     }
@@ -38,6 +40,7 @@ struct BoardView: View {
                                 Circle()
                                     .fill(Color.yellow)
                                     .frame(width: holeSize, height: holeSize)
+                                    .opacity(0.75)
                                     .onTapGesture(){
                                         board[row][column] = (board[row][column] + 1) % 3
                                     }
@@ -45,6 +48,7 @@ struct BoardView: View {
                                 Circle()
                                     .fill(Color.white)
                                     .frame(width: holeSize, height: holeSize)
+                                    .opacity(0.5)
                                     .onTapGesture(){
                                         board[row][column] = (board[row][column] + 1) % 3
                                     }
@@ -52,6 +56,7 @@ struct BoardView: View {
                                 Circle()
                                     .fill(Color.green)
                                     .frame(width: holeSize, height: holeSize)
+                                    .opacity(0.9)
                                     .onTapGesture(){
                                         board[row][column] = (board[row][column] + 1) % 3
                                     }

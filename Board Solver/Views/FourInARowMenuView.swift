@@ -37,7 +37,17 @@ struct FourInARowMenuView: View
                         Button {
                             dismiss()
                         } label: {
-                            Label("", image: "Back_prompt")
+                            Rectangle()
+                                .fill(.gray)
+                                .frame(width: 80, height: 40)
+                                .cornerRadius(15)
+                                .overlay(Group{
+                                    Text("BACK")
+                                        .font(.custom("PatrickHandSC-Regular", size: 25))
+                                        .foregroundStyle(.white)
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .stroke(Color.black, lineWidth: 2.5)
+                                    })
                         }
                         .padding()
                         
@@ -47,11 +57,9 @@ struct FourInARowMenuView: View
                     Spacer()
                     
                     Text("Please Select Which\nColor Went First")
-                        .font(.custom("KoHo-Medium", size: 20))
-                        .foregroundColor(Color.black)
+                        .font(.custom("PatrickHandSC-Regular", size: 40))
+                        .foregroundColor(.black)
                         .multilineTextAlignment(.center)
-                        .monospaced()
-                        .scaledToFit()
                 
                     HStack
                     {
@@ -61,7 +69,17 @@ struct FourInARowMenuView: View
                                 .navigationBarTitle("")
                                 .navigationBarHidden(true)
                         } label: {
-                            Label("", image: "yellow_prompt")
+                            Rectangle()
+                                .fill(.yellow)
+                                .frame(width: 150, height: 75)
+                                .cornerRadius(15)
+                                .overlay(Group{
+                                    Text("YELLOW")
+                                        .font(.custom("PatrickHandSC-Regular", size: 40))
+                                        .foregroundStyle(.white)
+                                    RoundedRectangle(cornerRadius: 15)
+                                                .stroke(Color.black, lineWidth: 5)
+                                    })
                         }
                         
                         NavigationLink
@@ -71,7 +89,17 @@ struct FourInARowMenuView: View
                                 .navigationBarHidden(true)
                         } label:
                         {
-                            Label("", image: "red_prompt")
+                            Rectangle()
+                                .fill(.red)
+                                .frame(width: 150, height: 75)
+                                .cornerRadius(15)
+                                .overlay(Group{
+                                    Text("RED")
+                                        .font(.custom("PatrickHandSC-Regular", size: 40))
+                                        .foregroundStyle(.white)
+                                    RoundedRectangle(cornerRadius: 15)
+                                                .stroke(Color.black, lineWidth: 5)
+                                    })
                         }
                     }
                     Spacer()
