@@ -120,6 +120,6 @@ struct LShape: View {
 }
 
 #Preview {
-    @Previewable @State var tempBoard: [[Character]] = Array(repeating: Array(repeating: Character("*"), count: 15), count: 15)
-    ScrambleBoardView(board: $tempBoard)
+    ScrambleBoardView(board: .constant(Array(repeating: Array(repeating: Character("*"), count: 15), count: 15)))
 }
+
