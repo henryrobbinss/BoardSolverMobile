@@ -9,81 +9,108 @@
 import SwiftUI
 
 // The main menu view for the Board Solver app.
-struct MenuView: View {
-    var body: some View {
-        NavigationStack {
-            GeometryReader {geometry in
-                ZStack {
-                    // Background: set to white, covering the entire screen.
-                    Color.white
-                        .ignoresSafeArea()
-
-                    VStack (spacing: geometry.size.height * 0.02) {
-                        // Calculate the fond size based on screen width
-                        let titleFontSize = geometry.size.width * 0.15
-                        
-                        // Display the title text.
-                        VStack(spacing: 0) {
-                            Text("BOARD")
-                                .font(.custom("KoHo-Medium", size: titleFontSize))
-                                .foregroundColor(.black)
-                                .multilineTextAlignment(.center)
-                                .minimumScaleFactor(0.5)
-                            Text("SOLVER")
-                                .font(.custom("KoHo-Medium", size: titleFontSize))
-                                .foregroundColor(.black)
-                                .multilineTextAlignment(.center)
-                                .minimumScaleFactor(0.5)
-                        }
-                        .padding(.top, geometry.size.height * 0.05)
-
-                        // Display the main image below the title.
-                        Image("image1")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: geometry.size.width * 0.8)
-                            .offset(y: -geometry.size.height * 0.02)
-
-                        // Display a prompt to select a game.
-                        Text("Select a Game Below")
-                            .font(.custom("KoHo-Medium", size: geometry.size.width * 0.07))
-                            .foregroundColor(.black)
+struct MenuView: View
+{
+    var body: some View
+    {
+        // Selection buttons
+        NavigationView
+        {
+            ZStack
+            {
+                // Backgound: set to white, covering the entire screen.
+                Color.white.ignoresSafeArea(.all)
+                
+                VStack
+                {
+                    Spacer()
+                    // Display the title text.
+                    VStack {
+                        Text("BOARD")
+                            .font(.custom("PatrickHandSC-Regular", size: 90))
+                            .foregroundColor(Color.black)
                             .multilineTextAlignment(.center)
-                            .padding(.bottom, geometry.size.height * 0.01)
-                            .minimumScaleFactor(0.5)
-
-                        // Navigation links
-                        VStack(spacing: geometry.size.height * 0.015) {
-                            // Navigation link to the "Four In A Row" game menu.
-                            NavigationLink(destination: FourInARowMenuView()
-                                .toolbar(.hidden, for: .navigationBar)) {
-                                Image("fourinarow_prompt")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: geometry.size.width * 0.6)
-                            }
-
-                            // Navigation link to the "Word Scramble" game menu.
-                            NavigationLink(destination: WordScrambleMenuView()
-                                .toolbar(.hidden, for: .navigationBar)) {
-                                Image("scribble_prompt")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: geometry.size.width * 0.6)
-                            }
-
-                            // Navigation link to the "About" view.
-                            NavigationLink(destination: AboutView()
-                                .toolbar(.hidden, for: .navigationBar)) {
-                                Image("about_prompt")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: geometry.size.width * 0.6)
-                            }
-                        }
-                        .padding(.bottom, geometry.size.height * 0.05)
+                            .offset(y: 30)
+                        Text("SOLVER")
+                            .font(.custom("PatrickHandSC-Regular", size: 90))
+                            .foregroundColor(Color.black)
+                            .multilineTextAlignment(.center)
                     }
-                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    
+                    // Display the main image below the title.
+                    Image("image1")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 300, height: 230)
+                        .offset(y: -60)
+                    
+                    // Display a prompt to select a game.
+                    Text("Select a Game Below")
+                        .font(.custom("PatrickHandSC-Regular", size: 30))
+                        .foregroundColor(Color.black)
+                        .multilineTextAlignment(.center)
+                        .monospacedDigit()
+                        .offset(y: -60)
+                    
+                    // Navigation link to the "Four In A Row" game menu.
+                    NavigationLink
+                    {
+                        FourInARowMenuView().navigationBarTitle("").navigationBarHidden(true)
+                    } label:
+                    {
+                        Rectangle()
+                            .fill(.yellow)
+                            .frame(width: 300, height: 80)
+                            .cornerRadius(15.0)
+                            .overlay(Group{
+                                Text("4 In-A-Row")
+                                    .font(.custom("PatrickHandSC-Regular", size: 60))
+                                    .foregroundStyle(.red)
+                                RoundedRectangle(cornerRadius: 15)
+                                            .stroke(Color.black, lineWidth: 5)
+                                })
+                    }
+                    .offset(y: -60)
+                    
+                    // Navigation link to the "Word Scramble" game menu.
+                    NavigationLink
+                    {
+                        WordScrambleMenuView().navigationBarTitle("").navigationBarHidden(true)
+                    } label:
+                    {
+                        Rectangle()
+                            .fill(.red)
+                            .frame(width: 300, height: 80)
+                            .cornerRadius(15.0)
+                            .overlay(Group{
+                                Text("Scramble")
+                                    .font(.custom("PatrickHandSC-Regular", size: 60))
+                                    .foregroundStyle(.white)
+                                RoundedRectangle(cornerRadius: 15)
+                                            .stroke(Color.black, lineWidth: 5)
+                                })
+                    }
+                    .offset(y: -50)
+                    
+                    // Navigation link to the "About" view.
+                    NavigationLink
+                    {
+                        AboutView().navigationBarTitle("").navigationBarHidden(true)
+                    } label:
+                    {
+                        Rectangle()
+                            .fill(.gray)
+                            .frame(width: 150, height: 80)
+                            .cornerRadius(15)
+                            .overlay(Group{
+                                Text("About")
+                                    .font(.custom("PatrickHandSC-Regular", size: 50))
+                                    .foregroundStyle(.white)
+                                RoundedRectangle(cornerRadius: 15)
+                                            .stroke(Color.black, lineWidth: 5)
+                                })
+                    }
+                    .offset(y: -40)
                 }
             }
         }
