@@ -2,7 +2,6 @@ import Foundation
 public class Solver {
     var pos : Position;
     var tree : Trie;
-    var pointValues:[Int] = [1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10]
     init(rack : [Character]) {
         // Create an empty position given the rack
         pos = Position(rack:rack);
@@ -158,6 +157,14 @@ public class Solver {
         }
         return final;
     }
+
+    /*
+        params - int x, int y, bool dir (false -> right, true -> down)
+
+        For a given square (y, x), checks if there is room on either side
+        to connect to a word or if all of the neighboring squares are full
+        in the direction of the word that is to be played.
+    */
     public func checkIfCanConnect(x : Int, y:Int, dir: Bool) -> Bool {
         // Down
         if dir {
@@ -172,6 +179,7 @@ public class Solver {
         }
         // Right
         for i in x-1...x+6 {
+            
             if !(i == x-1 || i == x+6) {
                 if (pos.isFilled(x:i,y:y-1)) {return true;}
                 if (pos.isFilled(x:i,y:y+1)) {return true;}
@@ -249,7 +257,9 @@ public class Solver {
                             if (!pos.checkConnected(word:word, x:x, y:y, dir:true)) {continue;}
                             if (!checkNewWordsCreated(word:word, x:x, y:y, dir:false)) {continue;}
                         }
-                        let curStr : String = String(word) + " " + String(x) + " " + String(y) + " " + String(dir)
+                        //if made it this far, score word right is false, :
+                        let score: String = String(pos.scoreWord(word:word, x:x, y:y, dir:dir != 0));
+                        let curStr : String = String(word) + " " + String(x) + " " + String(y) + " " + String(dir) + " s " + score;
                         foundWords.append(curStr)
                     }
                     foundWords = Array(Set(foundWords)).sorted()
@@ -259,8 +269,22 @@ public class Solver {
         for word in foundWords {print(word+"\n");}
         print("FINAL:  ", terminator: "")
         print(final);
-        print(pointValues);        
         return final;
         
+    }
+
+    public func testerFunction() {
+        var x = 0;
+        var y = 1;
+        var word: [Character] = Array();
+        word.append(Character("T"));
+        word.append(Character("E"));
+        word.append(Character("E"));
+
+        print("*******");
+        
+        print("score: " + String(pos.scoreWord(word:word,x:x, y:y,dir:true)));
+
+        print("*******");
     }
 }

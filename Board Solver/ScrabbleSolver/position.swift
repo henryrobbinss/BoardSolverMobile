@@ -73,6 +73,14 @@ public class Position {
     public func getFullBoard() -> [[Character]] {
         return board;
     }
+
+    /*
+        params - int x, int y, coordinates on board to check
+
+        If the coordinates are out of bounds of the board, returns false
+        else returns true that the square is filled if there is any character 
+        other than "0".
+    */
     public func isFilled(x: Int, y: Int) -> Bool {
         if (x < 0 || x > 14 || y < 0 || y > 14) {return false;}
         return board[y][x] != "0";
@@ -248,6 +256,159 @@ public class Position {
         return score;
     }
     
+    func scoreWord(word : [Character], x : Int, y : Int, dir : Bool) -> Int {
+        //ASSUMES GIVEN WORD is valid!!! both in the dictionary and on a valid square, will not go out of bounds
+        var mainWScore = 0;
+        var adjScore = 0;
+        var i = x;
+        var j = y;
+        var main_dw = 0;
+        var main_tw = 0;
+        for curLetter: Character in word {
+            //check if already present on the board! if so, add ONLY tile value to score and continue to next letter
+            var loc_1d = j*15 + i;
+
+            //check current squares tl, dl, tw, dw: (compute 1d array equiv and check if in each)
+            let cur_tl = Position.tl[loc_1d] != nil;
+            let cur_dl = Position.dl[loc_1d] != nil;
+            let cur_tw = Position.tw[loc_1d] != nil;
+            let cur_dw = Position.dw[loc_1d] != nil;
+
+            //if alr present in board, add current val to main word score
+            if(board[j][i] == curLetter) {
+                mainWScore += Position.tileScore[curLetter]!;
+                if(!dir) {
+                    i = i+1;
+                } else {
+                    j = j+1;
+                }
+            } else {
+                if(!dir) {     
+                    //check up and down to see if this is connecting to a new word
+                    var connected = false;
+                    var component_score = 0;
+                    //up
+                    if(isFilled(x: i, y: j-1)) {
+                        connected = true;
+                        var a = j-1;
+                        while(isFilled(x: i, y: a)) {
+                            component_score += Position.tileScore[board[a][i]]!
+                            a = a-1;
+                        }
+                    }
+                    //right
+                    if(isFilled(x: i, y: j+1)) {
+                        connected = true;
+                        var a = j+1;
+                        while(isFilled(x: i, y: a)) {
+                            component_score += Position.tileScore[board[a][i]]!
+                            a = a+1;
+                        }
+                    }
+
+                    var cur_letter_points = Position.tileScore[curLetter]!;
+                    if(cur_dl) {
+                        cur_letter_points *= 2;
+                    }
+                    if(cur_tl) {
+                        cur_letter_points *= 3;
+                    }
+
+                    if(connected) {
+                        component_score += cur_letter_points;
+                    } 
+
+                    if(cur_dw) {
+                        main_dw += 1;
+                        if(connected) {
+                            component_score *= 2;
+                        }
+                    }
+                    if(cur_tw) {
+                        main_tw += 1;
+                        if(connected) {
+                            component_score *= 3;
+                        }
+                    }
+                    
+                    //if not connected to anything, component score = 0, s just add to adjscore
+                    adjScore += component_score;
+                    mainWScore += cur_letter_points;                    
+                    j = j+1;
+
+                //down
+                } else {
+                    //check left and right to see if this is connecting to a new word
+                    var connected = false;
+                    var component_score = 0;
+                    //left
+                    if(isFilled(x: i-1, y: j)) {
+                        connected = true;
+                        var a = i-1;
+                        while(isFilled(x: a, y: j)) {
+                            component_score += Position.tileScore[board[j][a]]!
+                            a = a-1;
+                        }
+                    }
+                    //right
+                    if(isFilled(x: i+1, y: j)) {
+                        connected = true;
+                        var a = i+1;
+                        while(isFilled(x: a, y: j)) {
+                            component_score += Position.tileScore[board[j][a]]!
+                            a = a+1;
+                        }
+                    }
+
+                    var cur_letter_points = Position.tileScore[curLetter]!;
+                    if(cur_dl) {
+                        cur_letter_points *= 2;
+                    }
+                    if(cur_tl) {
+                        cur_letter_points *= 3;
+                    }
+
+                    if(connected) {
+                        component_score += cur_letter_points;
+                    } 
+
+                    if(cur_dw) {
+                        main_dw += 1;
+                        if(connected) {
+                            component_score *= 2;
+                        }
+                    }
+                    if(cur_tw) {
+                        main_tw += 1;
+                        if(connected) {
+                            component_score *= 3;
+                        }
+                    }
+                    
+                    //if not connected to anything, component score = 0, s just add to adjscore
+                    adjScore += component_score;
+                    mainWScore += cur_letter_points;                    
+                    j = j+1;
+                }
+            }
+        }
+        //apply bonuses to main word and condense scores to final score
+        if(main_dw != 0) {
+            for d: Int in 1...main_dw {
+                mainWScore *= 2;
+            }
+        }
+        if(main_tw != 0) {
+            for t: Int in 1...main_tw {
+                mainWScore *= 3;
+            }
+        }
+        if(word.count == 7) {
+            mainWScore += 50;
+        }
+        return mainWScore + adjScore;
+    }
+
     // Precondition: word at this x and y wont go out of bounds in the direction listed
     func checkConnected(word : [Character], x : Int, y : Int, dir : Bool) -> Bool {
         if (dir) {
@@ -316,7 +477,6 @@ public class Position {
     init(b: [[Character]]) {
         curPlayerRack = Array();
         board = b;
-        print(board);
     }
     
 }

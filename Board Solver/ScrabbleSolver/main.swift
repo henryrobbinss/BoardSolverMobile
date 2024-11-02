@@ -20,16 +20,19 @@ func printPosOptions(pos:[[[Bool]]]) {
 }
 func main() {
     do {
-        var testingBoardRead = true;
+        var testingBoardRead = false;
 
         if(testingBoardRead) {
             print("Testing Board Read:");
-            let filename : String = "board1.txt";
-            let relativePath = "/Users/spauln/Documents/GitHub/BoardSolverMobile/Board Solver/ScrabbleSolver";
-            let data = try String(contentsOfFile: relativePath+"/TestFiles/TestBoards/"+filename, encoding: .utf8);
+            let boardfile : String = "board2.txt";
+            let relativeBoardPath = "/Users/spauln/Documents/GitHub/BoardSolverMobile/Board Solver/ScrabbleSolver";
+            let data = try String(contentsOfFile: relativeBoardPath+"/TestFiles/TestBoards/"+boardfile, encoding: .utf8);
             //init solver w input board
             let solver: Solver = Solver(path: data);
-            
+
+            // test functions!!
+            solver.testerFunction();
+            // end test!!            
 
         } else {
             let filename : String = "test.txt";
@@ -87,8 +90,13 @@ func main() {
             print("Time to load words (s):  ", terminator: "")
             print(+after-before);
             solver.setRack(rack:Array(myStrings[0]));
+            
+            // test functions!!
+            solver.testerFunction();
+            // end test!!
+           
             before = Date().timeIntervalSince1970
-            let _ = solver.newSolve();
+            //let _ = solver.newSolve();
             after = Date().timeIntervalSince1970
             print("Time to solve (s):  ", terminator: "")
             print(after-before);
@@ -102,11 +110,12 @@ func main() {
 
 /*
 checklist:
+- fix bugs in check all words
+    * art not possible word
+    *
 - make sure given an empty board returns move starting on starting square
 - adjust to take in a board initially and return best move given a rack rather than take in a move
-    * create a class for testing purposes to read in a board file to a board
-- create function to evaluate word scores
+- create function to evaluate word scores/ review existing function
     * requires point values per letter
-    * 
 */
    
