@@ -14,7 +14,7 @@ import UIKit
 
 struct SolverView: View
 {
-    @ObservedObject var FClassifier: ImageClassifier
+    @ObservedObject var Classifier: ImageClassifier
     @Environment(\.dismiss) private var dismiss
     @State private var arView = ARView(frame: .zero)
     @State private var capturedImage: UIImage?
@@ -23,6 +23,7 @@ struct SolverView: View
     @Binding var FBoard: [[Int]]
     @Binding var SBoard: [[Character]]
     @State var FResultsBoard: [[Int]]
+    @State var SResultsBoard: [[Character]]
     @State private var isScanning = false
     @State private var isSolving = false
     @State var canSolve: Bool = false
@@ -65,7 +66,7 @@ struct SolverView: View
                                     captureFrame()
                                     if let image = capturedImage
                                     {
-                                        FResultsBoard = FClassifier.detect(uiImage: rotateImage90DegreesClockwise(image: image)!, playerColor: playerColor)
+                                        FResultsBoard = Classifier.f_detect(uiImage: rotateImage90DegreesClockwise(image: image)!, playerColor: playerColor)
                                         $FBoardView.wrappedValue.updateBoard(brd: FResultsBoard)
                                         FBoardView.board = FResultsBoard
                                     }
@@ -81,7 +82,9 @@ struct SolverView: View
                                     captureFrame()
                                     if let image = capturedImage
                                     {
-                                        print(image)// Board stuff here
+                                        SResultsBoard = Classifier.s_detect(uiImage: rotateImage90DegreesClockwise(image: image)!)
+                                        //$SBoardView.wrappedValue.updateBoard(brd: SResultsBoard)
+                                        //FBoardView.board = FResultsBoard
                                     }
                                 }
                                 isScanning = false
