@@ -115,20 +115,48 @@ class Board
                 }
             }
         }
-        let solveString = getSolverString(board: board2, playerColor: playerColor)
-        if(solveString == ""){
-            board2[5][3] = 3
-            return board2
+        
+        // *******************************************************************************
+        // Current solver is below this line
+        // DEPRACATED
+        //        let solveString = getSolverString(board: board2, playerColor: playerColor)
+        //        if(solveString == ""){
+        //            board2[5][3] = 3
+        //            return board2
+        //        }
+        //        let pos = Position()
+        //        let solver = Solver()
+        //        let _ = pos.play(seq: solveString)
+        //        let colarray = solver.scoreAllMoves(P: pos)
+        //        let col = colarray.firstIndex(of: colarray.max()!)!
+        //        if colarray[col] == -999999{
+        //            return board2
+        //        }
+        // *******************************************************************************
+        
+        // NOTES:
+        // RED is 0, YELLOW is 1, EMPTY is 2
+        // player color is stored in variable 'playerColor'
+     //   let col = getResult(board: board2)
+        
+        //fast solver uses
+//        let EMPTY = 0
+//        let PLAYER_PIECE = 1
+//        let AI_PIECE = 2
+        //loop to convert
+        
+        if(playerColor == 0){
+            setPlayerandAI(playerPiece: 0, aiPiece: 1)
         }
-        let pos = Position()
-        let solver = Solver()
-        let _ = pos.play(seq: solveString)
-        let colarray = solver.scoreAllMoves(P: pos)
-        let col = colarray.firstIndex(of: colarray.max()!)!
-        if colarray[col] == -999999{
-            return board2
+        else{
+            setPlayerandAI(playerPiece: 1, aiPiece: 0)
         }
         
+        
+        let minimaxResult = minimax(board: board2, depth: 4, alpha: Int.min, beta: Int.max, maximizingPlayer: true)
+        let col = minimaxResult.0!
+        
+        // Here should have col variable that is the column we want to play in
         // place in first open column
         for i in 0..<board2.count {
             if board2.reversed()[i][col] == 2{
