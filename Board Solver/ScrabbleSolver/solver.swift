@@ -261,6 +261,7 @@ public class Solver {
                         let score: String = String(pos.scoreWord(word:word, x:x, y:y, dir:dir != 0));
                         let curStr : String = String(word) + " " + String(x) + " " + String(y) + " " + String(dir) + " s " + score;
                         foundWords.append(curStr)
+                        print(curStr);
                     }
                     foundWords = Array(Set(foundWords)).sorted()
                 }
@@ -283,7 +284,7 @@ public class Solver {
 
         print("*******");
         
-        print("score: " + String(pos.scoreWord(word:word,x:x, y:y,dir:true)));
+        print( String(word) + " x: " + String(x) + " y: " + String(y) + " score: " + String(pos.scoreWord(word:word,x:x, y:y,dir:false)));
 
         print("*******");
     }

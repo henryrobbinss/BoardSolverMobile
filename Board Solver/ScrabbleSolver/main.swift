@@ -96,7 +96,7 @@ func main() {
             // end test!!
            
             before = Date().timeIntervalSince1970
-            //let _ = solver.newSolve();
+            let _ = solver.newSolve();
             after = Date().timeIntervalSince1970
             print("Time to solve (s):  ", terminator: "")
             print(after-before);

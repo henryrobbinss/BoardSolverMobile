@@ -267,7 +267,7 @@ public class Position {
         for curLetter: Character in word {
             //check if already present on the board! if so, add ONLY tile value to score and continue to next letter
             var loc_1d = j*15 + i;
-
+            print("*curletter: " + String(curLetter) + " loc 1d " + String(loc_1d));
             //check current squares tl, dl, tw, dw: (compute 1d array equiv and check if in each)
             let cur_tl = Position.tl[loc_1d] != nil;
             let cur_dl = Position.dl[loc_1d] != nil;
@@ -283,6 +283,7 @@ public class Position {
                     j = j+1;
                 }
             } else {
+                //right
                 if(!dir) {     
                     //check up and down to see if this is connecting to a new word
                     var connected = false;
@@ -296,7 +297,7 @@ public class Position {
                             a = a-1;
                         }
                     }
-                    //right
+                    //down
                     if(isFilled(x: i, y: j+1)) {
                         connected = true;
                         var a = j+1;
@@ -315,6 +316,8 @@ public class Position {
                     }
 
                     if(connected) {
+                        print("connected");               
+
                         component_score += cur_letter_points;
                     } 
 
@@ -333,8 +336,9 @@ public class Position {
                     
                     //if not connected to anything, component score = 0, s just add to adjscore
                     adjScore += component_score;
-                    mainWScore += cur_letter_points;                    
-                    j = j+1;
+                    mainWScore += cur_letter_points;    
+                    print("main score: " + String(mainWScore)); 
+                    i = i+1;
 
                 //down
                 } else {
