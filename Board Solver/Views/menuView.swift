@@ -9,31 +9,25 @@
 import SwiftUI
 
 // The main menu view for the Board Solver app.
-struct MenuView: View
-{
-    var body: some View
-    {
-        // Selection buttons
-        NavigationView
-        {
-            ZStack
-            {
-                // Backgound: set to white, covering the entire screen.
-                Color.white.ignoresSafeArea(.all)
-                
-                VStack
-                {
+struct MenuView: View {
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                // Background: set to white, covering the entire screen.
+                Color.white
+                    .ignoresSafeArea()
+                VStack {
                     Spacer()
                     // Display the title text.
                     VStack {
                         Text("BOARD")
                             .font(.custom("PatrickHandSC-Regular", size: 90))
-                            .foregroundColor(Color.black)
+                            .foregroundColor(.black)
                             .multilineTextAlignment(.center)
                             .offset(y: 30)
                         Text("SOLVER")
                             .font(.custom("PatrickHandSC-Regular", size: 90))
-                            .foregroundColor(Color.black)
+                            .foregroundColor(.black)
                             .multilineTextAlignment(.center)
                     }
                     
@@ -47,17 +41,14 @@ struct MenuView: View
                     // Display a prompt to select a game.
                     Text("Select a Game Below")
                         .font(.custom("PatrickHandSC-Regular", size: 30))
-                        .foregroundColor(Color.black)
+                        .foregroundColor(.black)
                         .multilineTextAlignment(.center)
                         .monospacedDigit()
                         .offset(y: -60)
                     
                     // Navigation link to the "Four In A Row" game menu.
-                    NavigationLink
-                    {
-                        FourInARowMenuView().navigationBarTitle("").navigationBarHidden(true)
-                    } label:
-                    {
+                    NavigationLink(destination: FourInARowMenuView()
+                                            .toolbar(.hidden, for: .navigationBar)) {
                         Rectangle()
                             .fill(.yellow)
                             .frame(width: 300, height: 80)
@@ -73,11 +64,8 @@ struct MenuView: View
                     .offset(y: -60)
                     
                     // Navigation link to the "Word Scramble" game menu.
-                    NavigationLink
-                    {
-                        WordScrambleMenuView().navigationBarTitle("").navigationBarHidden(true)
-                    } label:
-                    {
+                    NavigationLink(destination: WordScrambleMenuView()
+                                            .toolbar(.hidden, for: .navigationBar)) {
                         Rectangle()
                             .fill(.red)
                             .frame(width: 300, height: 80)
@@ -93,11 +81,8 @@ struct MenuView: View
                     .offset(y: -50)
                     
                     // Navigation link to the "About" view.
-                    NavigationLink
-                    {
-                        AboutView().navigationBarTitle("").navigationBarHidden(true)
-                    } label:
-                    {
+                    NavigationLink(destination: AboutView()
+                                            .toolbar(.hidden, for: .navigationBar)) {
                         Rectangle()
                             .fill(.gray)
                             .frame(width: 150, height: 80)
@@ -113,7 +98,7 @@ struct MenuView: View
                     .offset(y: -40)
                 }
             }
-        }.navigationViewStyle(StackNavigationViewStyle())
+        }
     }
 }
 
