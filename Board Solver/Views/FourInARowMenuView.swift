@@ -20,14 +20,10 @@ struct FourInARowMenuView: View
         UINavigationBar.setAnimationsEnabled(false)
     }
     
-    var body: some View
-    {
-        NavigationView
-        {
-            // Navigation links
-            ZStack
-            {
-                // Background
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                // Set the background color to white and ignore safe area edges
                 Color.white.ignoresSafeArea(.all)
                 
                 
@@ -56,19 +52,23 @@ struct FourInARowMenuView: View
                     
                     Spacer()
                     
+                    // Custom back button
                     Text("Please Select Which\nColor Went First")
                         .font(.custom("PatrickHandSC-Regular", size: 40))
                         .foregroundColor(.black)
                         .multilineTextAlignment(.center)
-                
+                    
+                    // Buttons for selecting the first player color
                     HStack
                     {
+                        // Navigation link to BufferView with yellow as the first player
                         NavigationLink
                         {
                             BufferView(playerColor: $yellow, g: $game, letters: $letters)
                                 .navigationBarTitle("")
                                 .navigationBarHidden(true)
                         } label: {
+                            // Custom yellow button
                             Rectangle()
                                 .fill(.yellow)
                                 .frame(width: 150, height: 75)
@@ -85,8 +85,8 @@ struct FourInARowMenuView: View
                         NavigationLink
                         {
                             BufferView(playerColor: $red, g: $game, letters: $letters)
-                                .navigationBarTitle("")
-                                .navigationBarHidden(true)
+                                .navigationBarTitle("")// Hide the navigation bar title
+                                .navigationBarHidden(true) // Hide the navigation bar
                         } label:
                         {
                             Rectangle()
@@ -105,7 +105,7 @@ struct FourInARowMenuView: View
                     Spacer()
                 }
             }
-        }.navigationViewStyle(StackNavigationViewStyle())
+        }
     }
 }
 
