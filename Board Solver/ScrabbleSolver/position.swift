@@ -97,16 +97,38 @@ public class Position {
     }
     // plays a move given the word, position, and direction
     // Does not check if word can be placed there
-    func playMove(word : [Character], x : Int, y : Int, dir: Bool) {
+    func playMove(word : [Character], x : Int, y : Int, dir: Bool, debug: Bool) {
         // Add word to board and remove from rack
         for i in 0...word.count-1 {
+            if(debug) {
+                print("checkpoint 13");
+                print("i: " + String(i));
+            }
             if (dir && board[y+i][x] == "0") {
                 curPlayerRack = removeFromArr(c: word[i], a: curPlayerRack);
                 board[y+i][x] = word[i];
             } else if (!dir && board[y][x+i] == "0"){
+                var a = x+i;
+                if(debug) {
+                    print("checkpoint 10");
+                    print("y: " + String(y) + " x+i: " + String(a));
+                }
                 curPlayerRack = removeFromArr(c: word[i], a: curPlayerRack);
+                if(debug) {
+                    print("checkpoint 11");
+                    print("y: " + String(y) + " x+i: " + String(a));
+
+                }
                 board[y][x+i] = word[i];
+                if(debug) {
+                    print("checkpoint 12");
+                    print("y: " + String(y) + " x+i: " + String(a));
+
+                }
             }
+        }
+        if(debug) {
+            print("checkpoint 13");
         }
     }
     func scoreMove(word : [Character], x : Int, y : Int, dir : Bool) -> Int {
@@ -267,7 +289,6 @@ public class Position {
         for curLetter: Character in word {
             //check if already present on the board! if so, add ONLY tile value to score and continue to next letter
             var loc_1d = j*15 + i;
-            print("*curletter: " + String(curLetter) + " loc 1d " + String(loc_1d));
             //check current squares tl, dl, tw, dw: (compute 1d array equiv and check if in each)
             let cur_tl = Position.tl[loc_1d] != nil;
             let cur_dl = Position.dl[loc_1d] != nil;
@@ -316,8 +337,6 @@ public class Position {
                     }
 
                     if(connected) {
-                        print("connected");               
-
                         component_score += cur_letter_points;
                     } 
 
@@ -337,7 +356,6 @@ public class Position {
                     //if not connected to anything, component score = 0, s just add to adjscore
                     adjScore += component_score;
                     mainWScore += cur_letter_points;    
-                    print("main score: " + String(mainWScore)); 
                     i = i+1;
 
                 //down

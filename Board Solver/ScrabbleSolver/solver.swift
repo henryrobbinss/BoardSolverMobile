@@ -49,8 +49,8 @@ public class Solver {
 
     }
 
-    public func playMove(word : [Character], x : Int, y : Int, dir: Bool) {
-        pos.playMove(word:word,x:x,y:y,dir:dir);
+    public func playMove(word : [Character], x : Int, y : Int, dir: Bool, debug: Bool) {
+        pos.playMove(word:word,x:x,y:y,dir:dir, debug: debug);
     }
 
     public func displayBoard() {
@@ -188,10 +188,19 @@ public class Solver {
         }
         return false;
     }
-    private func checkNewWordsCreated(word : [Character], x : Int, y : Int, dir : Bool) -> Bool {
+    private func checkNewWordsCreated(word : [Character], x : Int, y : Int, dir : Bool, debug: Bool) -> Bool {
         // Duplicate board and play next move
+        if(debug) {
+            print("checkpoint 7");
+        }
         let newBoard : Position = Position(p:pos);
-        newBoard.playMove(word:word,x:x,y:y,dir:dir);
+        if(debug) {
+            print("checkpoint 8");
+        }
+        newBoard.playMove(word:word,x:x,y:y,dir:dir, debug: debug);
+        if(debug) {
+            print("checkpoint 9");
+        }
         return checkAllWords(b:newBoard);
     }
     func validateSingleWord(w:[Character]) -> Bool {
@@ -230,7 +239,8 @@ public class Solver {
         return true;
     }
     public func newSolve() -> String {
-        let final : String = "";
+        var testTrigger = false; //variable used for printline debugging on windows, ignore
+        var final : String = "";
         var foundWords : [String] = Array();
         for dir: Int in 0...1 {
             for y in 0...14 {
@@ -238,27 +248,38 @@ public class Solver {
                     var tempWords : [[Character]] = Array();
                     // Right
                     if (dir == 0) {
+                         if(testTrigger) {
+                            print("x " + String(x) + " y " + String(y));
+                        }
                         if (x>0 && pos.isFilled(x:x-1,y:y)) {continue;}
                         if (!checkIfCanConnect(x:x,y:y, dir:false)) {continue;}
                         // "WORD","X","Y","DIRINT"
                         tempWords = checkRight(x:x,y:y,n:tree.getRoot(),l:pos.curPlayerRack, cur:Array())
                     // Down
                     } else {
+                        if(testTrigger) {
+                            print("x " + String(x) + " y " + String(y));
+                        }
                         if (y>0 && pos.isFilled(x:x,y:y-1)) {continue;}
+
                         if (!checkIfCanConnect(x:x,y:y, dir:true)) {continue;}
+
                         // "WORD","X","Y","DIRINT"
                         tempWords = checkDown(x:x,y:y,n:tree.getRoot(),l:pos.curPlayerRack, cur:Array())
+
                     }
                     for word in tempWords {
                         if (dir == 0) {
                             if (!pos.checkConnected(word:word, x:x, y:y, dir:false)) {continue;}
-                            if (!checkNewWordsCreated(word:word, x:x, y:y, dir:false)) {continue;}
+                            if (!checkNewWordsCreated(word:word, x:x, y:y, dir:false, debug: false)) {continue;}
                         } else {
-                            if (!pos.checkConnected(word:word, x:x, y:y, dir:true)) {continue;}
-                            if (!checkNewWordsCreated(word:word, x:x, y:y, dir:false)) {continue;}
+                            if (!pos.checkConnected(word:word, x:x, y:y, dir:true)) {continue;}                            
+                            if (!checkNewWordsCreated(word:word, x:x, y:y, dir:true, debug: false)) {continue;}
+
                         }
                         //if made it this far, score word right is false, :
-                        let score: String = String(pos.scoreWord(word:word, x:x, y:y, dir:dir != 0));
+                        let scoreval = pos.scoreWord(word:word, x:x, y:y, dir:dir != 0);
+                        let score: String = String(scoreval);
                         let curStr : String = String(word) + " " + String(x) + " " + String(y) + " " + String(dir) + " s " + score;
                         foundWords.append(curStr)
                         print(curStr);
@@ -268,8 +289,11 @@ public class Solver {
             }
         }
         for word in foundWords {print(word+"\n");}
-        print("FINAL:  ", terminator: "")
+        print("FINAL:  ")
         print(final);
+           
+        
+        
         return final;
         
     }
@@ -277,7 +301,7 @@ public class Solver {
     public func testerFunction() {
         var x = 0;
         var y = 1;
-        var word: [Character] = Array();
+        var word: [Character] = Array()
         word.append(Character("T"));
         word.append(Character("E"));
         word.append(Character("E"));

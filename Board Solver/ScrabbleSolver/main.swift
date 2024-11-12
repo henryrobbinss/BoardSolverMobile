@@ -20,18 +20,25 @@ func printPosOptions(pos:[[[Bool]]]) {
 }
 func main() {
     do {
-        var testingBoardRead = false;
+        var testingBoardRead = true;
 
         if(testingBoardRead) {
             print("Testing Board Read:");
-            let boardfile : String = "board2.txt";
+            let boardfile : String = "board1.txt";
             let relativeBoardPath = "/Users/spauln/Documents/GitHub/BoardSolverMobile/Board Solver/ScrabbleSolver";
             let data = try String(contentsOfFile: relativeBoardPath+"/TestFiles/TestBoards/"+boardfile, encoding: .utf8);
             //init solver w input board
             let solver: Solver = Solver(path: data);
 
             // test functions!!
-            solver.testerFunction();
+            //solver.testerFunction();
+            solver.loadWords();
+//            solver.setRack(rack:Array("ABELLIT"));
+            solver.setRack(rack:Array("AEEJRRT"));
+
+            let _ = solver.newSolve();
+            solver.displayBoard();
+
             // end test!!            
 
         } else {
@@ -71,7 +78,7 @@ func main() {
                 print("y: " + String(y));
                 print("dir: " + String(dir));
                 print("--------------------");
-                solver.playMove(word:Array(word),x:x,y:y,dir:dir)
+                solver.playMove(word:Array(word),x:x,y:y,dir:dir, debug: false)
             }
 
         // solver.displayBoard();
