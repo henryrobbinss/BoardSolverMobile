@@ -280,6 +280,7 @@ public class Position {
     
     func scoreWord(word : [Character], x : Int, y : Int, dir : Bool) -> Int {
         //ASSUMES GIVEN WORD is valid!!! both in the dictionary and on a valid square, will not go out of bounds
+        var alrOnBoard: Int = 0;
         var mainWScore = 0;
         var adjScore = 0;
         var i = x;
@@ -297,6 +298,7 @@ public class Position {
 
             //if alr present in board, add current val to main word score
             if(board[j][i] == curLetter) {
+                alrOnBoard = alrOnBoard+1;
                 mainWScore += Position.tileScore[curLetter]!;
                 if(!dir) {
                     i = i+1;
@@ -425,7 +427,7 @@ public class Position {
                 mainWScore *= 3;
             }
         }
-        if(word.count == 7) {
+        if(word.count-alrOnBoard == 7) {
             mainWScore += 50;
         }
         return mainWScore + adjScore;

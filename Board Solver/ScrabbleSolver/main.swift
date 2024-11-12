@@ -24,7 +24,7 @@ func main() {
 
         if(testingBoardRead) {
             print("Testing Board Read:");
-            let boardfile : String = "board1.txt";
+            let boardfile : String = "board3.txt";
             let relativeBoardPath = "/Users/spauln/Documents/GitHub/BoardSolverMobile/Board Solver/ScrabbleSolver";
             let data = try String(contentsOfFile: relativeBoardPath+"/TestFiles/TestBoards/"+boardfile, encoding: .utf8);
             //init solver w input board

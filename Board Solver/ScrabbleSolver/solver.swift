@@ -244,7 +244,7 @@ public class Solver {
         var finalscore: Int = 0;
         var finalx: Int = -1;
         var finaly: Int = -1;
-
+        var finaldir: Int = -1;
         var foundWords : [String] = Array();
         for dir: Int in 0...1 {
             for y in 0...14 {
@@ -290,6 +290,7 @@ public class Solver {
                             final = String(word);
                             finalx = x;
                             finaly = y;
+                            finaldir = dir;
                         }
                         foundWords.append(curStr)
                         print(curStr);
@@ -304,6 +305,11 @@ public class Solver {
             print(final);
             print("score " + String(finalscore));
             print("x: " + String(finalx) + " y: " + String(finaly));
+            if(finaldir == 0) {
+                print("right");
+            } else {
+                print("left");
+            }
         } else {
             print("no valid moves")
         }
