@@ -10,9 +10,6 @@ import Foundation
 let ROW_COUNT = 6
 let COLUMN_COUNT = 7
 
-let PLAYER = 0
-let AI = 1
-
 let EMPTY = 2
 var PLAYER_PIECE = 0
 var AI_PIECE = 1
@@ -44,12 +41,17 @@ func getNextOpenRow(board: [[Int]], col: Int) -> Int? {
     }
     return nil
 }
+//not needed now
+//func printBoard(board: [[Int]]) {
+//    for row in board.reversed() {
+//        print(row)
+//    }
+//}
 
-func printBoard(board: [[Int]]) {
-    for row in board.reversed() {
-        print(row)
-    }
-}
+//func printAiChoice(){
+//    print("Finding the best move for" + String(AI_PIECE))
+//}
+
 
 func winningMove(board: [[Int]], piece: Int) -> Bool {
     // Horizontal check
@@ -163,10 +165,6 @@ func getValidLocations(board: [[Int]]) -> [Int] {
     return (0..<COLUMN_COUNT).filter { isValidLocation(board: board, col: $0) }
 }
 
-func printAiChoice(){
-    print("Finding the best move for" + String(AI_PIECE))
-}
-
 func minimax(board: [[Int]], depth: Int, alpha: Int, beta: Int, maximizingPlayer: Bool) -> (Int?, Int) {
     var alpha = alpha
     var beta = beta
@@ -229,78 +227,9 @@ func minimax(board: [[Int]], depth: Int, alpha: Int, beta: Int, maximizingPlayer
         return (column, value)
     }
 }
-
+//returns the best column to go in so AI_PIECE wins
 func getBestMove(board: [[Int]], piece: Int) -> Int? {
     let maximizingPlayer = (piece == AI_PIECE)
     let bestMove = minimax(board: board, depth: 5, alpha: Int.min, beta: Int.max, maximizingPlayer: maximizingPlayer)
     return bestMove.0
 }
-
-//
-//var board = createBoard()
-//var gameOver = false
-//var turn = 0
-//print("Board created")
-//
-//
-//board =         [[2, 2, 2, 2, 2, 2, 2],
-//                 [2, 2, 2, 2, 2, 2, 2],
-//                 [2, 2, 2, 2, 2, 2, 2],
-//                 [2, 2, 2, 2, 0, 1, 2],
-//                 [2, 2, 2, 2, 0, 1, 2],
-//                 [2, 2, 2, 2, 0, 1, 2]]
-//
-//
-//
-//let reverse = Array(board.reversed())
-//board = reverse
-//
-//
-//
-//printBoard(board:board)
-//let bestMove = getBestMove(board: board, piece: AI_PIECE)
-//
-//if let move = bestMove {
-//    let bestMoveColumn = move
-//    print("Best move is: \(bestMoveColumn)")
-//} else {
-//    print("No valid move available.")
-//}
-
-//
-//printBoard(board: board)
-//print("reversing")
-//let reverse = Array(board.reversed())
-//printBoard(board: reverse)
-//board = reverse
-//
-//
-//while true {
-//    // Player's turn
-//    print("Enter the column (0-\(COLUMN_COUNT - 1)) where you want to drop your piece:")
-//    if let input = readLine(), let playerCol = Int(input), playerCol >= 0, playerCol < COLUMN_COUNT {
-//        if let playerRow = getNextOpenRow(board: board, col: playerCol) {
-//            dropPiece(board: &board, row: playerRow, col: playerCol, piece: PLAYER_PIECE)
-//            print("Player dropped piece in column \(playerCol)")
-//            printBoard(board: board)
-//
-//            if winningMove(board: board, piece: PLAYER_PIECE) {
-//                print("Player wins!")
-//                break
-//            }
-//
-//            // AI's turn
-//            let aiMove = minimax(board: board, depth: 5, alpha: Int.min, beta: Int.max, maximizingPlayer: true)
-//            if let aiCol = aiMove.0, let aiRow = getNextOpenRow(board: board, col: aiCol) {
-//                dropPiece(board: &board, row: aiRow, col: aiCol, piece: AI_PIECE)
-//                print("AI dropped piece in column \(aiCol)")
-//                printBoard(board: board)
-//
-//                if winningMove(board: board, piece: AI_PIECE) {
-//                    print("AI wins!")
-//                    break
-//                }
-//            }
-//        }
-//    }
-//}

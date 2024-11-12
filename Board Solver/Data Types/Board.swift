@@ -107,11 +107,15 @@ class Board
         }
         
         var board2 = board
-        // clean up any current solved pieces
+        // clean up any current solved pieces and count the number of pieces
+        var numPieces = 0;
         for i in 0..<board2.count{
             for j in 0..<board2[i].count {
                 if board2[i][j] == 3{
                     board2[i][j] = 2
+                }
+                if board2[i][j] != 2{
+                    numPieces+=1;
                 }
             }
         }
@@ -136,57 +140,22 @@ class Board
         
         // NOTES:
         // RED is 0, YELLOW is 1, EMPTY is 2
-        // player color is stored in variable 'playerColor'
-     //   let col = getResult(board: board2)
-        
-        //fast solver uses
-//        let EMPTY = 0
-//        let PLAYER_PIECE = 1
-//        let AI_PIECE = 2
-        //loop to convert
-        
 
-        // Reversing each row individually
-//        var reverse = board2.map { Array($0.reversed()) }
-//
-//        print("original board")
-//        printBoard(board: board2)
-//        print("reversed")
-//        printBoard(board: reverse)
-
-  //     board2 = reverse
-        
-        let reverse = Array(board2.reversed())
-        printBoard(board: reverse)
-        
-        print("playerColor" + String(playerColor))
-        
-        print("board2 value beloow ")
-        print(board2)
-        print("reversed board value bellow")
-        printBoard(board: reverse)
-
-        
-      
-        var AIP = 0
-        if(playerColor == 0){
-            setPlayerandAI(playerPiece: 1, aiPiece: 0)
+        //tell the AI which color it should play as
+        let oppositePiece = 1 - playerColor;
+        if(numPieces % 2 == 0){
+            //the aiPiece is the piece the ai will try to make win
+            setPlayerandAI(playerPiece: oppositePiece, aiPiece: playerColor)
         }
         else{
-            AIP = 1
-            setPlayerandAI(playerPiece: 0, aiPiece: 1)
+            setPlayerandAI(playerPiece: playerColor, aiPiece: oppositePiece)
         }
-
-        printAiChoice()
         
+        //reverse the board because the FastSolver views it as reversed
+        let reverse = Array(board2.reversed())
+        let bestMove = getBestMove(board: reverse, piece: 0)
+        let col = bestMove!//store the best move
         
-        let bestMove = getBestMove(board: reverse, piece: AIP)
-        let col = bestMove!  // Force unwrapping, but use cautiously
-        print("Best move is: \(col)")
-
-
-        
-
 
         // Here should have col variable that is the column we want to play in
         // place in first open column
