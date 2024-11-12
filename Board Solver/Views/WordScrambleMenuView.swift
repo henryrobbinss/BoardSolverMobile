@@ -7,23 +7,26 @@
 
 import SwiftUI
 
+// View for the Word Scramble menu
 struct WordScrambleMenuView: View {
+    // Environment variable to dismiss the view
     @Environment(\.dismiss) private var dismiss
     @State var pc = -1
     @State var game = "scramble"
+    // State variable to hold the user's letter input
     @State private var letters: String = ""
     
+    // Maximum number of letters allowed
     let maxLetters = 7
     
     var body: some View {
-        NavigationView {
-            
+        NavigationStack {
             ZStack {
-                //Background
+                // Background color
                 Color.white.ignoresSafeArea(.all)
                 
                 VStack {
-                    // Back button and title
+                    // Back button
                     HStack {
                         Button {
                             dismiss()
@@ -32,13 +35,13 @@ struct WordScrambleMenuView: View {
                                 .fill(.gray)
                                 .frame(width: 80, height: 40)
                                 .cornerRadius(15)
-                                .overlay(Group{
+                                .overlay(Group {
                                     Text("BACK")
                                         .font(.custom("PatrickHandSC-Regular", size: 25))
                                         .foregroundStyle(.white)
                                     RoundedRectangle(cornerRadius: 15)
                                         .stroke(Color.black, lineWidth: 2.5)
-                                    })
+                                })
                         }
                         .padding()
                         
@@ -58,17 +61,18 @@ struct WordScrambleMenuView: View {
                         .foregroundColor(.gray)
                         .padding(.bottom, 50)
                     
-                    // Letter input display (interactive text boxes)
+                    // Letter input display
                     HStack(spacing: 10) {
                         ForEach(0..<maxLetters, id: \.self) { index in
                             ZStack {
                                 if index < letters.count {
+                                    // Display the entered letter at the current index
                                     let letter = String(letters[letters.index(letters.startIndex, offsetBy: index)])
                                     Text(letter.uppercased())
                                         .font(.largeTitle)
                                         .frame(width: 40, height: 50)
                                         .foregroundColor(.black)
-                                } else if index == letters.count{
+                                } else if index == letters.count {
                                     // Highlight the current input spot with a grey box
                                     Rectangle()
                                         .foregroundColor(Color.gray.opacity(0.2))
@@ -79,7 +83,7 @@ struct WordScrambleMenuView: View {
                                     Text(" ")
                                         .frame(width: 40, height: 50)
                                 }
-                                // Underline
+                                // Underline for each letter box
                                 Rectangle()
                                     .frame(height: 2)
                                     .foregroundColor(.gray)
@@ -93,13 +97,13 @@ struct WordScrambleMenuView: View {
                     .overlay(
                         // Hidden TextField to capture input
                         TextField("", text: $letters)
-                            .foregroundColor(.clear) // Make text invisible
+                            .foregroundColor(.clear)  // Make text invisible
                             .accentColor(.clear)      // Hide cursor
                             .keyboardType(.alphabet)
                             .disableAutocorrection(true)
                             .autocapitalization(.none)
                             .onChange(of: letters) {
-                                // Limit input to max number of letters
+                                // Limit input to maximum number of letters
                                 if letters.count > maxLetters {
                                     letters = String(letters.prefix(maxLetters))
                                 }
@@ -112,23 +116,25 @@ struct WordScrambleMenuView: View {
                     }
                     
                     Spacer()
-                    NavigationLink
-                    {
+                    
+                    // Navigation link to proceed to the next view
+                    NavigationLink {
                         BufferView(playerColor: $pc, g: $game, letters: $letters)
                             .navigationBarTitle("")
                             .navigationBarHidden(true)
                     } label: {
+                        // "NEXT" button
                         Rectangle()
                             .fill(.orange)
                             .frame(width: 180, height: 75)
                             .cornerRadius(15)
-                            .overlay(Group{
+                            .overlay(Group {
                                 Text("NEXT")
                                     .font(.custom("PatrickHandSC-Regular", size: 50))
                                     .foregroundStyle(.white)
                                 RoundedRectangle(cornerRadius: 15)
-                                            .stroke(Color.black, lineWidth: 5)
-                                })
+                                    .stroke(Color.black, lineWidth: 5)
+                            })
                     }
                 }
             }
