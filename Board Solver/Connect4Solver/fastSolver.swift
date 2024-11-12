@@ -46,7 +46,6 @@ func getNextOpenRow(board: [[Int]], col: Int) -> Int? {
 }
 
 func printBoard(board: [[Int]]) {
-    print("")
     for row in board.reversed() {
         print(row)
     }
@@ -169,7 +168,9 @@ func minimax(board: [[Int]], depth: Int, alpha: Int, beta: Int, maximizingPlayer
     var beta = beta
     let validLocations = getValidLocations(board: board)
     let isTerminal = isTerminalNode(board: board)
-    
+    print("printing board")
+    printBoard(board: board)
+
     if depth == 0 || isTerminal {
         if isTerminal {
             if winningMove(board: board, piece: AI_PIECE) {

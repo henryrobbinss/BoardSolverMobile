@@ -62,13 +62,30 @@ struct SolverView: View
                                 isScanning = true
                                 withAnimation(){
                                     canSolve = true
-                                    captureFrame()
-                                    if let image = capturedImage
-                                    {
-                                        FResultsBoard = FClassifier.detect(uiImage: rotateImage90DegreesClockwise(image: image)!, playerColor: playerColor)
-                                        $FBoardView.wrappedValue.updateBoard(brd: FResultsBoard)
-                                        FBoardView.board = FResultsBoard
-                                    }
+//                                    captureFrame()
+//                                    if let image = capturedImage
+//                                    {
+//                                        FResultsBoard = FClassifier.detect(uiImage: rotateImage90DegreesClockwise(image: image)!, playerColor: playerColor)
+//                                        $FBoardView.wrappedValue.updateBoard(brd: FResultsBoard)
+//                                        FBoardView.board = FResultsBoard
+//                                    }
+                                    
+                                    FResultsBoard = [[2, 2, 2, 2, 2, 2, 2],
+                                                     [2, 2, 2, 2, 2, 2, 2],
+                                                     [2, 2, 2, 2, 2, 2, 2],
+                                                     [2, 2, 2, 2, 0, 1, 2],
+                                                     [2, 2, 2, 2, 0, 1, 2],
+                                                     [2, 2, 2, 2, 0, 1, 2]]
+                                    
+//                                    FResultsBoard = [[2, 2, 2, 0, 2, 2, 2],
+//                                                     [2, 2, 2, 1, 2, 2, 2],
+//                                                     [2, 2, 2, 0, 2, 2, 2],
+//                                                     [2, 2, 2, 1, 2, 2, 2],
+//                                                     [2, 2, 2, 0, 2, 2, 2],
+//                                                     [2, 2, 2, 1, 2, 2, 2]]
+                                    
+                                    $FBoardView.wrappedValue.updateBoard(brd: FResultsBoard)
+                                    FBoardView.board = FResultsBoard
                                 }
                                 isScanning = false
                             }

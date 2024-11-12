@@ -145,17 +145,25 @@ class Board
 //        let AI_PIECE = 2
         //loop to convert
         
+        let reverse = Array(board2.reversed())
+        print("original board")
+        printBoard(board: board2)
+        print("reversed")
+        printBoard(board: reverse)
+       
+        
         if(playerColor == 0){
-            setPlayerandAI(playerPiece: 0, aiPiece: 1)
-        }
-        else{
             setPlayerandAI(playerPiece: 1, aiPiece: 0)
         }
+        else{
+            setPlayerandAI(playerPiece: 0, aiPiece: 1)
+        }
+
         
         
         let minimaxResult = minimax(board: board2, depth: 4, alpha: Int.min, beta: Int.max, maximizingPlayer: true)
         let col = minimaxResult.0!
-        
+
         // Here should have col variable that is the column we want to play in
         // place in first open column
         for i in 0..<board2.count {
