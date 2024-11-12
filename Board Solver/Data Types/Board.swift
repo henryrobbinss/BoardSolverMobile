@@ -145,24 +145,48 @@ class Board
 //        let AI_PIECE = 2
         //loop to convert
         
-        let reverse = Array(board2.reversed())
-        print("original board")
-        printBoard(board: board2)
-        print("reversed")
-        printBoard(board: reverse)
-       
+
+        // Reversing each row individually
+//        var reverse = board2.map { Array($0.reversed()) }
+//
+//        print("original board")
+//        printBoard(board: board2)
+//        print("reversed")
+//        printBoard(board: reverse)
+
+  //     board2 = reverse
         
+        let reverse = Array(board2.reversed())
+        printBoard(board: reverse)
+        
+        print("playerColor" + String(playerColor))
+        
+        print("board2 value beloow ")
+        print(board2)
+        print("reversed board value bellow")
+        printBoard(board: reverse)
+
+        
+      
+        var AIP = 0
         if(playerColor == 0){
             setPlayerandAI(playerPiece: 1, aiPiece: 0)
         }
         else{
+            AIP = 1
             setPlayerandAI(playerPiece: 0, aiPiece: 1)
         }
 
+        printAiChoice()
         
         
-        let minimaxResult = minimax(board: board2, depth: 4, alpha: Int.min, beta: Int.max, maximizingPlayer: true)
-        let col = minimaxResult.0!
+        let bestMove = getBestMove(board: reverse, piece: AIP)
+        let col = bestMove!  // Force unwrapping, but use cautiously
+        print("Best move is: \(col)")
+
+
+        
+
 
         // Here should have col variable that is the column we want to play in
         // place in first open column

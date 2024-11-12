@@ -14,8 +14,8 @@ let PLAYER = 0
 let AI = 1
 
 let EMPTY = 2
-var PLAYER_PIECE = 9
-var AI_PIECE = 9
+var PLAYER_PIECE = 0
+var AI_PIECE = 1
 
 let WINDOW_LENGTH = 4
 
@@ -25,7 +25,7 @@ func setPlayerandAI(playerPiece : Int, aiPiece : Int){
 }
 
 func createBoard() -> [[Int]] {
-    return Array(repeating: Array(repeating: 0, count: COLUMN_COUNT), count: ROW_COUNT)
+    return Array(repeating: Array(repeating: EMPTY, count: COLUMN_COUNT), count: ROW_COUNT)
 }
 
 func dropPiece(board: inout [[Int]], row: Int, col: Int, piece: Int) {
@@ -33,12 +33,12 @@ func dropPiece(board: inout [[Int]], row: Int, col: Int, piece: Int) {
 }
 
 func isValidLocation(board: [[Int]], col: Int) -> Bool {
-    return board[ROW_COUNT - 1][col] == 0
+    return board[ROW_COUNT - 1][col] == EMPTY
 }
 
 func getNextOpenRow(board: [[Int]], col: Int) -> Int? {
     for r in 0..<ROW_COUNT {
-        if board[r][col] == 0 {
+        if board[r][col] == EMPTY {
             return r
         }
     }
@@ -163,14 +163,16 @@ func getValidLocations(board: [[Int]]) -> [Int] {
     return (0..<COLUMN_COUNT).filter { isValidLocation(board: board, col: $0) }
 }
 
+func printAiChoice(){
+    print("Finding the best move for" + String(AI_PIECE))
+}
+
 func minimax(board: [[Int]], depth: Int, alpha: Int, beta: Int, maximizingPlayer: Bool) -> (Int?, Int) {
     var alpha = alpha
     var beta = beta
     let validLocations = getValidLocations(board: board)
     let isTerminal = isTerminalNode(board: board)
-    print("printing board")
-    printBoard(board: board)
-
+   
     if depth == 0 || isTerminal {
         if isTerminal {
             if winningMove(board: board, piece: AI_PIECE) {
@@ -227,15 +229,53 @@ func minimax(board: [[Int]], depth: Int, alpha: Int, beta: Int, maximizingPlayer
         return (column, value)
     }
 }
+
+func getBestMove(board: [[Int]], piece: Int) -> Int? {
+    let maximizingPlayer = (piece == AI_PIECE)
+    let bestMove = minimax(board: board, depth: 5, alpha: Int.min, beta: Int.max, maximizingPlayer: maximizingPlayer)
+    return bestMove.0
+}
+
 //
 //var board = createBoard()
 //var gameOver = false
 //var turn = 0
 //print("Board created")
-//printBoard(board: board)
-//while true {
-//    printBoard(board: board)
 //
+//
+//board =         [[2, 2, 2, 2, 2, 2, 2],
+//                 [2, 2, 2, 2, 2, 2, 2],
+//                 [2, 2, 2, 2, 2, 2, 2],
+//                 [2, 2, 2, 2, 0, 1, 2],
+//                 [2, 2, 2, 2, 0, 1, 2],
+//                 [2, 2, 2, 2, 0, 1, 2]]
+//
+//
+//
+//let reverse = Array(board.reversed())
+//board = reverse
+//
+//
+//
+//printBoard(board:board)
+//let bestMove = getBestMove(board: board, piece: AI_PIECE)
+//
+//if let move = bestMove {
+//    let bestMoveColumn = move
+//    print("Best move is: \(bestMoveColumn)")
+//} else {
+//    print("No valid move available.")
+//}
+
+//
+//printBoard(board: board)
+//print("reversing")
+//let reverse = Array(board.reversed())
+//printBoard(board: reverse)
+//board = reverse
+//
+//
+//while true {
 //    // Player's turn
 //    print("Enter the column (0-\(COLUMN_COUNT - 1)) where you want to drop your piece:")
 //    if let input = readLine(), let playerCol = Int(input), playerCol >= 0, playerCol < COLUMN_COUNT {
@@ -244,43 +284,23 @@ func minimax(board: [[Int]], depth: Int, alpha: Int, beta: Int, maximizingPlayer
 //            print("Player dropped piece in column \(playerCol)")
 //            printBoard(board: board)
 //
-//            // Check for player win
 //            if winningMove(board: board, piece: PLAYER_PIECE) {
 //                print("Player wins!")
 //                break
 //            }
-//        } else {
-//            print("Column \(playerCol) is full. Try a different column.")
-//            continue
+//
+//            // AI's turn
+//            let aiMove = minimax(board: board, depth: 5, alpha: Int.min, beta: Int.max, maximizingPlayer: true)
+//            if let aiCol = aiMove.0, let aiRow = getNextOpenRow(board: board, col: aiCol) {
+//                dropPiece(board: &board, row: aiRow, col: aiCol, piece: AI_PIECE)
+//                print("AI dropped piece in column \(aiCol)")
+//                printBoard(board: board)
+//
+//                if winningMove(board: board, piece: AI_PIECE) {
+//                    print("AI wins!")
+//                    break
+//                }
+//            }
 //        }
-//    } else {
-//        print("Invalid input. Please enter a number between 0 and \(COLUMN_COUNT - 1).")
-//        continue
-//    }
-//
-//    // AI's turn
-//    print("AI is making a move...")
-//    let minimaxResult = minimax(board: board, depth: 4, alpha: Int.min, beta: Int.max, maximizingPlayer: true)
-//
-//    // Check if the result is valid
-//    if let aiCol = minimaxResult.0, let aiRow = getNextOpenRow(board: board, col: aiCol) {
-//        dropPiece(board: &board, row: aiRow, col: aiCol, piece: AI_PIECE)
-//        print("AI dropped piece in column \(aiCol)")
-//        printBoard(board: board)
-//
-//        // Check for AI win
-//        if winningMove(board: board, piece: AI_PIECE) {
-//            print("AI wins!")
-//            break
-//        }
-//
-//        // Check for draw
-//        if getValidLocations(board: board).isEmpty {
-//            print("The game is a draw!")
-//            break
-//        }
-//    } else {
-//        print("No valid moves for AI.")
-//        break
 //    }
 //}

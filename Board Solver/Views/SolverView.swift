@@ -69,14 +69,21 @@ struct SolverView: View
 //                                        $FBoardView.wrappedValue.updateBoard(brd: FResultsBoard)
 //                                        FBoardView.board = FResultsBoard
 //                                    }
-                                    
+//                                    
                                     FResultsBoard = [[2, 2, 2, 2, 2, 2, 2],
                                                      [2, 2, 2, 2, 2, 2, 2],
                                                      [2, 2, 2, 2, 2, 2, 2],
                                                      [2, 2, 2, 2, 0, 1, 2],
                                                      [2, 2, 2, 2, 0, 1, 2],
                                                      [2, 2, 2, 2, 0, 1, 2]]
-                                    
+//
+//                                    FResultsBoard =         [[2, 2, 2, 2, 0, 1, 2],
+//                                                     [2, 2, 2, 2, 0, 1, 2],
+//                                                     [2, 2, 2, 2, 0, 1, 2],
+//                                                     [2, 2, 2, 2, 2, 2, 2],
+//                                                     [2, 2, 2, 2, 2, 2, 2],
+//                                                     [2, 2, 2, 2, 2, 2, 2]]
+//
 //                                    FResultsBoard = [[2, 2, 2, 0, 2, 2, 2],
 //                                                     [2, 2, 2, 1, 2, 2, 2],
 //                                                     [2, 2, 2, 0, 2, 2, 2],
