@@ -156,7 +156,6 @@ class Board
         let bestMove = getBestMove(board: reverse, piece: 0)
         let col = bestMove!//store the best move
         
-
         // Here should have col variable that is the column we want to play in
         // place in first open column
         for i in 0..<board2.count {
