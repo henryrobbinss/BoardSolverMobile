@@ -12,6 +12,7 @@
 		2E04BE512C0F978F004A775C /* Board_SolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E04BE502C0F978F004A775C /* Board_SolverTests.swift */; };
 		2E04BE5B2C0F978F004A775C /* Board_SolverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E04BE5A2C0F978F004A775C /* Board_SolverUITests.swift */; };
 		2E04BE5D2C0F978F004A775C /* Board_SolverUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E04BE5C2C0F978F004A775C /* Board_SolverUITestsLaunchTests.swift */; };
+		2E5E92802CD16DFA00F7434C /* best.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 2E5E927F2CD16DFA00F7434C /* best.mlpackage */; };
 		2E5ED9782C3B30B200F12A1B /* Connect4 2 Iteration 310.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2E5ED9772C3B30B200F12A1B /* Connect4 2 Iteration 310.mlmodel */; };
 		2E5ED9812C3DB70C00F12A1B /* solver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5ED97C2C3DB70C00F12A1B /* solver.swift */; };
 		2E5ED9832C3DB70C00F12A1B /* moveSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5ED97E2C3DB70C00F12A1B /* moveSorter.swift */; };
@@ -64,6 +65,7 @@
 		2E04BE562C0F978F004A775C /* Board SolverUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Board SolverUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E04BE5A2C0F978F004A775C /* Board_SolverUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board_SolverUITests.swift; sourceTree = "<group>"; };
 		2E04BE5C2C0F978F004A775C /* Board_SolverUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board_SolverUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2E5E927F2CD16DFA00F7434C /* best.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = best.mlpackage; sourceTree = "<group>"; };
 		2E5ED9772C3B30B200F12A1B /* Connect4 2 Iteration 310.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "Connect4 2 Iteration 310.mlmodel"; sourceTree = "<group>"; };
 		2E5ED97C2C3DB70C00F12A1B /* solver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = solver.swift; sourceTree = "<group>"; };
 		2E5ED97E2C3DB70C00F12A1B /* moveSorter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = moveSorter.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				FAC4715C2C2B37F600EE6D97 /* Data Types */,
 				2E8B6C992C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage */,
 				2E5ED9772C3B30B200F12A1B /* Connect4 2 Iteration 310.mlmodel */,
+				2E5E927F2CD16DFA00F7434C /* best.mlpackage */,
 				FA15B56C2C220FA5007DE6B6 /* Classifiers */,
 				FA960B192C1390C500D5099C /* Views */,
 				2E04BE6B2C138BB1004A775C /* Preview Content */,
@@ -380,6 +383,7 @@
 				2E8B6C9A2C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage in Sources */,
 				FA15B5592C22006D007DE6B6 /* ImageClassifier.swift in Sources */,
 				2EE7F5482C5D565B007B4F2C /* BufferView.swift in Sources */,
+				2E5E92802CD16DFA00F7434C /* best.mlpackage in Sources */,
 				2EA0FE952C46F48C001E1F8C /* WordScrambleMenuView.swift in Sources */,
 				2E5ED9812C3DB70C00F12A1B /* solver.swift in Sources */,
 				2E8B6C572C2208F600FBAF69 /* BoardView.swift in Sources */,
