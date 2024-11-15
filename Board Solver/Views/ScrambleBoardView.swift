@@ -24,7 +24,7 @@ struct ScrambleBoardView: View {
                 || ((row == 2 || row == 6 || row == 8 || row == 12) && (column == 6 || column == 8))
                 || ((row == 3 || row == 11) && (column == 0 || column == 7 || column == 14))
                 || ((row == 6 || row == 8) && (column == 2 || column == 6 || column == 8 || column == 12)){
-            return Color.white
+            return Color.scrambleLb
         } else if (row == 23) {
             return .orange // other tiles
         } else if (((row == 1 || row == 5 || row == 9 || row == 13) && (column == 1 || column == 5 || column == 9 || column == 13)) && ((row != column && row != 14 - column) || (row == 5 || row == 9))){
@@ -119,7 +119,7 @@ struct LShape: View {
     }
 }
 
-//#Preview {
-//    @Previewable @State var tempBoard: [[Character]] = Array(repeating: Array(repeating: Character("*"), count: 15), count: 15)
-//    ScrambleBoardView(board: $tempBoard)
-//}
+#Preview {
+    @Previewable @State var tempBoard: [[Character]] = Array(repeating: Array(repeating: Character("*"), count: 15), count: 15)
+    ScrambleBoardView(board: $tempBoard)
+}

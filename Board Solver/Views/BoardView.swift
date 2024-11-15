@@ -65,7 +65,7 @@ struct BoardView: View {
                     }
                 }
             }
-        }//.onChange(of: board) {}
+        }.onChange(of: board) {}
         .padding(.bottom)
     }
     func updateBoard(brd: [[Int]]){

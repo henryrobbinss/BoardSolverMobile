@@ -63,6 +63,6 @@ struct AboutView: View {
     }
 }
 
-//#Preview {
-//    AboutView()
-//}
+#Preview {
+    AboutView()
+}
