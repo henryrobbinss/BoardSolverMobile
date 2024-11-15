@@ -29,6 +29,7 @@
 		2ED4BA052CC182BF00671ECA /* PatrickHandSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2ED4BA042CC182BF00671ECA /* PatrickHandSC-Regular.ttf */; };
 		2EE7F5442C5D52F7007B4F2C /* SolverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE7F5432C5D52F7007B4F2C /* SolverView.swift */; };
 		2EE7F5482C5D565B007B4F2C /* BufferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE7F5472C5D565B007B4F2C /* BufferView.swift */; };
+		AC8BB0F02CDAC7E600E34169 /* fastSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BB0EF2CDAC7E600E34169 /* fastSolver.swift */; };
 		FA10923D2C1377F7005AD2FE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FA10923C2C1377F7005AD2FE /* .gitignore */; };
 		FA12DC052C41A8B900E7D60F /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA12DC042C41A8B900E7D60F /* MenuView.swift */; };
 		FA12DC092C41A98700E7D60F /* FourInARowMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA12DC082C41A98700E7D60F /* FourInARowMenuView.swift */; };
@@ -81,6 +82,7 @@
 		2ED4BA042CC182BF00671ECA /* PatrickHandSC-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PatrickHandSC-Regular.ttf"; sourceTree = "<group>"; };
 		2EE7F5432C5D52F7007B4F2C /* SolverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolverView.swift; sourceTree = "<group>"; };
 		2EE7F5472C5D565B007B4F2C /* BufferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferView.swift; sourceTree = "<group>"; };
+		AC8BB0EF2CDAC7E600E34169 /* fastSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fastSolver.swift; sourceTree = "<group>"; };
 		FA10923C2C1377F7005AD2FE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FA12DC042C41A8B900E7D60F /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		FA12DC082C41A98700E7D60F /* FourInARowMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourInARowMenuView.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				2E5ED9802C3DB70C00F12A1B /* position.swift */,
 				2E5ED97C2C3DB70C00F12A1B /* solver.swift */,
 				2E5ED9882C3DB73E00F12A1B /* transpositionTable.swift */,
+				AC8BB0EF2CDAC7E600E34169 /* fastSolver.swift */,
 			);
 			path = Connect4Solver;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC8BB0F02CDAC7E600E34169 /* fastSolver.swift in Sources */,
 				2EE7F5442C5D52F7007B4F2C /* SolverView.swift in Sources */,
 				FA15B56E2C220FDC007DE6B6 /* Classifier.swift in Sources */,
 				2EA0FE932C46F0BB001E1F8C /* AboutView.swift in Sources */,
@@ -477,7 +481,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -534,7 +538,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

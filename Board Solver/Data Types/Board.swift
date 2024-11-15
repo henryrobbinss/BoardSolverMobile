@@ -107,28 +107,56 @@ class Board
         }
         
         var board2 = board
-        // clean up any current solved pieces
+        // clean up any current solved pieces and count the number of pieces
+        var numPieces = 0;
         for i in 0..<board2.count{
             for j in 0..<board2[i].count {
                 if board2[i][j] == 3{
                     board2[i][j] = 2
                 }
+                if board2[i][j] != 2{
+                    numPieces+=1;
+                }
             }
         }
-        let solveString = getSolverString(board: board2, playerColor: playerColor)
-        if(solveString == ""){
-            board2[5][3] = 3
-            return board2
+        
+        // *******************************************************************************
+        // Current solver is below this line
+        // DEPRACATED
+        //        let solveString = getSolverString(board: board2, playerColor: playerColor)
+        //        if(solveString == ""){
+        //            board2[5][3] = 3
+        //            return board2
+        //        }
+        //        let pos = Position()
+        //        let solver = Solver()
+        //        let _ = pos.play(seq: solveString)
+        //        let colarray = solver.scoreAllMoves(P: pos)
+        //        let col = colarray.firstIndex(of: colarray.max()!)!
+        //        if colarray[col] == -999999{
+        //            return board2
+        //        }
+        // *******************************************************************************
+        
+        // NOTES:
+        // RED is 0, YELLOW is 1, EMPTY is 2
+
+        //tell the AI which color it should play as
+        let oppositePiece = 1 - playerColor;
+        if(numPieces % 2 == 0){
+            //the aiPiece is the piece the ai will try to make win
+            setPlayerandAI(playerPiece: oppositePiece, aiPiece: playerColor)
         }
-        let pos = Position()
-        let solver = Solver()
-        let _ = pos.play(seq: solveString)
-        let colarray = solver.scoreAllMoves(P: pos)
-        let col = colarray.firstIndex(of: colarray.max()!)!
-        if colarray[col] == -999999{
-            return board2
+        else{
+            setPlayerandAI(playerPiece: playerColor, aiPiece: oppositePiece)
         }
         
+        //reverse the board because the FastSolver views it as reversed
+        let reverse = Array(board2.reversed())
+        let bestMove = getBestMove(board: reverse, piece: 0)
+        let col = bestMove!//store the best move
+        
+        // Here should have col variable that is the column we want to play in
         // place in first open column
         for i in 0..<board2.count {
             if board2.reversed()[i][col] == 2{
