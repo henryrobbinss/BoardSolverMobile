@@ -14,6 +14,8 @@ struct FourInARowMenuView: View
     @State var red: Int = 0
     @State var game = "four"
     @State var letters: String = ""
+    @State var fastSolver = true
+    
     // Disable animation transitions
     init()
     {
@@ -102,6 +104,13 @@ struct FourInARowMenuView: View
                                     })
                         }
                     }
+                    //add toggle here
+                    
+
+                    Toggle("",isOn : $fastSolver )
+                        .toggleStyle(CustomToggleStyle())
+                        .padding()
+                    
                     Spacer()
                 }
             }
@@ -109,6 +118,36 @@ struct FourInARowMenuView: View
     }
 }
 
-#Preview {
-    FourInARowMenuView()
+struct CustomToggleStyle: ToggleStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        VStack{
+            Text("Click to Change Solver Type")
+                .font(.custom("PatrickHandSC-Regular", size: 30))
+                .foregroundStyle(.black)
+                .offset(y: 20)
+            
+            Button(action: {
+                configuration.isOn.toggle()
+            },label: {
+                Rectangle()
+                    .fill(configuration.isOn ? .orange : .blue)
+                    .frame(width: 300, height: 75)
+                    .cornerRadius(15)
+                    .overlay(Group{
+                        Text(configuration.isOn ? "Fast Solver" : "Accurate Solver")
+                            .font(.custom("PatrickHandSC-Regular", size: 40))
+                            .foregroundStyle(configuration.isOn ? .black : .white)
+                        RoundedRectangle(cornerRadius: 15)
+                            .stroke(Color.black, lineWidth: 5)
+                    })
+            }
+                   
+                   
+            )
+        }
+    }
 }
+
+//#Preview {
+//    FourInARowMenuView()
+//}
