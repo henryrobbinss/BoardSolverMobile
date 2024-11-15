@@ -12,6 +12,7 @@ struct WordScrambleMenuView: View {
     @State var pc = -1
     @State var game = "scramble"
     @State private var letters: String = ""
+    @State var fastSolver = true
     
     let maxLetters = 7
     
@@ -114,7 +115,7 @@ struct WordScrambleMenuView: View {
                     Spacer()
                     NavigationLink
                     {
-                        BufferView(playerColor: $pc, g: $game, letters: $letters)
+                        BufferView(playerColor: $pc, g: $game, letters: $letters, fastSolver: $fastSolver)
                             .navigationBarTitle("")
                             .navigationBarHidden(true)
                     } label: {

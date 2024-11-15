@@ -29,6 +29,7 @@ struct SolverView: View
     @State var canSolve: Bool = false
     @Binding var game: String
     @Binding var letters: String
+    @Binding var fastSolver: Bool
     @State private var alreadyWon = false
 
     var body: some View

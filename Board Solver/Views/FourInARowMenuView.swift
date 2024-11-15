@@ -67,7 +67,7 @@ struct FourInARowMenuView: View
                     {
                         NavigationLink
                         {
-                            BufferView(playerColor: $yellow, g: $game, letters: $letters)
+                            BufferView(playerColor: $yellow, g: $game, letters: $letters, fastSolver: $fastSolver)
                                 .navigationBarTitle("")
                                 .navigationBarHidden(true)
                         } label: {
@@ -86,7 +86,7 @@ struct FourInARowMenuView: View
                         
                         NavigationLink
                         {
-                            BufferView(playerColor: $red, g: $game, letters: $letters)
+                            BufferView(playerColor: $red, g: $game, letters: $letters, fastSolver: $fastSolver)
                                 .navigationBarTitle("")
                                 .navigationBarHidden(true)
                         } label:
