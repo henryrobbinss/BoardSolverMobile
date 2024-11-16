@@ -299,7 +299,7 @@ public class Solver {
                 }
             }
         }
-        for word in foundWords {print(word+"\n");}
+        //for word in foundWords {print(word+"\n");}
         if(finalx != -1) {
             print("FINAL:  ")
             print(final);
@@ -308,7 +308,7 @@ public class Solver {
             if(finaldir == 0) {
                 print("right");
             } else {
-                print("left");
+                print("down");
             }
         } else {
             print("no valid moves")
