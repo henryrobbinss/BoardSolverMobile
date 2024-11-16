@@ -85,15 +85,16 @@ struct SolverView: View
                                         SResultsBoard = Classifier.s_detect(uiImage: rotateImage90DegreesClockwise(image: image)!)
                                         //$SBoardView.wrappedValue.updateBoard(brd: SResultsBoard)
                                         //FBoardView.board = FResultsBoard
+                                        SBoard = SResultsBoard
                                     }
                                 }
                                 isScanning = false
                             }
-                            SBoard[7][7] = "F"
-                            SBoard[7][8] = "O"
-                            SBoard[7][9] = "C"
-                            SBoard[7][10] = "U"
-                            SBoard[7][11] = "S"
+//                            SBoard[7][7] = "F"
+//                            SBoard[7][8] = "O"
+//                            SBoard[7][9] = "C"
+//                            SBoard[7][10] = "U"
+//                            SBoard[7][11] = "S"
                             
                         }
                         

@@ -25,6 +25,7 @@
 		2EA0FE8E2C46E207001E1F8C /* KoHo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EA0FE8D2C46E207001E1F8C /* KoHo-Medium.ttf */; };
 		2EA0FE932C46F0BB001E1F8C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA0FE922C46F0BB001E1F8C /* AboutView.swift */; };
 		2EA0FE952C46F48C001E1F8C /* WordScrambleMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA0FE942C46F48C001E1F8C /* WordScrambleMenuView.swift */; };
+		2EACF16F2CDEB94200F6B942 /* scrambleModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2EACF16E2CDEB94200F6B942 /* scrambleModel.mlmodel */; };
 		2EBAC1602C46CDDE001404D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EBAC15F2C46CDDE001404D4 /* LaunchScreen.storyboard */; };
 		2ED4BA052CC182BF00671ECA /* PatrickHandSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2ED4BA042CC182BF00671ECA /* PatrickHandSC-Regular.ttf */; };
 		2EE7F5442C5D52F7007B4F2C /* SolverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE7F5432C5D52F7007B4F2C /* SolverView.swift */; };
@@ -78,6 +79,7 @@
 		2EA0FE8F2C46E28C001E1F8C /* Board-Solver-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Board-Solver-Info.plist"; sourceTree = SOURCE_ROOT; };
 		2EA0FE922C46F0BB001E1F8C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		2EA0FE942C46F48C001E1F8C /* WordScrambleMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleMenuView.swift; sourceTree = "<group>"; };
+		2EACF16E2CDEB94200F6B942 /* scrambleModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = scrambleModel.mlmodel; sourceTree = "<group>"; };
 		2EBAC15F2C46CDDE001404D4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2ED4BA042CC182BF00671ECA /* PatrickHandSC-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PatrickHandSC-Regular.ttf"; sourceTree = "<group>"; };
 		2EE7F5432C5D52F7007B4F2C /* SolverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolverView.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				2E8B6C992C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage */,
 				2E5ED9772C3B30B200F12A1B /* Connect4 2 Iteration 310.mlmodel */,
 				2E5E927F2CD16DFA00F7434C /* best.mlpackage */,
+				2EACF16E2CDEB94200F6B942 /* scrambleModel.mlmodel */,
 				FA15B56C2C220FA5007DE6B6 /* Classifiers */,
 				FA960B192C1390C500D5099C /* Views */,
 				2E04BE6B2C138BB1004A775C /* Preview Content */,
@@ -387,6 +390,7 @@
 				FA12DC052C41A8B900E7D60F /* MenuView.swift in Sources */,
 				2E9AC7242CA35C7F003EC293 /* ScrambleBoardView.swift in Sources */,
 				2E5ED9842C3DB70C00F12A1B /* entry.swift in Sources */,
+				2EACF16F2CDEB94200F6B942 /* scrambleModel.mlmodel in Sources */,
 				FA12DC092C41A98700E7D60F /* FourInARowMenuView.swift in Sources */,
 				2E5ED9832C3DB70C00F12A1B /* moveSorter.swift in Sources */,
 				FAC4715E2C2B380500EE6D97 /* Board.swift in Sources */,
@@ -567,6 +571,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -603,6 +608,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -97,6 +97,101 @@ class Board
         return board
     }
     
+    static func convertSBoard(results: [VNRecognizedObjectObservation], width: CGFloat, height: CGFloat) -> [[Character]]
+    {
+        struct piece{
+            var label: String
+            var midx: CGFloat
+            var midy: CGFloat
+        }
+        var board: [[Character]] = Array(repeating: Array(repeating: Character("*"), count: 15), count: 15)
+        
+        // Assuming 0,0 is top left
+        var topBoard: CGFloat = height
+        var bottomBoard: CGFloat = 0
+        var leftBoard: CGFloat = width
+        var rightBoard: CGFloat = 0
+        var foundBoard = false
+        
+        // pieces array
+        var pieces: [piece] = []
+        
+        for r in results {
+            if r.labels[0].identifier == "board"{
+                foundBoard = true
+                topBoard = r.boundingBox.minY*height
+                bottomBoard = r.boundingBox.maxY*height
+                leftBoard = r.boundingBox.minX*width
+                rightBoard = r.boundingBox.maxX*width
+            }
+        }
+        
+        for r in results{
+            if r.labels[0].confidence < 0.75{
+                continue
+            }
+            let x1 = r.boundingBox.minX*width
+            let y1 = r.boundingBox.minY*height
+            
+            let x2 = r.boundingBox.maxX*width
+            let y2 = r.boundingBox.maxY*height
+            
+            if !foundBoard{
+                leftBoard = min(x1, leftBoard)
+                rightBoard = max(x2, rightBoard)
+                topBoard = min(y1, topBoard)
+                bottomBoard = max(y2, bottomBoard)
+            }
+            
+            let p = piece(label: r.labels[0].identifier, midx: r.boundingBox.midX*width, midy: r.boundingBox.midY*height)
+            pieces.append(p)
+        }
+        
+        let bwidth = rightBoard - leftBoard
+        let bheight = topBoard - bottomBoard
+        
+        let columns = [(bwidth/30)+leftBoard, (bwidth/30 + bwidth/15)+leftBoard,
+                       (bwidth/30 + 2*bwidth/15)+leftBoard, (bwidth/30 + 3*bwidth/15)+leftBoard,
+                       (bwidth/30 + 4*bwidth/15)+leftBoard, (bwidth/30 + 5*bwidth/15)+leftBoard,
+                       (bwidth/30 + 6*bwidth/15)+leftBoard, (bwidth/30 + 7*bwidth/15)+leftBoard,
+                       (bwidth/30 + 8*bwidth/15)+leftBoard, (bwidth/30 + 9*bwidth/15)+leftBoard,
+                       (bwidth/30 + 10*bwidth/15)+leftBoard, (bwidth/30 + 11*bwidth/15)+leftBoard,
+                       (bwidth/30 + 12*bwidth/15)+leftBoard, (bwidth/30 + 13*bwidth/15)+leftBoard,
+                       (bwidth/30 + 14*bwidth/15)+leftBoard]
+        
+        let rows = [(bheight/30)+bottomBoard, (bheight/30 + bheight/15)+bottomBoard,
+                    (bheight/30 + 2*bheight/15)+bottomBoard, (bheight/30 + 3*bheight/15)+bottomBoard,
+                    (bheight/30 + 4*bheight/15)+bottomBoard, (bheight/30 + 5*bheight/15)+bottomBoard,
+                    (bheight/30 + 6*bheight/15)+bottomBoard, (bheight/30 + 7*bheight/15)+bottomBoard,
+                    (bheight/30 + 8*bheight/15)+bottomBoard, (bheight/30 + 9*bheight/15)+bottomBoard,
+                    (bheight/30 + 10*bheight/15)+bottomBoard, (bheight/30 + 11*bheight/15)+bottomBoard,
+                    (bheight/30 + 12*bheight/15)+bottomBoard, (bheight/30 + 13*bheight/15)+bottomBoard,
+                    (bheight/30 + 14*bheight/15)+bottomBoard]
+
+        for p in pieces{
+            let rowsLength = rows.count
+            let row = rows.enumerated().min(by: { abs($0.element - p.midy) < abs($1.element - p.midy) })?.offset ?? rowsLength
+
+            let columnsLength = columns.count
+            let col = columns.enumerated().min(by: { abs($0.element - p.midx) < abs($1.element - p.midx) })?.offset ?? columnsLength
+            
+            if(p.label.count > 1){
+                board[row][col] = Character("-")
+            } else {
+                board[row][col] = Character(p.label)
+            }
+        }
+        
+        for row in board {
+            for col in row {
+                print(col, terminator: " ")
+            }
+            print("")
+        }
+        
+        return board
+    }
+    
     // Takes the detected board and the player's color and then generates a solution. Returns the solution
     // as a [[Int]], whereby the solution placement cell equals 3.
     public static func startSolving(board: [[Int]], playerColor: Int) -> [[Int]]

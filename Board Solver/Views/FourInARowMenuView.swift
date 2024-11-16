@@ -106,6 +106,7 @@ struct FourInARowMenuView: View
                 }
             }
         }.navigationViewStyle(StackNavigationViewStyle())
+        
     }
 }
 

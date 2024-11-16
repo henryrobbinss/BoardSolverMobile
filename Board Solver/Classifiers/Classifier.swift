@@ -49,12 +49,12 @@ struct Classifier
 
         try? handler.perform([request])
         
-        guard let results = request.results as? [VNRecognizedObjectObservation] else
+        guard let f_results = request.results as? [VNRecognizedObjectObservation] else
         {
             return [[0]]
         }
         
-        return Board.convertBoard(results: results, width: CGFloat(ciImage.cgImage!.width), height: CGFloat(ciImage.cgImage!.height), playerColor: playerColor)
+        return Board.convertBoard(results: f_results, width: CGFloat(ciImage.cgImage!.width), height: CGFloat(ciImage.cgImage!.height), playerColor: playerColor)
     }
     
     static func createSImageClassifier() -> VNCoreMLModel
@@ -63,7 +63,7 @@ struct Classifier
         let defaultConfig = MLModelConfiguration()
 
         // Create an instance of the image classifier's wrapper class.
-        let imageClassifierWrapper = try? best(configuration: defaultConfig)
+        let imageClassifierWrapper = try? scrambleModel(configuration: defaultConfig)
 
         guard let imageClassifier = imageClassifierWrapper else {
             fatalError("App failed to create an image classifier model instance.")
@@ -82,28 +82,22 @@ struct Classifier
     
     private static let s_imageClassifier = createSImageClassifier()
     
-    private(set) var s_results: [VNCoreMLFeatureValueObservation]?
+    private(set) var s_results: [VNRecognizedObjectObservation]?
     
     mutating func s_detect(ciImage: CIImage) -> [[Character]]
     {
         
-        let request = VNCoreMLRequest(model: Classifier.s_imageClassifier.self)
+        let s_request = VNCoreMLRequest(model: Classifier.s_imageClassifier.self)
         
-        let handler = VNImageRequestHandler(ciImage: ciImage, options: [:])
+        let s_handler = VNImageRequestHandler(ciImage: ciImage, options: [:])
 
-        try? handler.perform([request])
+        try? s_handler.perform([s_request])
         
-        guard let results = request.results?.first as? VNCoreMLFeatureValueObservation  else {
-            return [[]]
+        guard let s_results = s_request.results as? [VNRecognizedObjectObservation] else
+        {
+            return [[Character("*")]]
         }
         
-        let featureValue = results.featureValue
-        if let multiArray = featureValue.multiArrayValue {
-            let firstValue = multiArray[0] as? Double
-            // Further processing...
-        }
-        
-        return [[]]
-        // return Board.convertBoard(results: results, width: CGFloat(ciImage.cgImage!.width), height: CGFloat(ciImage.cgImage!.height), playerColor: playerColor)
+        return Board.convertSBoard(results: s_results, width: CGFloat(ciImage.cgImage!.width), height: CGFloat(ciImage.cgImage!.height))
     }
 }
