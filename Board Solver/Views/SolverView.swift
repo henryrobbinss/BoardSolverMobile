@@ -121,7 +121,7 @@ struct SolverView: View
                             {
                                 isSolving = true
                                 withAnimation(){
-                                    FResultsBoard = Board.startSolving(board: FBoard, playerColor: playerColor)
+                                    FResultsBoard = Board.startSolving(board: FBoard, playerColor: playerColor, fastSolver: $fastSolver.wrappedValue)
                                     if(FResultsBoard == FBoardView.board){
                                         alreadyWon = true
                                     } else {
@@ -185,12 +185,17 @@ struct SolverView: View
                 .opacity(isScanning ? 0.9 : 0)
                 .frame(width: 150, height: 150)
             
-            ProgressView("Solving")
+            ProgressView{
+                Text("Solving")
+                    .font(.custom("PatrickHandSC-Regular", size: 20))
+            }
                 .progressViewStyle(CircularProgressViewStyle())
                 .background(.white)
+                .cornerRadius(10)
                 .foregroundColor(.black)
-                .opacity(isSolving ? 0.9 : 0)
-                .frame(width: 150, height: 150)
+                .opacity(isSolving ? 0.8 : 0)
+                .scaleEffect(2)
+//                .padding()
 
         }
         .ignoresSafeArea(.all)

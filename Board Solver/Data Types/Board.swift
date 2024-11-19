@@ -99,7 +99,7 @@ class Board
     
     // Takes the detected board and the player's color and then generates a solution. Returns the solution
     // as a [[Int]], whereby the solution placement cell equals 3.
-    public static func startSolving(board: [[Int]], playerColor: Int) -> [[Int]]
+    public static func startSolving(board: [[Int]], playerColor: Int, fastSolver : Bool) -> [[Int]]
     {
         // Check for winner
         if checkForWinner(board: board) != nil {
@@ -119,42 +119,55 @@ class Board
                 }
             }
         }
+        var col = 0;
+        if(!fastSolver){
+            let solveString = getSolverString(board: board2, playerColor: playerColor)
+            if(solveString == ""){
+                board2[5][3] = 3
+                return board2
+            }
+            let pos = Position()
+            let solver = Solver()
+            let _ = pos.play(seq: solveString)
+            let colarray = solver.scoreAllMoves(P: pos)
+            col = colarray.firstIndex(of: colarray.max()!)!
+            if colarray[col] == -999999{
+                return board2
+            }
+            
+        }
+        else{
+            //tell the AI which color it should play as
+            let oppositePiece = 1 - playerColor;
+            print("playing for ")
+            if(numPieces % 2 == 0){
+                //the aiPiece is the piece the ai will try to make win
+                print(playerColor)
+                setPlayerandAI(playerPiece: oppositePiece, aiPiece: playerColor)
+            }
+            else{
+                print(oppositePiece)
+                setPlayerandAI(playerPiece: playerColor, aiPiece: oppositePiece)
+            }
+          
+            
+            
+            //reverse the board because the FastSolver views it as reversed
+            let reverse = Array(board2.reversed())
+            let bestMove = getBestMove(board: reverse, piece: 0)
+            col = bestMove!//store the best move
+        }
         
         // *******************************************************************************
         // Current solver is below this line
         // DEPRACATED
-        //        let solveString = getSolverString(board: board2, playerColor: playerColor)
-        //        if(solveString == ""){
-        //            board2[5][3] = 3
-        //            return board2
-        //        }
-        //        let pos = Position()
-        //        let solver = Solver()
-        //        let _ = pos.play(seq: solveString)
-        //        let colarray = solver.scoreAllMoves(P: pos)
-        //        let col = colarray.firstIndex(of: colarray.max()!)!
-        //        if colarray[col] == -999999{
-        //            return board2
-        //        }
+
         // *******************************************************************************
         
         // NOTES:
         // RED is 0, YELLOW is 1, EMPTY is 2
 
-        //tell the AI which color it should play as
-        let oppositePiece = 1 - playerColor;
-        if(numPieces % 2 == 0){
-            //the aiPiece is the piece the ai will try to make win
-            setPlayerandAI(playerPiece: oppositePiece, aiPiece: playerColor)
-        }
-        else{
-            setPlayerandAI(playerPiece: playerColor, aiPiece: oppositePiece)
-        }
-        
-        //reverse the board because the FastSolver views it as reversed
-        let reverse = Array(board2.reversed())
-        let bestMove = getBestMove(board: reverse, piece: 0)
-        let col = bestMove!//store the best move
+
         
         // Here should have col variable that is the column we want to play in
         // place in first open column
