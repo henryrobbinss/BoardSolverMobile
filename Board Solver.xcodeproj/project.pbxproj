@@ -26,6 +26,21 @@
 		2EA0FE932C46F0BB001E1F8C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA0FE922C46F0BB001E1F8C /* AboutView.swift */; };
 		2EA0FE952C46F48C001E1F8C /* WordScrambleMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA0FE942C46F48C001E1F8C /* WordScrambleMenuView.swift */; };
 		2EACF16F2CDEB94200F6B942 /* scrambleModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2EACF16E2CDEB94200F6B942 /* scrambleModel.mlmodel */; };
+		2EACF1722CED308100F6B942 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EACF1702CED308100F6B942 /* main.swift */; };
+		2EACF1732CED308100F6B942 /* node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EACF1712CED308100F6B942 /* node.swift */; };
+		2EACF1852CED30D600F6B942 /* position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EACF1752CED30D600F6B942 /* position.swift */; };
+		2EACF1862CED30D600F6B942 /* solver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EACF1782CED30D600F6B942 /* solver.swift */; };
+		2EACF1872CED30D600F6B942 /* trie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EACF1812CED30D600F6B942 /* trie.swift */; };
+		2EACF1882CED30D600F6B942 /* scrabbletests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EACF1762CED30D600F6B942 /* scrabbletests.swift */; };
+		2EACF1892CED30D600F6B942 /* wordsmodified.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EACF1832CED30D600F6B942 /* wordsmodified.txt */; };
+		2EACF18A2CED30D600F6B942 /* board1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EACF1792CED30D600F6B942 /* board1.txt */; };
+		2EACF18B2CED30D600F6B942 /* test.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EACF17E2CED30D600F6B942 /* test.txt */; };
+		2EACF18C2CED30D600F6B942 /* board3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EACF17B2CED30D600F6B942 /* board3.txt */; };
+		2EACF18D2CED30D600F6B942 /* wordssmall.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EACF1842CED30D600F6B942 /* wordssmall.txt */; };
+		2EACF18E2CED30D600F6B942 /* board4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EACF17C2CED30D600F6B942 /* board4.txt */; };
+		2EACF18F2CED30D600F6B942 /* board2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EACF17A2CED30D600F6B942 /* board2.txt */; };
+		2EACF1912CED30D600F6B942 /* test1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EACF17F2CED30D600F6B942 /* test1.txt */; };
+		2EACF1922CED30D600F6B942 /* words.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EACF1822CED30D600F6B942 /* words.txt */; };
 		2EBAC1602C46CDDE001404D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EBAC15F2C46CDDE001404D4 /* LaunchScreen.storyboard */; };
 		2ED4BA052CC182BF00671ECA /* PatrickHandSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2ED4BA042CC182BF00671ECA /* PatrickHandSC-Regular.ttf */; };
 		2EE7F5442C5D52F7007B4F2C /* SolverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE7F5432C5D52F7007B4F2C /* SolverView.swift */; };
@@ -80,6 +95,21 @@
 		2EA0FE922C46F0BB001E1F8C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		2EA0FE942C46F48C001E1F8C /* WordScrambleMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordScrambleMenuView.swift; sourceTree = "<group>"; };
 		2EACF16E2CDEB94200F6B942 /* scrambleModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = scrambleModel.mlmodel; sourceTree = "<group>"; };
+		2EACF1702CED308100F6B942 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		2EACF1712CED308100F6B942 /* node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = node.swift; sourceTree = "<group>"; };
+		2EACF1752CED30D600F6B942 /* position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = position.swift; sourceTree = "<group>"; };
+		2EACF1762CED30D600F6B942 /* scrabbletests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scrabbletests.swift; sourceTree = "<group>"; };
+		2EACF1782CED30D600F6B942 /* solver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = solver.swift; sourceTree = "<group>"; };
+		2EACF1792CED30D600F6B942 /* board1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = board1.txt; sourceTree = "<group>"; };
+		2EACF17A2CED30D600F6B942 /* board2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = board2.txt; sourceTree = "<group>"; };
+		2EACF17B2CED30D600F6B942 /* board3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = board3.txt; sourceTree = "<group>"; };
+		2EACF17C2CED30D600F6B942 /* board4.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = board4.txt; sourceTree = "<group>"; };
+		2EACF17E2CED30D600F6B942 /* test.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
+		2EACF17F2CED30D600F6B942 /* test1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = test1.txt; sourceTree = "<group>"; };
+		2EACF1812CED30D600F6B942 /* trie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = trie.swift; sourceTree = "<group>"; };
+		2EACF1822CED30D600F6B942 /* words.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
+		2EACF1832CED30D600F6B942 /* wordsmodified.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = wordsmodified.txt; sourceTree = "<group>"; };
+		2EACF1842CED30D600F6B942 /* wordssmall.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = wordssmall.txt; sourceTree = "<group>"; };
 		2EBAC15F2C46CDDE001404D4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2ED4BA042CC182BF00671ECA /* PatrickHandSC-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PatrickHandSC-Regular.ttf"; sourceTree = "<group>"; };
 		2EE7F5432C5D52F7007B4F2C /* SolverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolverView.swift; sourceTree = "<group>"; };
@@ -144,6 +174,7 @@
 			children = (
 				2EA0FE8F2C46E28C001E1F8C /* Board-Solver-Info.plist */,
 				2EA0FE8A2C46E11E001E1F8C /* Fonts */,
+				2EACF1742CED308A00F6B942 /* ScrambleSolver */,
 				2E5ED97B2C3DB6F200F12A1B /* Connect4Solver */,
 				FAC4715C2C2B37F600EE6D97 /* Data Types */,
 				2E8B6C992C2F23CF00FBAF69 /* Connect4 1 Iteration 500.mlpackage */,
@@ -204,6 +235,44 @@
 				2ED4BA042CC182BF00671ECA /* PatrickHandSC-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		2EACF1742CED308A00F6B942 /* ScrambleSolver */ = {
+			isa = PBXGroup;
+			children = (
+				2EACF1802CED30D600F6B942 /* TestFiles */,
+				2EACF1702CED308100F6B942 /* main.swift */,
+				2EACF1712CED308100F6B942 /* node.swift */,
+				2EACF1752CED30D600F6B942 /* position.swift */,
+				2EACF1762CED30D600F6B942 /* scrabbletests.swift */,
+				2EACF1782CED30D600F6B942 /* solver.swift */,
+				2EACF1812CED30D600F6B942 /* trie.swift */,
+				2EACF1822CED30D600F6B942 /* words.txt */,
+				2EACF1832CED30D600F6B942 /* wordsmodified.txt */,
+				2EACF1842CED30D600F6B942 /* wordssmall.txt */,
+			);
+			path = ScrambleSolver;
+			sourceTree = "<group>";
+		};
+		2EACF17D2CED30D600F6B942 /* TestBoards */ = {
+			isa = PBXGroup;
+			children = (
+				2EACF1792CED30D600F6B942 /* board1.txt */,
+				2EACF17A2CED30D600F6B942 /* board2.txt */,
+				2EACF17B2CED30D600F6B942 /* board3.txt */,
+				2EACF17C2CED30D600F6B942 /* board4.txt */,
+			);
+			path = TestBoards;
+			sourceTree = "<group>";
+		};
+		2EACF1802CED30D600F6B942 /* TestFiles */ = {
+			isa = PBXGroup;
+			children = (
+				2EACF17D2CED30D600F6B942 /* TestBoards */,
+				2EACF17E2CED30D600F6B942 /* test.txt */,
+				2EACF17F2CED30D600F6B942 /* test1.txt */,
+			);
+			path = TestFiles;
 			sourceTree = "<group>";
 		};
 		FA15B56C2C220FA5007DE6B6 /* Classifiers */ = {
@@ -348,6 +417,15 @@
 			files = (
 				2ED4BA052CC182BF00671ECA /* PatrickHandSC-Regular.ttf in Resources */,
 				2EBAC1602C46CDDE001404D4 /* LaunchScreen.storyboard in Resources */,
+				2EACF1892CED30D600F6B942 /* wordsmodified.txt in Resources */,
+				2EACF18A2CED30D600F6B942 /* board1.txt in Resources */,
+				2EACF18B2CED30D600F6B942 /* test.txt in Resources */,
+				2EACF18C2CED30D600F6B942 /* board3.txt in Resources */,
+				2EACF18D2CED30D600F6B942 /* wordssmall.txt in Resources */,
+				2EACF18E2CED30D600F6B942 /* board4.txt in Resources */,
+				2EACF18F2CED30D600F6B942 /* board2.txt in Resources */,
+				2EACF1912CED30D600F6B942 /* test1.txt in Resources */,
+				2EACF1922CED30D600F6B942 /* words.txt in Resources */,
 				FA10923D2C1377F7005AD2FE /* .gitignore in Resources */,
 				2EA0FE8E2C46E207001E1F8C /* KoHo-Medium.ttf in Resources */,
 				2E04BE442C0F978F004A775C /* Assets.xcassets in Resources */,
@@ -384,6 +462,10 @@
 				FA15B5592C22006D007DE6B6 /* ImageClassifier.swift in Sources */,
 				2EE7F5482C5D565B007B4F2C /* BufferView.swift in Sources */,
 				2E5E92802CD16DFA00F7434C /* best.mlpackage in Sources */,
+				2EACF1852CED30D600F6B942 /* position.swift in Sources */,
+				2EACF1862CED30D600F6B942 /* solver.swift in Sources */,
+				2EACF1872CED30D600F6B942 /* trie.swift in Sources */,
+				2EACF1882CED30D600F6B942 /* scrabbletests.swift in Sources */,
 				2EA0FE952C46F48C001E1F8C /* WordScrambleMenuView.swift in Sources */,
 				2E5ED9812C3DB70C00F12A1B /* solver.swift in Sources */,
 				2E8B6C572C2208F600FBAF69 /* BoardView.swift in Sources */,
@@ -393,6 +475,8 @@
 				2EACF16F2CDEB94200F6B942 /* scrambleModel.mlmodel in Sources */,
 				FA12DC092C41A98700E7D60F /* FourInARowMenuView.swift in Sources */,
 				2E5ED9832C3DB70C00F12A1B /* moveSorter.swift in Sources */,
+				2EACF1722CED308100F6B942 /* main.swift in Sources */,
+				2EACF1732CED308100F6B942 /* node.swift in Sources */,
 				FAC4715E2C2B380500EE6D97 /* Board.swift in Sources */,
 				2E5ED9852C3DB70C00F12A1B /* position.swift in Sources */,
 				2E5ED9892C3DB73E00F12A1B /* transpositionTable.swift in Sources */,
