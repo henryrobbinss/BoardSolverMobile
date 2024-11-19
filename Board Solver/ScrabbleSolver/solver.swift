@@ -273,9 +273,11 @@ public class Solver {
 
                     }
                     for word in tempWords {
+                        //right
                         if (dir == 0) {
                             if (!pos.checkConnected(word:word, x:x, y:y, dir:false)) {continue;}
                             if (!checkNewWordsCreated(word:word, x:x, y:y, dir:false, debug: false)) {continue;}
+                        //down
                         } else {
                             if (!pos.checkConnected(word:word, x:x, y:y, dir:true)) {continue;}                            
                             if (!checkNewWordsCreated(word:word, x:x, y:y, dir:true, debug: false)) {continue;}
@@ -299,7 +301,7 @@ public class Solver {
                 }
             }
         }
-        //for word in foundWords {print(word+"\n");}
+        for word in foundWords {print(word+"\n");}
         if(finalx != -1) {
             print("FINAL:  ")
             print(final);
@@ -317,6 +319,15 @@ public class Solver {
         return final;
         
     }
+
+    public func testScore(word:[Character],x:Int, y:Int,dir:Bool) {
+        print("*******");
+        
+        print( String(word) + " x: " + String(x) + " y: " + String(y) + " score: " + String(pos.scoreWord(word:word,x:x, y:y,dir:false)));
+
+        print("*******");
+    }
+
 
     public func testerFunction() {
         var x = 0;

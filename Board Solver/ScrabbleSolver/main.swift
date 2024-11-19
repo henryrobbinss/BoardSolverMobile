@@ -22,7 +22,7 @@ func main() {
     do {
         var runTester: Bool = true;
         if(runTester) {
-            let filename : String = "test1.txt";
+            let filename : String = "test2.txt";
             let relativePath = "/Users/spauln/Documents/GitHub/BoardSolverMobile/Board Solver/ScrabbleSolver";
             let data = try String(contentsOfFile: relativePath+"/TestFiles/"+filename, encoding: .utf8);
 

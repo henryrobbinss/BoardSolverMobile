@@ -14,7 +14,26 @@ public class ScrabbleTest {
         solver.setRack(rack:Array("OXPBAZE"));
         solver.displayBoard();
         let move = solver.newSolve();
-        
+        var word: [Character] = Array()
+        word.append(Character("O"));
+        word.append(Character("X"));
+        word.append(Character("Y"));
+        word.append(Character("P"));
+        word.append(Character("H"));
+        word.append(Character("E"));
+        word.append(Character("N"));
+        word.append(Character("B"));
+        word.append(Character("U"));
+        word.append(Character("T"));
+        word.append(Character("A"));
+        word.append(Character("Z"));
+        word.append(Character("O"));
+        word.append(Character("N"));
+        word.append(Character("E"));
+        solver.testScore(word:word,x:0, y:0, dir:true );
+        solver.playMove(word:word,x:0, y:0, dir:true,debug:false );
+        solver.displayBoard();
+
     }
     
 }
