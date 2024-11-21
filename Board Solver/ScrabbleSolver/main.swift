@@ -27,7 +27,7 @@ func main() {
             let data = try String(contentsOfFile: relativePath+"/TestFiles/"+filename, encoding: .utf8);
 
             let tester:ScrabbleTest = ScrabbleTest();
-            tester.test1(path:data);
+            tester.test2(path:data);
         } else {
 
             

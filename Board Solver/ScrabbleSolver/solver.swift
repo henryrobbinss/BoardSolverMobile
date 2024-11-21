@@ -323,7 +323,7 @@ public class Solver {
     public func testScore(word:[Character],x:Int, y:Int,dir:Bool) {
         print("*******");
         
-        print( String(word) + " x: " + String(x) + " y: " + String(y) + " score: " + String(pos.scoreWord(word:word,x:x, y:y,dir:false)));
+        print( String(word) + " x: " + String(x) + " y: " + String(y) + " score: " + String(pos.scoreWord(word:word,x:x, y:y,dir:dir)));
 
         print("*******");
     }

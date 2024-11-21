@@ -309,6 +309,7 @@ public class Position {
                 //right
                 if(!dir) {     
                     //check up and down to see if this is connecting to a new word
+
                     var connected = false;
                     var component_score = 0;
                     //up
@@ -375,7 +376,9 @@ public class Position {
                         }
                     }
                     //right
+
                     if(isFilled(x: i+1, y: j)) {
+
                         connected = true;
                         var a = i+1;
                         while(isFilled(x: a, y: j)) {
