@@ -137,6 +137,6 @@ struct WordScrambleMenuView: View {
     }
 }
 
-//#Preview {
-//    WordScrambleMenuView()
-//}
+#Preview {
+    WordScrambleMenuView()
+}
