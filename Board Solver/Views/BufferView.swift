@@ -15,8 +15,9 @@ struct BufferView: View {
     @State var sResultsBoard = Array(repeating: Array(repeating: Character("*"), count: 7), count: 6)
     @Binding var g: String
     @Binding var letters: String
+    @Binding var fastSolver: Bool
     
     var body: some View {
-        SolverView(Classifier: ImageClassifier(), FBoardView: BoardView(board: $board), playerColor: playerColor, FBoard: $board, SBoard: $sBoard, FResultsBoard: fResultsBoard, SResultsBoard: sResultsBoard, game: $g, letters: $letters)
+        SolverView(Classifier: ImageClassifier(), FBoardView: BoardView(board: $board), playerColor: playerColor, FBoard: $board, SBoard: $sBoard, FResultsBoard: fResultsBoard, SResultsBoard: sResultsBoard, game: $g, letters: $letters, fastSolver : $fastSolver)
     }
 }

@@ -12,6 +12,7 @@ struct WordScrambleMenuView: View {
     @State var pc = -1
     @State var game = "scramble"
     @State private var letters: String = ""
+    @State var fastSolver = true
     
     let maxLetters = 7
     
@@ -90,22 +91,22 @@ struct WordScrambleMenuView: View {
                     }
                     .padding(.vertical, 20)
                     .padding(.horizontal, 30)
-                    .overlay(
-                        // Hidden TextField to capture input
-                        TextField("", text: $letters)
-                            .foregroundColor(.clear) // Make text invisible
-                            .accentColor(.clear)      // Hide cursor
-                            .keyboardType(.alphabet)
-                            .disableAutocorrection(true)
-                            .autocapitalization(.none)
-                            .onChange(of: letters) {
-                                // Limit input to max number of letters
-                                if letters.count > maxLetters {
-                                    letters = String(letters.prefix(maxLetters))
-                                }
-                            }
-                            .padding()
-                    )
+//                    .overlay(
+//                        // Hidden TextField to capture input
+//                        TextField("", text: $letters)
+//                            .foregroundColor(.clear) // Make text invisible
+//                            .accentColor(.clear)      // Hide cursor
+//                            .keyboardType(.alphabet)
+//                            .disableAutocorrection(true)
+//                            .autocapitalization(.none)
+//                            .onChange(of: letters) {
+//                                // Limit input to max number of letters
+//                                if letters.count > maxLetters {
+//                                    letters = String(letters.prefix(maxLetters))
+//                                }
+//                            }
+//                            .padding()
+//                    )
                     .onTapGesture {
                         // Bring up the keyboard when tapping the letter area
                         UIApplication.shared.sendAction(#selector(UIResponder.becomeFirstResponder), to: nil, from: nil, for: nil)
@@ -114,7 +115,7 @@ struct WordScrambleMenuView: View {
                     Spacer()
                     NavigationLink
                     {
-                        BufferView(playerColor: $pc, g: $game, letters: $letters)
+                        BufferView(playerColor: $pc, g: $game, letters: $letters, fastSolver: $fastSolver)
                             .navigationBarTitle("")
                             .navigationBarHidden(true)
                     } label: {

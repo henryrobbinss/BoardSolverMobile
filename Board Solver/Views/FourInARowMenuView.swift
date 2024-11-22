@@ -14,6 +14,8 @@ struct FourInARowMenuView: View
     @State var red: Int = 0
     @State var game = "four"
     @State var letters: String = ""
+    @State var fastSolver = true
+    
     // Disable animation transitions
     init()
     {
@@ -65,7 +67,7 @@ struct FourInARowMenuView: View
                     {
                         NavigationLink
                         {
-                            BufferView(playerColor: $yellow, g: $game, letters: $letters)
+                            BufferView(playerColor: $yellow, g: $game, letters: $letters, fastSolver: $fastSolver)
                                 .navigationBarTitle("")
                                 .navigationBarHidden(true)
                         } label: {
@@ -84,7 +86,7 @@ struct FourInARowMenuView: View
                         
                         NavigationLink
                         {
-                            BufferView(playerColor: $red, g: $game, letters: $letters)
+                            BufferView(playerColor: $red, g: $game, letters: $letters, fastSolver: $fastSolver)
                                 .navigationBarTitle("")
                                 .navigationBarHidden(true)
                         } label:
@@ -102,11 +104,48 @@ struct FourInARowMenuView: View
                                     })
                         }
                     }
+                    //add toggle here
+                    
+
+                    Toggle("",isOn : $fastSolver )
+                        .toggleStyle(CustomToggleStyle())
+                        .padding()
+                    
                     Spacer()
                 }
             }
         }.navigationViewStyle(StackNavigationViewStyle())
         
+    }
+}
+
+struct CustomToggleStyle: ToggleStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        VStack{
+            Text("Click to Change Solver Type")
+                .font(.custom("PatrickHandSC-Regular", size: 30))
+                .foregroundStyle(.black)
+                .offset(y: 20)
+            
+            Button(action: {
+                configuration.isOn.toggle()
+            },label: {
+                Rectangle()
+                    .fill(configuration.isOn ? .orange : .blue)
+                    .frame(width: 300, height: 75)
+                    .cornerRadius(15)
+                    .overlay(Group{
+                        Text(configuration.isOn ? "Fast Solver" : "Accurate Solver")
+                            .font(.custom("PatrickHandSC-Regular", size: 40))
+                            .foregroundStyle(configuration.isOn ? .black : .white)
+                        RoundedRectangle(cornerRadius: 15)
+                            .stroke(Color.black, lineWidth: 5)
+                    })
+            }
+                   
+                   
+            )
+        }
     }
 }
 

@@ -29,6 +29,7 @@ struct SolverView: View
     @State var canSolve: Bool = false
     @Binding var game: String
     @Binding var letters: String
+    @Binding var fastSolver: Bool
     @State private var alreadyWon = false
 
     var body: some View
@@ -121,7 +122,7 @@ struct SolverView: View
                             {
                                 isSolving = true
                                 withAnimation(){
-                                    FResultsBoard = Board.startSolving(board: FBoard, playerColor: playerColor)
+                                    FResultsBoard = Board.startSolving(board: FBoard, playerColor: playerColor, fastSolver: $fastSolver.wrappedValue)
                                     if(FResultsBoard == FBoardView.board){
                                         alreadyWon = true
                                     } else {
@@ -178,19 +179,43 @@ struct SolverView: View
             }
             .padding(.bottom, 50)
 
-            ProgressView("Scanning")
-                .progressViewStyle(CircularProgressViewStyle())
-                .background(.white)
-                .foregroundColor(.black)
-                .opacity(isScanning ? 0.9 : 0)
-                .frame(width: 150, height: 150)
             
-            ProgressView("Solving")
-                .progressViewStyle(CircularProgressViewStyle())
-                .background(.white)
-                .foregroundColor(.black)
-                .opacity(isSolving ? 0.9 : 0)
-                .frame(width: 150, height: 150)
+            ZStack {
+                Color.white
+                    .cornerRadius(10)
+                    .shadow(radius: 5)
+                
+                VStack(spacing: 1) {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                    Text("Scanning")
+                        .font(.custom("PatrickHandSC-Regular", size: 20))
+                        .foregroundColor(.black)
+                }
+            }
+            .frame(width: 100, height: 70)
+            .opacity(isScanning ? 0.8 : 0)
+            .scaleEffect(1.5)
+            
+            
+            ZStack {
+                Color.white
+                    .cornerRadius(10)
+                    .shadow(radius: 5)
+                
+                VStack(spacing: 1) {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                    Text("Solving")
+                        .font(.custom("PatrickHandSC-Regular", size: 20))
+                        .foregroundColor(.black)
+                }
+            }
+            .frame(width: 100, height: 70)
+            .opacity(isSolving ? 0.8 : 0)
+            .scaleEffect(1.5)
+
+
 
         }
         .ignoresSafeArea(.all)
