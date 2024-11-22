@@ -178,24 +178,43 @@ struct SolverView: View
             }
             .padding(.bottom, 50)
 
-            ProgressView("Scanning")
-                .progressViewStyle(CircularProgressViewStyle())
-                .background(.white)
-                .foregroundColor(.black)
-                .opacity(isScanning ? 0.9 : 0)
-                .frame(width: 150, height: 150)
             
-            ProgressView{
-                Text("Solving")
-                    .font(.custom("PatrickHandSC-Regular", size: 20))
+            ZStack {
+                Color.white
+                    .cornerRadius(10)
+                    .shadow(radius: 5)
+                
+                VStack(spacing: 1) {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                    Text("Scanning")
+                        .font(.custom("PatrickHandSC-Regular", size: 20))
+                        .foregroundColor(.black)
+                }
             }
-                .progressViewStyle(CircularProgressViewStyle())
-                .background(.white)
-                .cornerRadius(10)
-                .foregroundColor(.black)
-                .opacity(isSolving ? 0.8 : 0)
-                .scaleEffect(2)
-//                .padding()
+            .frame(width: 100, height: 70)
+            .opacity(isScanning ? 0.8 : 0)
+            .scaleEffect(1.5)
+            
+            
+            ZStack {
+                Color.white
+                    .cornerRadius(10)
+                    .shadow(radius: 5)
+                
+                VStack(spacing: 1) {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                    Text("Solving")
+                        .font(.custom("PatrickHandSC-Regular", size: 20))
+                        .foregroundColor(.black)
+                }
+            }
+            .frame(width: 100, height: 70)
+            .opacity(isSolving ? 0.8 : 0)
+            .scaleEffect(1.5)
+
+
 
         }
         .ignoresSafeArea(.all)
