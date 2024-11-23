@@ -39,7 +39,7 @@ struct MenuView: View {
                     .padding(.bottom, 1 * scalingFactor)
                     
                     // Display the main image below the title.
-                    Image("image1")
+                    Image("MenuViewLogo")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 300 * scalingFactor, height: 230 * scalingFactor)
