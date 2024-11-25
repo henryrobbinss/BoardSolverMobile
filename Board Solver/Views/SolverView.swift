@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Board Solver
-//
-//  Created by Henry Robbins on 6/4/24.
-//
-
 import SwiftUI
 import CoreML
 import Vision
@@ -12,8 +5,8 @@ import RealityKit
 import ARKit
 import UIKit
 
-struct SolverView: View
-{
+struct SolverView: View {
+    // Existing properties remain unchanged
     @ObservedObject var FClassifier: ImageClassifier
     @Environment(\.dismiss) private var dismiss
     @State private var arView = ARView(frame: .zero)
@@ -30,170 +23,172 @@ struct SolverView: View
     @Binding var letters: String
     @State private var alreadyWon = false
 
-    var body: some View
-    {
-        ZStack
-        {
-            ARViewContainer(arView: $arView)
-                .edgesIgnoringSafeArea(.all)
+    var body: some View {
+        GeometryReader { geometry in
+            // Base sizes as per iPhone 13 Pro Max
+            let baseWidth: CGFloat = 428
+            let baseHeight: CGFloat = 926
             
-            if game == "scramble" {
-                ScrambleBoardView(board: $SBoard)
-            }
+            // Calculate scaling factors
+            let widthScalingFactor = geometry.size.width / baseWidth
+            let heightScalingFactor = geometry.size.height / baseHeight
+            let scalingFactor = min(widthScalingFactor, heightScalingFactor)
             
-            VStack
-            {
-                Spacer()
+            ZStack {
+                ARViewContainer(arView: $arView)
+                    .edgesIgnoringSafeArea(.all)
                 
-                if game == "four" {
-                    FBoardView
-                        .padding(.bottom, 20)
-                } else if game == "scramble" {
-                    // ScrambleBoardView()
+                if game == "scramble" {
+                    ScrambleBoardView(board: $SBoard)
                 }
                 
-                
-                HStack{
-                    Button
-                    {
-                        if game == "four" {
-                            DispatchQueue.global().async
-                            {
-                                isScanning = true
-                                withAnimation(){
-                                    canSolve = true
-                                    captureFrame()
-                                    if let image = capturedImage
-                                    {
-                                        FResultsBoard = FClassifier.detect(uiImage: rotateImage90DegreesClockwise(image: image)!, playerColor: playerColor)
-                                        $FBoardView.wrappedValue.updateBoard(brd: FResultsBoard)
-                                        FBoardView.board = FResultsBoard
-                                    }
-                                }
-                                isScanning = false
-                            }
-                        } else if game == "scramble" {
-                            DispatchQueue.global().async
-                            {
-                                isScanning = true
-                                withAnimation(){
-                                    canSolve = true
-                                    captureFrame()
-                                    if let image = capturedImage
-                                    {
-                                        print(image)// Board stuff here
-                                    }
-                                }
-                                isScanning = false
-                            }
-                            SBoard[7][7] = "F"
-                            SBoard[7][8] = "O"
-                            SBoard[7][9] = "C"
-                            SBoard[7][10] = "U"
-                            SBoard[7][11] = "S"
-                            
-                        }
-                        
-                    } label: {
-                        Rectangle()
-                            .fill(.orange)
-                            .frame(width: 180, height: 75)
-                            .cornerRadius(15)
-                            .overlay(Group{
-                                Text("SCAN")
-                                    .font(.custom("PatrickHandSC-Regular", size: 50))
-                                    .foregroundStyle(.black)
-                                RoundedRectangle(cornerRadius: 15)
-                                            .stroke(Color.black, lineWidth: 5)
-                                })
-                    }
-                    .frame(maxWidth: 180)
+                VStack {
+                    Spacer()
                     
-                   
-                    Button
-                    {
-                        if game == "four" {
-                            DispatchQueue.global().async
-                            {
-                                isSolving = true
-                                withAnimation(){
-                                    FResultsBoard = Board.startSolving(board: FBoard, playerColor: playerColor)
-                                    if(FResultsBoard == FBoardView.board){
-                                        alreadyWon = true
-                                    } else {
-                                        $FBoardView.wrappedValue.updateBoard(brd: FResultsBoard)
-                                        FBoardView.board = FResultsBoard
+                    if game == "four" {
+                        FBoardView
+                            .padding(.bottom, 20 * scalingFactor)
+                    }
+                    
+                    HStack(spacing: 20 * scalingFactor) {
+                        // Scan Button
+                        Button {
+                            // Existing scan logic
+                            if game == "four" {
+                                DispatchQueue.global().async {
+                                    isScanning = true
+                                    withAnimation() {
+                                        canSolve = true
+                                        captureFrame()
+                                        if let image = capturedImage {
+                                            FResultsBoard = FClassifier.detect(uiImage: rotateImage90DegreesClockwise(image: image)!, playerColor: playerColor)
+                                            $FBoardView.wrappedValue.updateBoard(brd: FResultsBoard)
+                                            FBoardView.board = FResultsBoard
+                                        }
                                     }
+                                    isScanning = false
                                 }
-                                isSolving = false
+                            } else if game == "scramble" {
+                                // Existing scramble logic
+                                DispatchQueue.global().async {
+                                    isScanning = true
+                                    withAnimation() {
+                                        canSolve = true
+                                        captureFrame()
+                                        if let image = capturedImage {
+                                            print(image)
+                                        }
+                                    }
+                                    isScanning = false
+                                }
+                                SBoard[7][7] = "F"
+                                SBoard[7][8] = "O"
+                                SBoard[7][9] = "C"
+                                SBoard[7][10] = "U"
+                                SBoard[7][11] = "S"
+                                // Add extra padding only for scramble game
+
                             }
-                        } else if game == "scramble" {
-                            print("solving for scramble")
+                        } label: {
+                            Rectangle()
+                                .fill(.orange)
+                                .frame(width: 180 * scalingFactor, height: 75 * scalingFactor)
+                                .cornerRadius(15 * scalingFactor)
+                                .overlay(Group {
+                                    Text("SCAN")
+                                        .font(.custom("PatrickHandSC-Regular", size: 50 * scalingFactor))
+                                        .foregroundStyle(.black)
+                                    RoundedRectangle(cornerRadius: 15 * scalingFactor)
+                                        .stroke(Color.black, lineWidth: 5 * scalingFactor)
+                                })
                         }
+                        .frame(maxWidth: 180 * scalingFactor)
+                        
+                        // Solve Button
+                        Button {
+                            // Existing solve logic
+                            if game == "four" {
+                                DispatchQueue.global().async {
+                                    isSolving = true
+                                    withAnimation() {
+                                        FResultsBoard = Board.startSolving(board: FBoard, playerColor: playerColor)
+                                        if(FResultsBoard == FBoardView.board) {
+                                            alreadyWon = true
+                                        } else {
+                                            $FBoardView.wrappedValue.updateBoard(brd: FResultsBoard)
+                                            FBoardView.board = FResultsBoard
+                                        }
+                                    }
+                                    isSolving = false
+                                }
+                            } else if game == "scramble" {
+                                print("solving for scramble")
+                            }
+                        } label: {
+                            Rectangle()
+                                .fill(.green)
+                                .frame(width: 180 * scalingFactor, height: 75 * scalingFactor)
+                                .cornerRadius(15 * scalingFactor)
+                                .overlay(Group {
+                                    Text("SOLVE")
+                                        .font(.custom("PatrickHandSC-Regular", size: 50 * scalingFactor))
+                                        .foregroundStyle(.black)
+                                    RoundedRectangle(cornerRadius: 15 * scalingFactor)
+                                        .stroke(Color.black, lineWidth: 5 * scalingFactor)
+                                })
+                        }
+                        .frame(maxWidth: 180 * scalingFactor)
+                        .disabled(!canSolve)
+                    }
+                    .padding(20 * scalingFactor)
+                    .alert("Solving Error", isPresented: $alreadyWon) {
+                        Button("OK", role: .cancel) {
+                            alreadyWon = false
+                        }
+                    } message: {
+                        Text("This Board is Already Solved!")
+                    }
+                    
+                    // Back Button
+                    Button {
+                        dismiss()
                     } label: {
                         Rectangle()
-                            .fill(.green)
-                            .frame(width: 180, height: 75)
-                            .cornerRadius(15)
-                            .overlay(Group{
-                                Text("SOLVE")
-                                    .font(.custom("PatrickHandSC-Regular", size: 50))
-                                    .foregroundStyle(.black)
-                                RoundedRectangle(cornerRadius: 15)
-                                            .stroke(Color.black, lineWidth: 5)
-                                })
-                    }
-                    .frame(maxWidth: 180)
-                    .disabled(!canSolve)
-                }
-                .padding()
-                .alert("Solving Error", isPresented: $alreadyWon) {
-                            Button("OK", role: .cancel) {
-                                alreadyWon = false
-                            }
-                        } message: {
-                            Text("This Board is Already Solved!")
-                        }
-                
-                Button {
-                    dismiss()
-                } label: {
-                    Rectangle()
-                        .fill(.gray)
-                        .frame(width: 100, height: 60)
-                        .cornerRadius(15)
-                        .overlay(Group{
-                            Text("BACK")
-                                .font(.custom("PatrickHandSC-Regular", size: 30))
-                                .foregroundStyle(.white)
-                            RoundedRectangle(cornerRadius: 15)
-                                        .stroke(Color.black, lineWidth: 5)
+                            .fill(.gray)
+                            .frame(width: 100 * scalingFactor, height: 60 * scalingFactor)
+                            .cornerRadius(15 * scalingFactor)
+                            .overlay(Group {
+                                Text("BACK")
+                                    .font(.custom("PatrickHandSC-Regular", size: 30 * scalingFactor))
+                                    .foregroundStyle(.white)
+                                RoundedRectangle(cornerRadius: 15 * scalingFactor)
+                                    .stroke(Color.black, lineWidth: 5 * scalingFactor)
                             })
+                    }
+                    .frame(minWidth: 200 * scalingFactor)
                 }
-                .frame(minWidth: 200)
+                .padding(.bottom, 50 * scalingFactor)
+
+                // Progress Views
+                ProgressView("Scanning")
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .background(.white)
+                    .foregroundColor(.black)
+                    .opacity(isScanning ? 0.9 : 0)
+                    .frame(width: 150 * scalingFactor, height: 150 * scalingFactor)
+                
+                ProgressView("Solving")
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .background(.white)
+                    .foregroundColor(.black)
+                    .opacity(isSolving ? 0.9 : 0)
+                    .frame(width: 150 * scalingFactor, height: 150 * scalingFactor)
             }
-            .padding(.bottom, 50)
-
-            ProgressView("Scanning")
-                .progressViewStyle(CircularProgressViewStyle())
-                .background(.white)
-                .foregroundColor(.black)
-                .opacity(isScanning ? 0.9 : 0)
-                .frame(width: 150, height: 150)
-            
-            ProgressView("Solving")
-                .progressViewStyle(CircularProgressViewStyle())
-                .background(.white)
-                .foregroundColor(.black)
-                .opacity(isSolving ? 0.9 : 0)
-                .frame(width: 150, height: 150)
-
         }
         .ignoresSafeArea(.all)
     }
     
-    private func captureFrame()
-    {
+    private func captureFrame() {
         let frame = arView.session.currentFrame
         let ciImage = CIImage(cvPixelBuffer: frame!.capturedImage)
         let context = CIContext()
@@ -203,8 +198,8 @@ struct SolverView: View
     }
 }
 
-struct ARViewContainer: UIViewRepresentable
-{
+// ARViewContainer struct
+struct ARViewContainer: UIViewRepresentable {
     @Binding var arView: ARView
     
     func makeUIView(context: Context) -> ARView {
@@ -217,6 +212,7 @@ struct ARViewContainer: UIViewRepresentable
     func updateUIView(_ uiView: ARView, context: Context) {}
 }
 
+// Image rotation helper function
 func rotateImage90DegreesClockwise(image: UIImage) -> UIImage? {
     guard let cgImage = image.cgImage else { return nil }
     
