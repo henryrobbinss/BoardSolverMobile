@@ -140,7 +140,7 @@ struct SolverView: View {
                         .frame(maxWidth: 180 * scalingFactor)
                         .disabled(!canSolve)
                     }
-                    .padding(20 * scalingFactor)
+                    .padding(10 * scalingFactor)
                     .alert("Solving Error", isPresented: $alreadyWon) {
                         Button("OK", role: .cancel) {
                             alreadyWon = false
@@ -167,7 +167,7 @@ struct SolverView: View {
                     }
                     .frame(minWidth: 200 * scalingFactor)
                 }
-                .padding(.bottom, 50 * scalingFactor)
+                .padding(.bottom,  geometry.size.height < 830 && game == "scramble" ? 0 :50 * scalingFactor)
 
                 // Progress Views
                 ProgressView("Scanning")
