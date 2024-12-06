@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FourInARowMenuView: View {
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) private var dismiss
     @State var yellow: Int = 1
     @State var red: Int = 0
@@ -60,7 +61,7 @@ struct FourInARowMenuView: View {
                         // Title text
                         Text("Please Select Which\nColor Went First")
                             .font(.custom("PatrickHandSC-Regular", size: 40 * scaleFactor))
-                            .foregroundColor(.black)
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
                             .multilineTextAlignment(.center)
                             .padding(.bottom, 50 * scaleFactor)
                         
@@ -110,6 +111,8 @@ struct FourInARowMenuView: View {
                     // Center the VStack within the GeometryReader
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
+                    .background(colorScheme == .dark ? Color.black : Color.white)
+
                 }
             }
             .ignoresSafeArea()

@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct MenuView: View {
+    @Environment(\.colorScheme) var colorScheme
+
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
@@ -28,12 +30,12 @@ struct MenuView: View {
                     VStack(spacing: 0) {
                         Text("BOARD")
                             .font(.custom("PatrickHandSC-Regular", size: 90 * scalingFactor))
-                            .foregroundColor(.black)
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
                             .multilineTextAlignment(.center)
                             .padding(.bottom, -30 * scalingFactor)
                         Text("SOLVER")
                             .font(.custom("PatrickHandSC-Regular", size: 90 * scalingFactor))
-                            .foregroundColor(.black)
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
                             .multilineTextAlignment(.center)
                     }
                     .padding(.bottom, 1 * scalingFactor)
@@ -104,7 +106,7 @@ struct MenuView: View {
                     Spacer()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.white)
+                .background(colorScheme == .dark ? Color.black : Color.white)
             }
             .ignoresSafeArea()
         }

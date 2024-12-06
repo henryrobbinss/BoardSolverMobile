@@ -11,6 +11,7 @@ import SwiftUI
 struct WordScrambleMenuView: View {
     // Environment variable to dismiss the view
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.colorScheme) var colorScheme
     @State var pc = -1
     @State var game = "scramble"
     // State variable to hold the user's letter input
@@ -62,8 +63,8 @@ struct WordScrambleMenuView: View {
                         Text("please type in your letters")
                             .font(.custom("PatrickHandSC-Regular", size: 30 * scaleFactor))
                             .padding(.bottom, 5 * scaleFactor)
-                            .foregroundColor(.black)
-                        
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
+
                         Text("(type in a '?' for blanks)")
                             .font(.custom("PatrickHandSC-Regular", size: 15 * scaleFactor))
                             .foregroundColor(.gray)
@@ -79,7 +80,7 @@ struct WordScrambleMenuView: View {
                                         Text(letter.uppercased())
                                             .font(.system(size: 40 * scaleFactor))
                                             .frame(width: 40 * scaleFactor, height: 50 * scaleFactor)
-                                            .foregroundColor(.black)
+                                            .foregroundColor(colorScheme == .dark ? .white : .black)
                                     } else if index == letters.count {
                                         // Highlight the current input spot with a grey box
                                         Rectangle()
@@ -147,6 +148,7 @@ struct WordScrambleMenuView: View {
                         .padding(.bottom, 35 * scaleFactor)
                     }
                     // Center the VStack within the GeometryReader
+                    .background(colorScheme == .dark ? Color.black : Color.white)
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
                 }
