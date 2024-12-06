@@ -27,7 +27,10 @@ func main() {
             let data = try String(contentsOfFile: relativePath+"/TestFiles/"+filename, encoding: .utf8);
 
             let tester:ScrabbleTest = ScrabbleTest();
-            tester.test2(path:data);
+            //tester.test2(path:data);
+            //tester.test4(path:data);
+            tester.printTester(path:data);
+
         } else {
 
             
@@ -127,3 +130,5 @@ func main() {
         print(error);
     }
 }
+
+//still needs to give best 1st move

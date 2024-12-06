@@ -84,12 +84,31 @@ public class Solver {
         l (Char Array)      - current player rack
         cur (Char Array)    - empty array
     Returns:
-        2d array of Characters containing all possible words
+        2d array of Characters containing all possible words playable at this location to the right
     */
     private func checkRight(x:Int,y:Int, n:Node, l:[Character], cur:[Character]) -> [[Character]] {
         var final : [[Character]] = Array();
+        var debug : Bool = false;
+        if(x == 4 && y == 4) {
+            //debug = true;
+        }
+        if(debug) {
+            print(cur);
+        }
         if (x > 14 || l.count == 0) {return final;}
-        if n.getLetters().count > 1 {final.append(cur)}
+        if(debug) {
+            print("letters");
+            print(n.getLetters());
+            print(n.getLetters().count);
+        }        
+        if (n.getLetters().count > 1) {
+            final.append(cur)
+
+        }
+        if(debug) {
+            print("final:");
+            print(final);
+        } 
         // Already played on board, traverse down tree and continue
         if (pos.isFilled(x:x,y:y)) {
             if (n.checkIfChildExists(c: Character(pos.getChar(x:x,y:y).uppercased()))) {
@@ -246,17 +265,25 @@ public class Solver {
         var finaly: Int = -1;
         var finaldir: Int = -1;
         var foundWords : [String] = Array();
+        //print(pos.curPlayerRack); 
+        //print("NODE");
+        //print(tree.getRoot().getLetters());
         for dir: Int in 0...1 {
             for y in 0...14 {
                 for x in 0...14 {
                     var tempWords : [[Character]] = Array();
+                    //print(tempWords);
                     // Right
                     if (dir == 0) {
                          if(testTrigger) {
                             print("x " + String(x) + " y " + String(y));
                         }
-                        if (x>0 && pos.isFilled(x:x-1,y:y)) {continue;}
-                        if (!checkIfCanConnect(x:x,y:y, dir:false)) {continue;}
+                        if (x>0 && pos.isFilled(x:x-1,y:y)) {
+                            continue;
+                        }
+                        if (!checkIfCanConnect(x:x,y:y, dir:false)) {
+                            continue;
+                        }
                         // "WORD","X","Y","DIRINT"
                         tempWords = checkRight(x:x,y:y,n:tree.getRoot(),l:pos.curPlayerRack, cur:Array())
                     // Down
@@ -320,7 +347,7 @@ public class Solver {
         
     }
 
-    public func testScore(word:[Character],x:Int, y:Int,dir:Bool) {
+    public func testScore(word:[Character], x:Int, y:Int, dir:Bool) {
         print("*******");
         
         print( String(word) + " x: " + String(x) + " y: " + String(y) + " score: " + String(pos.scoreWord(word:word,x:x, y:y,dir:dir)));
