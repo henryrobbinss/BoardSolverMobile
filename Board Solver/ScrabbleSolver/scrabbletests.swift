@@ -166,6 +166,8 @@ public class ScrabbleTest {
             if(leaveCond != "y") {
                 keep_playing = false;
             }
+            print("*******");
+
         }
     }
 

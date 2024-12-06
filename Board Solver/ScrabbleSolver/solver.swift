@@ -258,6 +258,7 @@ public class Solver {
         return true;
     }
     public func newSolve() -> String {
+        var printAllWords: Bool = false;
         var testTrigger = false; //variable used for printline debugging on windows, ignore
         var final : String = "";
         var finalscore: Int = 0;
@@ -314,6 +315,7 @@ public class Solver {
                         let scoreval = pos.scoreWord(word:word, x:x, y:y, dir:dir != 0);
                         let score: String = String(scoreval);
                         let curStr : String = String(word) + " " + String(x) + " " + String(y) + " " + String(dir) + " s " + score;
+                        
                         if(scoreval > finalscore) {
                             finalscore = scoreval;
                             final = String(word);
@@ -322,13 +324,17 @@ public class Solver {
                             finaldir = dir;
                         }
                         foundWords.append(curStr)
-                        print(curStr);
+                        if(printAllWords) {
+                            print(curStr); 
+                        }
                     }
                     foundWords = Array(Set(foundWords)).sorted()
                 }
             }
         }
-        for word in foundWords {print(word+"\n");}
+        if(printAllWords) {
+            for word in foundWords {print(word+"\n");}
+        }
         if(finalx != -1) {
             print("FINAL:  ")
             print(final);
