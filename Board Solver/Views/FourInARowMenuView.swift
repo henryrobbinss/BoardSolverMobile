@@ -1,15 +1,9 @@
-//
-//  MenuView.swift
-//  Board Solver
-//
-//  Created by Alex Mattoni on 7/12/24.
-//
-
 import SwiftUI
 
 struct FourInARowMenuView: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) private var dismiss
+    
     @State var yellow: Int = 1
     @State var red: Int = 0
     @State var game = "four"
