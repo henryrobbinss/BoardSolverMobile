@@ -1,3 +1,9 @@
+//
+//  MenuView.swift
+//  Board Solver
+//
+//  Created by Alex Mattoni on 7/12/24.
+//
 import SwiftUI
 
 struct FourInARowMenuView: View {
