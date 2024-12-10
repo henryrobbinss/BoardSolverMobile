@@ -257,8 +257,11 @@ public class Solver {
         if (curWord.count >= 2 && !validateSingleWord(w:curWord)) {return false;}
         return true;
     }
+
     public func newSolve() -> String {
+        // ******************** TO print all words, change to true!! ***************************
         var printAllWords: Bool = false;
+        //**************************************************************************************
         var testTrigger = false; //variable used for printline debugging on windows, ignore
         var final : String = "";
         var finalscore: Int = 0;
@@ -324,9 +327,9 @@ public class Solver {
                             finaldir = dir;
                         }
                         foundWords.append(curStr)
-                        if(printAllWords) {
-                            print(curStr); 
-                        }
+                        //if(printAllWords) {
+                            //print(curStr); 
+                        //}
                     }
                     foundWords = Array(Set(foundWords)).sorted()
                 }
@@ -353,6 +356,7 @@ public class Solver {
         
     }
 
+    //test function to score words from the scrabbletests class
     public func testScore(word:[Character], x:Int, y:Int, dir:Bool) {
         print("*******");
         
@@ -361,19 +365,5 @@ public class Solver {
         print("*******");
     }
 
-
-    public func testerFunction() {
-        var x = 0;
-        var y = 1;
-        var word: [Character] = Array()
-        word.append(Character("T"));
-        word.append(Character("E"));
-        word.append(Character("E"));
-
-        print("*******");
-        
-        print( String(word) + " x: " + String(x) + " y: " + String(y) + " score: " + String(pos.scoreWord(word:word,x:x, y:y,dir:false)));
-
-        print("*******");
-    }
+   
 }

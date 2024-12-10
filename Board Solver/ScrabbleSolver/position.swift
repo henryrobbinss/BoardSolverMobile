@@ -287,10 +287,10 @@ public class Position {
         var j = y;
         var main_dw = 0;
         var main_tw = 0;
-        for curLetter: Character in word {
-            //check if already present on the board! if so, add ONLY tile value to score and continue to next letter
+        for curLetter: Character in word { 
+            //(compute 1d array equiv and check if in each)
             var loc_1d = j*15 + i;
-            //check current squares tl, dl, tw, dw: (compute 1d array equiv and check if in each)
+            //check current squares tl, dl, tw, dw: 
             let cur_tl = Position.tl[loc_1d] != nil;
             let cur_dl = Position.dl[loc_1d] != nil;
             let cur_tw = Position.tw[loc_1d] != nil;
@@ -300,11 +300,12 @@ public class Position {
             if(board[j][i] == curLetter) {
                 alrOnBoard = alrOnBoard+1;
                 mainWScore += Position.tileScore[curLetter]!;
-                if(!dir) {
+                if(!dir) {  //increment in direction
                     i = i+1;
-                } else {
+                } else {  
                     j = j+1;
                 }
+            
             } else {
                 //right
                 if(!dir) {     
