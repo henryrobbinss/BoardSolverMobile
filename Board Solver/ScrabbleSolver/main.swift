@@ -20,45 +20,53 @@ func printPosOptions(pos:[[[Bool]]]) {
 }
 func main() {
     do {
+        //***** change this variable to false if you don't want to run the tester class *****
         var runTester: Bool = true;
+        //***********************************************************************************
+
         if(runTester) {
-            let filename : String = "test2.txt";
+            let filename : String = "test3.txt";
             let relativePath = "/Users/spauln/Documents/GitHub/BoardSolverMobile/Board Solver/ScrabbleSolver";
             let data = try String(contentsOfFile: relativePath+"/TestFiles/"+filename, encoding: .utf8);
 
             let tester:ScrabbleTest = ScrabbleTest();
+
+            // *********** Tester function call!! ******************
             //tester.test2(path:data);
-            //tester.test4(path:data);
-            tester.printTester(path:data);
+            tester.test3(path:data);
+            //tester.printTester(path:data);
 
         } else {
-
+            //run
             
             var testingBoardRead = true;
 
-            if(testingBoardRead) {
+            if(testingBoardRead) {        //testing specific board:
+
                 print("Testing Board Read:");
                 let boardfile : String = "board4.txt";
+                //********************* Change this to your local file path!!! *********************************************
                 let relativeBoardPath = "/Users/spauln/Documents/GitHub/BoardSolverMobile/Board Solver/ScrabbleSolver";
+                //**********************************************************************************************************
+
                 let data = try String(contentsOfFile: relativeBoardPath+"/TestFiles/TestBoards/"+boardfile, encoding: .utf8);
                 //init solver w input board
                 let solver: Solver = Solver(path: data);
 
-                // test functions!!
-                //solver.testerFunction();
                 solver.loadWords();
-    //            solver.setRack(rack:Array("ABELLIT"));
                 solver.setRack(rack:Array("BADGERI"));
 
                 let _ = solver.newSolve();
                 solver.displayBoard();
 
-                // end test!!            
 
-            } else {
+            } else {                    //Testing from test.txt:
+
                 let filename : String = "test.txt";
-    //        let relativePath = "/Users/chris/Documents/ScrabbleSolver/ScrabbleSolver"
+                //********************* Change this to your local file path!!! *********************************************
+                //let relativePath = "/Users/chris/Documents/ScrabbleSolver/ScrabbleSolver"
                 let relativePath = "/Users/spauln/Documents/GitHub/BoardSolverMobile/Board Solver/ScrabbleSolver";
+                //**********************************************************************************************************
 
                 let data = try String(contentsOfFile: relativePath+"/TestFiles/"+filename, encoding: .utf8);
                 let myStrings = data.components(separatedBy: .newlines);
@@ -105,16 +113,14 @@ func main() {
             //  } else {
             //     solver.playMove(word:Array(moveSegments[0]), x:Int(moveSegments[1])!, y:Int(moveSegments[2])!, dir:false);
             // }
+
                 var before: TimeInterval = Date().timeIntervalSince1970
                 solver.loadWords();
                 var after = Date().timeIntervalSince1970
                 print("Time to load words (s):  ", terminator: "")
                 print(+after-before);
                 solver.setRack(rack:Array(myStrings[0]));
-                
-                // test functions!!
-                solver.testerFunction();
-                // end test!!
+
             
                 before = Date().timeIntervalSince1970
                 let _ = solver.newSolve();
@@ -131,4 +137,3 @@ func main() {
     }
 }
 
-//still needs to give best 1st move

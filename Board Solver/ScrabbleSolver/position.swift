@@ -369,7 +369,7 @@ public class Position {
                     //left
                     if(isFilled(x: i-1, y: j)) {
                         connected = true;
-                        var a = i-1;
+                        var a: Int = i-1;
                         while(isFilled(x: a, y: j)) {
                             component_score += Position.tileScore[board[j][a]]!
                             a = a-1;
